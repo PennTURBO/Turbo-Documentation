@@ -476,7 +476,7 @@ A few prerequisites are required before running Drivetrain.
 	- plyr
 * A Solr instance containing a collection loaded with the relevant dictionary is also required for our Medication Mapping in its current state. If you want to use the Medication Mapping functionality, download [Solr](http://lucene.apache.org/solr/) and create a collection called 'dtmeds' with the file [/utilities/r/medication mapping/unique4solr.csv](https://github.com/pennbiobank/turbo-temp/blob/master/utilities/r/medication%20mapping/unique4solr.csv). 
 
-If you attempt to run the full Drivetrain stack and you do not have R and all the relevant packages installed and an instance of Solr running with a collection named 'dtmeds', the program will crash when it gets to Medication Mapping. However, if you do not need to execute Medication Mapping, you can call the function piecewise (see [Running Drivetrain Piecewise with SBT](#piecewise)), calling only the functions that are necessary for your run. You would not need to bother yourself setting up R/Solr if you used this approach.
+If you attempt to run the full Drivetrain stack and you do not have R and all the relevant packages installed and an instance of Solr running with a collection named 'dtmeds', the program will notify you that it is not able to run the Medication Mapping segment. 
 
 Once you have all of these technologies installed, you are ready to clone the repository and start working with the Drivetrain software.
 
@@ -493,20 +493,9 @@ Next, open the file in a text editor and fill out the necessary fields.
 * username - the username for your Graph DB account
 * password - the password for your Graph DB account
 * inputFiles - a list of all the files for Drivetrain to import on initialization (the template properties file contains pointers to a small demo dataset)
-* inputFilesNamedGraphs - a list of named graph URIs corresponding to the inputFiles field (matches on indexes: the first file listed in inputFiles will be inserted into the first named graph in inputFilesNamedGraphs, etc.)
-	- For Drivetrain to recognize incoming data, it must be inserted into one of a set of specific named graphs:
-		1. pmbb:biobankEncounterShortcuts
-		2. pmbb:participantShortcuts
-		3. pmbb:healthcareEncounterShortcuts
-		4. pmbb:healthcareEncounterShortcuts1
-		5. pmbb:healthcareEncounterShortcuts2
-		6. pmbb:healthcareEncounterShortcuts3
-		7. pmbb:healthcareEncounterShortcuts4
-		8. pmbb:healthcareJoinShortcuts
-		9. pmbb:biobankJoinShortcuts
-	- The data inserted into the named graph must also match the types expected in each named graph (so data containing shortcut data for turbo:TURBO_0000527 (biobank encounters) must be inserted into pmbb:biobankEncounterShortcuts, not another named graph)
 * inputFilesFormat - the file format of each of the inputFiles, matched on index (the first format type specified in inputFilesFormat should be the format of the first file listed in inputFiles, etc.)
 	- Currently supported file formats: TURTLE, RDFXML
+	- If all input files are the same format, you need only write the format one time, not once for each input file.
 * importOntologies - boolean flag determines whether TURBO ontology is loaded on initialization. Should always be set to 'true' unless the TURBO ontology has been manually loaded into named graph pmbb:ontologies.
 * ontologyURL - the URL where the TURBO ontology can be found. Unless you are using your own custom ontology, the URL in the template file should be appropriate.
 * solrURL - the address of your Solr instance. This is only necessary if you are planning to utilize the Medication Mapping feature.
@@ -535,7 +524,7 @@ To step through the Drivetrain stack one process at a time, enter the following 
 3. "run reftrack" - runs the referent tracking process and entity linking process on the entire pmbb:expanded graph.
 4. "run conclusionate .51 .51" - runs the conclusionation process on the entire pmbb:expanded graph, creating a new Conclusionations graph specific to this Conclusionation process. The decimal numbers provided as arguments can be between .5 and 1, and represent the threshold required for drawing a Biological sex and Date of birth conclusion.
 5. "run diagmap" - runs the Diagnosis Mapping process
-6. "run medmap" - runs the Medication Mapping process. This requires some additional setup (see Running Drivetrain) and should only be run if relevant services and technologies are in place.
+6. "run medmap" - runs the Medication Mapping process. This requires some additional setup (see Running Drivetrain) and can only be run if relevant services and technologies are in place.
 
 Additionally, the full stack can be run using the command "run all .51 .51".
 
@@ -543,7 +532,7 @@ Additionally, the full stack can be run using the command "run all .51 .51".
 
 Drivetrain contains an automated benchmarking feature, which can be called with the command "run benchmark". This process will run the full Drivetrain stack and log performance and node-based statistics in a folder created inside the "benchmarking" folder. This output will allow you to see the time that each stage of Drivetrain took to run, as well as the number of nodes in the graph of certain types of interest at various stages in the Drivetrain process. It will also count the total number of triples in the graph at each stage.
 
-Note that the Benchmarking process includes a call to the Medication Mapper, meaning that all relevant technologies (Solr, R) must be set up before calling this.
+Note that the Benchmarking process includes a call to the Medication Mapper, meaning that all relevant technologies (Solr, R) must be set up if you desire to benchmarking this segment. Otherwise the output will indicate that Medication Mapping was "SKIPPED". 
 
 ###### Running Drivetrain with a precompiled .jar
 
@@ -552,3 +541,7 @@ Another option to running Drivetrain besides the SBT console is to use a precomp
 Note that there is no guarantee that any .jar file in the precompiled folder contains the most up-to-date version of the code. You should check the date in the name of the .jar file to determine how recent it is compared to the latest commit in this repository. Additionally, you can make your own .jar file from the latest version of the code by running the command 'assembly' in the SBT console.
 
 An example command you could issue to call a process in the .jar file would be "java -cp drivetrainXXXXXXXX.jar edu.upenn.turbo.DrivetrainDriver all .51 .51".  To call benchmarking, use "java -cp drivetrainXXXXXXXX.jar edu.upenn.turbo.DrivetrainDriver benchmark". The "run" command is not necessary to include when using a .jar file.
+
+###### Running Tests
+
+Drivetrain includes a suite of unit tests which tests most of the program's functionality. To run these tests, enter "test" in the SBT console or call a specific test class using "test-only edu.upenn.turbo.{desired test class name}"
