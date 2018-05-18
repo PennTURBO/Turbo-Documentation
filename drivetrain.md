@@ -467,20 +467,20 @@ Unlike in the Biological Sex Conclusionator, where the Biological Sex instance i
 
 A few prerequisites are required before running Drivetrain.
 * You should have Java 1.8 installed and on your system path.
-* If you want to run the source code without using a precompiled .jar file, you need to install [SBT](https://www.scala-sbt.org/), which will compile and execute the application.  [Windows](http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Windows.html) users may have to install SBT and add it as a system variable for this to work. If you are running from a precompiled .jar file, SBT is not necessary.
+* There are two ways to run Drivetrain: [using SBT and using a precompiled .jar file](#waystorundrivetrain). If you want to run the source code without using a precompiled .jar file, you need to install [SBT](https://www.scala-sbt.org/), which will compile and execute the application.  [Windows](http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Windows.html) users may have to install SBT and add it as a system variable for this to work. If you are running from a precompiled .jar file, SBT is not necessary. 
 * You will need a running instance of [Ontotext Graph DB](http://graphdb.ontotext.com/) with an empty, non-reasoning repository. The free version should work fine.
 * For the medication mapping system to work, the R language must be installed, along with the following R packages:
 	- e1071
 	- stringr
 	- stringdist
 	- plyr
-* A Solr instance containing a collection loaded with the relevant dictionary is also required for our Medication Mapping in its current state. If you want to use the Medication Mapping functionality, download [Solr](http://lucene.apache.org/solr/) and create a collection called 'dtmeds' with the file [/utilities/r/medication mapping/unique4solr.csv](https://github.com/pennbiobank/turbo-temp/blob/master/utilities/r/medication%20mapping/unique4solr.csv). 
+* A Solr instance containing a collection loaded with the relevant dictionary is also required for our Medication Mapping in its current state. If you want to use the Medication Mapping functionality, you will have to create your own Solr collection and Support Vector Machine. More details will follow.
 
 If you attempt to run the full Drivetrain stack and you do not have R and all the relevant packages installed and an instance of Solr running with a collection named 'dtmeds', the program will notify you that it is not able to run the Medication Mapping segment. 
 
 Once you have all of these technologies installed, you are ready to clone the repository and start working with the Drivetrain software.
 
-#### Ways to Run Drivetrain
+#### Ways to Run Drivetrain <a name="waystorundrivetrain"></a>
 
 Drivetrain can be run from the resources in this repository using SBT compilation or via the .jar files in the 'precompiled' directory. Or, make your own .jar file from the current version of the code by running "assembly" in the SBT console.
 
@@ -515,7 +515,7 @@ To run the application from the SBT console:
 
 If this is your first time running the project, SBT will take a few moments to download the necessary dependencies and compile the code. Once it's finished, you can proceed to run Drivetrain. 
 
-###### <a name="piecewise"></a> Running Drivetrain Piecewise
+###### Running Drivetrain Piecewise
 
 To step through the Drivetrain stack one process at a time, enter the following commands.
 
