@@ -507,7 +507,7 @@ Next, open the file in a text editor and fill out the necessary fields.
 
 Some additional file configuration is necessary to run Drivetrain with SBT. 
 
-In the drivetrain folder, create a copy of 'build.sbt.template' and rename it 'build.sbt'. This is the file which holds information about the library dependencies which SBT will pull from the web, as well as instructions for creating a precompiled jar. Then go into drivetrain/project and copy 'build.properties.template' and 'plugins.sbt.template', removing the '.template' from both of the copies.
+In the drivetrain folder, create a copy of 'drivetrain/build.sbt.template' and rename it 'build.sbt'. This is the file which holds information about the library dependencies which SBT will pull from the web, as well as instructions for creating a precompiled jar. Then go into drivetrain/project and copy 'project/build.properties.template' and 'project/plugins.sbt.template', removing the '.template' from both of the copies.
 
 To run the application from the SBT console:
 
