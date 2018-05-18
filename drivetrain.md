@@ -511,10 +511,12 @@ In the drivetrain folder, create a copy of 'drivetrain/build.sbt.template' and r
 
 To run the application from the SBT console:
 
-* In Command Line, change to directory "drivetrain"
+* In Command Line, change to directory "Drivetrain/drivetrain"
 * Run 'sbt' (Windows) or './sbt' (Linux)
 
 If this is your first time running the project, SBT will take a few moments to download the necessary dependencies and compile the code. Once it's finished, you can proceed to run Drivetrain. 
+
+If you are planning to develop in Eclipse, run the "eclipse" command in SBT to generate SBT plugin files. The SBT-eclipse plugin is included.
 
 ###### Running Drivetrain Piecewise
 
