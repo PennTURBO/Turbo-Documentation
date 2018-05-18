@@ -492,6 +492,7 @@ Next, open the file in a text editor and fill out the necessary fields.
 * namespace - the name of your empty, non-reasoning Ontotext repository
 * username - the username for your Graph DB account
 * password - the password for your Graph DB account
+	- if you are using a non-password protected repository, username/password validation not required
 * inputFiles - a list of all the files for Drivetrain to import on initialization (the template properties file contains pointers to a small demo dataset)
 * inputFilesFormat - the file format of each of the inputFiles, matched on index (the first format type specified in inputFilesFormat should be the format of the first file listed in inputFiles, etc.)
 	- Currently supported file formats: TURTLE, RDFXML
