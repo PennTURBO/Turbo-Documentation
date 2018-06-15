@@ -14,7 +14,9 @@ The TURBO ontology is still being refined.  The TURBO team welcomes suggestions 
 
 ## Background
 
-The TURBO ontology is an [OWL2 ontology](https://www.w3.org/TR/owl2-overview/) that describes the classes and properties that can be used by the Drivetrain application.  It is accessible via two different URLs, `https://cbil-dev-web01.pmacs.upenn.edu/ontology/turbo_merged.owl` and `https://github.com/pennbiobank/turbo/blob/master/ontologies/turbo_merged.owl`, although neither is open to the public yet.  TURBO imports many of its classes from the [Ontology for Biobanking](http://www.obofoundry.org/ontology/obib.html), the [Ontology for Biomedical Investigations](http://www.obofoundry.org/ontology/obi.html) and other [OBO Foundry](http://www.obofoundry.org/) ontologies.  TURBO's native classes and properties are, to a great extent, used to describe the [shortcut expansion](drivetrain.md#sc_exp), [referent tracking](drivetrain.md#reftracking) and [conclusionating processes](drivetrain.md#conclusionating) carried out by the Drivetrain application.
+[The TURBO ontology](https://raw.githubusercontent.com/PennTURBO/Turbo-Ontology/master/ontologies/turbo_merged.owl   ) is an [OWL2 ontology](https://www.w3.org/TR/owl2-overview/) that describes the classes and properties that can be used by the Drivetrain application. 
+
+TURBO imports many of its classes from the [Ontology for Biobanking](http://www.obofoundry.org/ontology/obib.html), the [Ontology for Biomedical Investigations](http://www.obofoundry.org/ontology/obi.html) and other [OBO Foundry](http://www.obofoundry.org/) ontologies.  TURBO's native classes and properties are, to a great extent, used to describe the [shortcut expansion](drivetrain.md#sc_exp), [referent tracking](drivetrain.md#reftracking) and [conclusionating processes](drivetrain.md#conclusionating) carried out by the Drivetrain application.
 
 ## <a id="term_id_lab">Term IDs vs labels</a>
 
