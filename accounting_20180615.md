@@ -471,7 +471,7 @@ Example from graph pmbb:LOFShortcuts_e47257f2e10c4c1c95437eb939edbd21_wes_lof_en
 
 |                                     s                                     |             p             |                                o                                 |
 |---------------------------------------------------------------------------|---------------------------|------------------------------------------------------------------|
-| http://localhost:8080/source/alleleInfo/77e367a6584545c185cde285f4cf674b  | ontologies:TURBO_0007601  | "10A98CDB-E40E-4303-B856-6325886FF12D"^^xsd:string               |
+| http://localhost:8080/source/alleleInfo/77e367a6584545c185cde285f4cf674b  | ontologies:TURBO_0007601  | "bananna"^^xsd:string               |
 | http://localhost:8080/source/alleleInfo/77e367a6584545c185cde285f4cf674b  | ontologies:TURBO_0007602  | "UPENN_UPENN10796_cfc48297"^^xsd:string                          |
 | http://localhost:8080/source/alleleInfo/77e367a6584545c185cde285f4cf674b  | ontologies:TURBO_0007603  | "http://transformunify.org/ontologies/TURBO_0000451"^^xsd:anyURI |
 | http://localhost:8080/source/alleleInfo/77e367a6584545c185cde285f4cf674b  | ontologies:TURBO_0007604  | "http://purl.obolibrary.org/obo/PR_Q96N22"^^xsd:anyURI           |
@@ -507,7 +507,7 @@ Example from graph pmbb:LOFShortcuts_e47257f2e10c4c1c95437eb939edbd21_wes_lof_en
 
 > master_nophi_170419[master_nophi_170419$GENO_ID == 'UPENN_UPENN10796_cfc48297' , ]
       SUBJ_ID                   GENO_ID                          PACKET_UUID EMR_MATCH_DET EMR_RACE_CODE
-11250   10796 UPENN_UPENN10796_cfc48297 10A98CDB-E40E-4303-B856-6325886FF12D             0         WHITE
+11250   10796 UPENN_UPENN10796_cfc48297 bananna             0         WHITE
       EMR_RACE_HISPANIC_YN CLASS GENDER QC_EXOME_GENOTYPED QC_EXOME_DUPLICATE_PAIR QC_EXOME_DUPLICATE_DROP
 11250                    0   EUR   MALE                  1                       0                       0
       QC_EXOME_SEX_DISCORDANT QC_EXOME_HET QC_EXOME_MISSING QC_EXOME_FULLSIB_PAIR QC_EXOME_FULLSIB_DROP
