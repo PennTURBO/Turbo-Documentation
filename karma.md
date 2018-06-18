@@ -83,6 +83,45 @@ In order to enter a transformation, click on a column's name and select `PyTrans
 
 ### <a name="shortcut_rels">Shortcut Relations</a> 
 
+The following section describes proper shortcut usage for input data into Drivetrain.
+
+Example: Biobank Consenter (TURBO_0000502)
+    
+    Required Shortcuts
+    pmbb:consenter1 rdf:type turbo:TURBO_0000502 .
+    pmbb:consenter1 turbo:TURBO_0000603 ?datasetTitle .
+    pmbb:consenter1 turbo:TURBO_0000608 ?consenterSymbol .
+    pmbb:consenter1 turbo:TURBO_0000610 ?consenterRegistry .
+    Optional Shortcuts
+    pmbb:consenter1 turbo:TURBO_0000609 ?registryDenoter .
+    pmbb:consenter1 turbo:TURBO_0000604 ?dateOfBirthString .
+    pmbb:consenter1 turbo:TURBO_0000605 ?dateOfBirthXsd .
+    pmbb:consenter1 turbo:TURBO_0000606 ?genderIdentityDatum .
+    pmbb:consenter1 turbo:TURBO_0000607 ?genderIdentityType .
+
+*?datasetTitle: a literal value representing the relational dataset from where this consenter came
+	*example: "this_is_my_dataset.csv"
+*?consenterSymbol: a literal value representing the patient's identifier as it appears in the relational dataset
+	*example: "3abc"
+*?consenterRegistry: a literal value representing the URI of the registry from where this information came, tagged as "anyURI"
+	*example: "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+*?registryDenoter: a string description of the registry as it appears in the original dataset
+	*example: "PDS"
+*?dateOfBirthString: a literal value representing the date of birth of the associated consenter as it appears in the original relational dataset
+	*example: "1985-08-30"
+*?dateOfBirthXsd: a formatted literal value representing the date of birth of the associated consenter, tagged as "date" and formatted as yyyy-mm-dd
+	*example: "1985-08-30"^^<http://www.w3.org/2001/XMLSchema#date>
+*?genderIdentityDatum: a literal value representing the biological sex of the associated consenter, as it appears in the original dataset
+	*example: "M"
+*?genderIdentityType: a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender, tagged as "anyURI"
+	*male: "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+	*female: "http://purl.obolibrary.org/obo/OMRSE_00000138"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+
+Additional usage notes: 
+It is illegal for optional property ?dateOfBirthXsd to be present if optional property ?dateOfBirthString is not present.
+It is illegal for optional property ?genderIdentityType to be present if optional property ?genderIdentityDatum is not present.
+
+
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
 
 Because these reality based models typically require instantiating classes that are only implicit in the input data, and because the resulting models can be quire complex, the TURBO team has created [shortcut relation properties](#shortcut_table).  These properties allow someone with biobanking domain knowledge but limited semantic web or ontology experience to contribute to a Karma model, especially the transformations for which they may be most familiar with the encoding of the data (0 or 1) and what it means (that some person identifies as male or female.)
