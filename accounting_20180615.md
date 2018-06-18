@@ -1,5 +1,5 @@
 # WES LOF Semantic accounting, 2018-06-15
-### Start with repo "Hayden_drivetrain" on http://turbo-prd-db01:7201/sparql
+### Started with repo "Hayden_drivetrain" on http://turbo-prd-db01:7201/sparql
 
 ```
 [markampa@turbo-prd-db01 ~]$ du -sh /data2/graphdb/repositories/Hayden_drivetrain_2
@@ -15,7 +15,7 @@ select (count(?s) as ?count) where {
 78 859 402
 (popover on http://turbo-prd-db01:7201/repository reports  78 860 310)
 
-
+### anything in default graph?
 ```
 PREFIX sesame: <http://www.openrdf.org/schema/sesame#>
 SELECT (count(?s) as ?count)
@@ -26,7 +26,7 @@ WHERE {
 ```
 0
 
-
+### How many allele informations that are about something?
 ```
 prefix pmbb: <http://www.itmat.upenn.edu/biobank/>
 select (count(?s) as ?count) where {
@@ -41,6 +41,9 @@ g|count
 -|-
 pmbb:expanded | "3454970"^^xsd:integer
 
+
+### How many allele informations TOTAL, by named graph?
+#### There are unexpanded/unlinked allele informations
 
 ```
 select ?g (count(?s) as ?count) where {
@@ -252,7 +255,7 @@ Manual.  Includes: (converted from UMLS to MySQL to RDF)
 ### pmbb:protont2up 
 
 Manual local SPARQL construction.  Added 17810 statements. Update took 40s.
-**should have used owl:equivalentClass, not owl:sameAs?**
+
 
 ```
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
@@ -278,6 +281,24 @@ insert {
     }
 }
 ```
+
+**should have used owl:equivalentClass, not owl:sameAs?**
+
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX pmbb: <http://www.itmat.upenn.edu/biobank/>
+insert {
+    graph pmbb:protont_ec_up {
+        ?s owl:equivalentClass ?o .
+    }
+} 
+where {
+    graph pmbb:protont2up {
+        ?s owl:sameAs ?o .
+    }
+}
+```
+Added 17810 statements. Update took 13s, moments ago. 
 
 ### https://sparql.uniprot.org/annotated_with
 
@@ -535,7 +556,7 @@ select (count(?s) as ?count) where {
 "9280762"^^xsd:integer
 
 
-### Sample protein ontology entry from graph <http://www.itmat.upenn.edu/biobank/proteins>
+### Sample protein ontology entries from graph <http://www.itmat.upenn.edu/biobank/proteins>
 
 |       s        |             p             |                                   o                                   |
 |----------------|---------------------------|-----------------------------------------------------------------------|
@@ -550,26 +571,59 @@ select (count(?s) as ?count) where {
 | obo:PR_O43657  | rdfs:label                | "tetraspanin-6 (human)"^^xsd:string                                   |
 | obo:PR_O43657  | rdfs:subClassOf           | _:node395360                                                          |
 
+different protein, with sameAs/equivalenClass effects
+
+|    subject    |        predicate         |                                                object                                                |      context       |
+|---------------|--------------------------|------------------------------------------------------------------------------------------------------|--------------------|
+| obo:PR_P08575 | obo:IAO_0000115          | "A receptor-type tyrosine-protein phosphatase C that is encoded in the genome of human."^^xsd:string | pmbb:proteins      |
+| obo:PR_P08575 | oboInOwl:hasDbXref       | "UniProtKB:P08575"^^xsd:string                                                                       | pmbb:proteins      |
+| obo:PR_P08575 | oboInOwl:hasExactSynonym | "hPTPRC"^^xsd:string                                                                                 | pmbb:proteins      |
+| obo:PR_P08575 | oboInOwl:hasOBONamespace | "protein"^^xsd:string                                                                                | pmbb:proteins      |
+| obo:PR_P08575 | oboInOwl:id              | "PR:P08575"^^xsd:string                                                                              | pmbb:proteins      |
+| obo:PR_P08575 | owl:equivalentClass      | http://purl.uniprot.org/uniprot/P08575                                                               | pmbb:protont_ec_up |
+| obo:PR_P08575 | owl:sameAs               | http://purl.uniprot.org/uniprot/P08575                                                               | pmbb:protont2up    |
+| obo:PR_P08575 | rdf:type                 | owl:Class                                                                                            | pmbb:proteins      |
+| obo:PR_P08575 | rdfs:comment             | "Category=organism-gene."^^xsd:string                                                                | pmbb:proteins      |
+| obo:PR_P08575 | rdfs:label               | "receptor-type tyrosine-protein phosphatase C (human)"^^xsd:string                                   | pmbb:proteins      |
+
+
+
+### Samples of Uniprot and GO triples (for linking):
+
+
+|                    s                    |                      p                      |                     o                     |
+|-----------------------------------------|---------------------------------------------|-------------------------------------------|
+| http://purl.uniprot.org/uniprot/H2UAG2  | http://purl.uniprot.org/core/classifiedWith | http://purl.obolibrary.org/obo/GO_0005178 |
+| http://purl.uniprot.org/uniprot/H2UAG2  | http://purl.uniprot.org/core/organism       | http://purl.uniprot.org/taxonomy/31033    |
+
+
+
+|        s        |        p         |                                        o                                        |
+|-----------------|------------------|---------------------------------------------------------------------------------|
+| obo:GO_0003676  | rdfs:label       | "nucleic acid binding"^^xsd:string                                              |
+| obo:GO_0003676  | rdf:type         | owl:Class                                                                       |
+
+
 ## TODO
 
 - why aren't all allele informations getting expanded/linked?
-- be careful to use correct LOF shortcuts chunk 0 file (there's some version out there with mangled URIs)
+- be careful to use correct LOF shortcuts chunk #0 file (there's some version out there with mangled URIs)
     - Hayden renamed the good one with the name of the previous bad one
-
-- remove sample grain of genetic material triples
 - Allele informations:combine textual values
     - Gene:BRCA1(ENSG1234);Zygosity:1
 - Go back to using http://transformunify.org/ontologies/TURBO_0000701 "interdependent with shortcut"
 - rewrite pseudocode comments in turbo_merged.owl describing expansion of each shortcut
-- node rank
 - lucene connection for free text searching IN SPARQL?
-
-Are we misusing "mentions"?
-An information artifact IA mentions an entity E exactly when it has a component/part that denotes E
+- update i2i2c2c
+- Review consequences of punning
+- does reasoning over owl:sameAs/owl:equivalentClass in order to see 'associated with' on protein ontology terms require that the object (UP proteins) have been defined as classes? (that's why I imported all of https://www.uniprot.org/uniprot/P08575.rdf)
+- add UP upper ontology and void?
+- Are we misusing "mentions"?
+> An information artifact IA mentions an entity E exactly when it has a component/part that denotes E
 Is about domain = ICE
-Also, no inverse?
 
-Review consequences of punning
+    - Also, 'is abouts' have no inverse?
+
 
 reasoning goals:
 - explicit transitive subclasses
@@ -578,11 +632,115 @@ reasoning goals:
 - equivalent class or sameAs
 - infer type form axiom:  an X is a Y that Zs
 
-Done?
-- get all Drivetrain output into a RDFS+ optimized ()or better) repo
-    - done on Mark's laptop, need to migrate to PMACS server
+### Done?
+- get all Drivetrain output into a RDFS+ optimized (or better) repo
+    - http://turbo-prd-db01:7200 /data/graphdb/repositories/turbo_20180616_rdfspo_nocheck
 - add supporting ontolgies and linked data sets
     - TODO: link concepts like midazolam is a benzodiazepine by NDC, RxNORM value or UMLS CUI
-- autcomplete indexing
+- autocomplete indexing
+    - 16 predicates now... still do more?
     - not indexing URI values any more
-    - TODO:  add more predicates
+- cleared graphs with owl:sameAs or owl:equivalentClass (other than reference ontolgies)
+    - get a fresh start and deal with http://org.semanticweb.owlapi/error#Error1
+    - pmbb:protont2up (fast)
+    - https://www.uniprot.org/uniprot/P08575 (5 minutes)
+    - pmbb:chebi_dron_eqilabs (hours)
+    - pmbb:protont_ec_up (fast)
+- node rank... 20 minutes?
+
+```
+PREFIX rank: <http://www.ontotext.com/owlim/RDFRank#>
+INSERT DATA { _:b1 rank:compute _:b2. }
+```
+
+- removed genetic material http://purl.obolibrary.org/obo/OBI_0001868 'has grain' http://purl.obolibrary.org/obo/OBI_0000643 'dna extract' http://purl.obolibrary.org/obo/OBI_0001051 triples
+
+
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pmbb: <http://www.itmat.upenn.edu/biobank/>
+delete
+{
+    graph pmbb:expanded {
+        ?s  <http://purl.obolibrary.org/obo/OBI_0000643> ?o .
+    }
+}
+where {
+    ?s a <http://purl.obolibrary.org/obo/OBI_0001868> .
+    ?o a <http://purl.obolibrary.org/obo/OBI_0001051> .
+    graph pmbb:expanded{
+        ?s  <http://purl.obolibrary.org/obo/OBI_0000643> ?o .
+    }
+}
+```
+Removed 7055 statements. Update took 27s, moments ago. 
+
+
+## loading into pmacs 7200
+
+used `screen` terminal multiplexer
+
+```sudo -E -u graphdb /usr/local/graphdb-free-8.4.1/bin/loadrdf -f -i turbo_20180616_rdfspo_nocheck -m parallel  -v /tmp/brfs/public_statements.zip /tmp/brfs/real_expanded_statements.zip /tmp/brfs/real_shortcut_statements.zip```
+
+
+> 10:13:10.204 [main] INFO  com.ontotext.graphdb.loadrdf.LoadRDF - Job finished successfully on Sat Jun 16 10:13:10 EDT 2018. Parsed 168,295,356 statements in 5,622,516 ms, avg rate = 29,932 st/s.
+
+### Post-load steps
+
+Added 17810 statements. Update took 6s, moments ago. 
+
+Removed 7055 statements. Update took 7.5s, moments ago. 
+
+## How to use owl:sameAs and owl:equivalentClass?
+
+
+'rosuvastatin' http://purl.obolibrary.org/obo/CHEBI_38545 
+
+http://purl.obolibrary.org/obo/CHEBI_38545 owl:equivalentClass obo:DRON_00018679 (in http://www.ontotext.com/implicit)
+	
+obo:DRON_00018679 rdfs:subClassOf obo:OBI_0000047 (in pmbb:drugOntologies)
+
+obo:CHEBI_38545 rdfs:subClassOf obo:CHEBI_87635 (in pmbb:drugOntologies)
+
+obo:CHEBI_87635 rdfs:label "statin (synthetic)"^^xsd:string
+
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+select distinct (lcase(str(?l)) as ?ls) where { 
+	obo:DRON_00018679 rdfs:subClassOf ?o .
+    ?o rdfs:label ?l
+}
+```
+
+Success? Returns "statin (synthetic)", only when inferred results included, regardless of sameAs setting.  (equivalentClass statements in pmbb:chebi_dron_eqilabs have since been removed) 
+
+LOOK FOR SIMILAR PATTERN with obo:PR_P08575 and http://www.uniprot.org/uniprot/P08575
+
+
+
+http://purl.uniprot.org/uniprot/P08575 http://purl.uniprot.org/core/classifiedWith obo:GO_0001915 (in https://sparql.uniprot.org/annotated_with)
+
+imported https://www.uniprot.org/uniprot/P08575.rdf?include=yes into https://www.uniprot.org/uniprot/P08575
+
+
+Where did this error term come from?
+
+`<http://org.semanticweb.owlapi/error#Error1>`
+
+
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select * where {
+    graph ?g {
+        ?s rdfs:subClassOf <http://org.semanticweb.owlapi/error#Error1>
+    }
+}
+```
+
+result:	
+`http://www.ontobee.org/ontology/GO obo:GOCHE_37527`
+
+see https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3245151/ for GOCHE background
+
+
