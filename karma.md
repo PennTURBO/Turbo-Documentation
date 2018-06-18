@@ -99,23 +99,23 @@ Example: Biobank Consenter (TURBO_0000502)
     pmbb:consenter1 turbo:TURBO_0000606 ?genderIdentityDatum .
     pmbb:consenter1 turbo:TURBO_0000607 ?genderIdentityType .
 
-*?datasetTitle: a literal value representing the relational dataset from where this consenter came
-	*example: "this_is_my_dataset.csv"
-*?consenterSymbol: a literal value representing the patient's identifier as it appears in the relational dataset
-	*example: "3abc"
-*?consenterRegistry: a literal value representing the URI of the registry from where this information came, tagged as "anyURI"
-	*example: "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI>
-*?registryDenoter: a string description of the registry as it appears in the original dataset
-	*example: "PDS"
-*?dateOfBirthString: a literal value representing the date of birth of the associated consenter as it appears in the original relational dataset
-	*example: "1985-08-30"
-*?dateOfBirthXsd: a formatted literal value representing the date of birth of the associated consenter, tagged as "date" and formatted as yyyy-mm-dd
-	*example: "1985-08-30"^^<http://www.w3.org/2001/XMLSchema#date>
-*?genderIdentityDatum: a literal value representing the biological sex of the associated consenter, as it appears in the original dataset
-	*example: "M"
-*?genderIdentityType: a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender, tagged as "anyURI"
-	*male: "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI>
-	*female: "http://purl.obolibrary.org/obo/OMRSE_00000138"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+* ?datasetTitle: a literal value representing the relational dataset from where this consenter came
+	* example: "this_is_my_dataset.csv"
+* ?consenterSymbol: a literal value representing the patient's identifier as it appears in the relational dataset
+	* example: "3abc"
+* ?consenterRegistry: a literal value representing the URI of the registry from where this information came, tagged as "anyURI"
+	* example: "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+* ?registryDenoter: a string description of the registry as it appears in the original dataset
+	* example: "PDS"
+* ?dateOfBirthString: a literal value representing the date of birth of the associated consenter as it appears in the original relational dataset
+	* example: "1985-08-30"
+* ?dateOfBirthXsd: a formatted literal value representing the date of birth of the associated consenter, tagged as "date" and formatted as yyyy-mm-dd
+	* example: "1985-08-30"^^<http://www.w3.org/2001/XMLSchema#date>
+* ?genderIdentityDatum: a literal value representing the biological sex of the associated consenter, as it appears in the original dataset
+	* example: "M"
+* ?genderIdentityType: a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender, tagged as "anyURI"
+	* male: "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI>
+	* female: "http://purl.obolibrary.org/obo/OMRSE_00000138"^^<http://www.w3.org/2001/XMLSchema#anyURI>
 
 Additional usage notes: 
 It is illegal for optional property ?dateOfBirthXsd to be present if optional property ?dateOfBirthString is not present.
