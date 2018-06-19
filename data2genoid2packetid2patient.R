@@ -5,6 +5,8 @@ lof.mat.file <-
 
 print(Sys.time())
 
+# Parsing strings as factors would notmally be OK, 
+# but it seems to be incompatible or tricky with sparse matrix operations used in other scripts
 wes.lof.frame <- read.table(
   file = lof.mat.file,
   header = TRUE,
