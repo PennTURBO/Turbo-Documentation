@@ -63,4 +63,12 @@ data2genoid2packetid2patient <-
     all = TRUE
   )
 
+print(sapply(data2genoid2packetid2patient, class))
+
+data2genoid2packetid2patient$GENO_ID <- factor(data2genoid2packetid2patient$GENO_ID)
+
+print(sapply(data2genoid2packetid2patient, class))
+
 print(summary(data2genoid2packetid2patient))
+
+
