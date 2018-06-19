@@ -519,64 +519,64 @@ In order to keep the patient and encounter tables as brief as possible, TURBO us
 ## <a name="shortcut_table">Table of TURBO Shortcut Properties</a>
 
 
-|      Property       |                                            Label                                            |
-|---------------------|---------------------------------------------------------------------------------------------|
-| turbo:TURBO_0000601 | biobank consenter to data shortcut                                                          |
-| turbo:TURBO_0000602 | shortcut biobank consenter to biological sex URI string                                     |
-| turbo:TURBO_0000603 | shortcut biobank consenter to dataset title                                                 |
-| turbo:TURBO_0000604 | shortcut biobank consenter to textual date of birth text                                    |
-| turbo:TURBO_0000605 | shortcut biobank consenter to xsd-formatted date of birth                                   |
-| turbo:TURBO_0000606 | shortcut biobank consenter to gender identity datum text                                    |
-| turbo:TURBO_0000607 | shortcut biobank consenter to gender identity datum URI string                              |
-| turbo:TURBO_0000608 | shortcut biobank consenter to biobank consenter CRID symbol                                 |
-| turbo:TURBO_0000609 | shortcut biobank consenter to biobank consenter registry denoter                            |
-| turbo:TURBO_0000610 | shortcut biobank consenter to biobank consenter identifier registry URI string              |
-| turbo:TURBO_0000621 | shortcut biobank encounter to data                                                          |
-| turbo:TURBO_0000623 | shortcut biobank encounter to data set title                                                |
-| turbo:TURBO_0000624 | shortcut biobank encounter to textual encounter date                                        |
-| turbo:TURBO_0000625 | shortcut biobank encounter to xsd-formatted  encounter date                                 |
-| turbo:TURBO_0000626 | shortcut biobank encounter to height in cm                                                  |
-| turbo:TURBO_0000627 | shortcut biobank encounter to weight in kg                                                  |
-| turbo:TURBO_0000628 | shortcut biobank encounter to encounter CRID symbol                                         |
-| turbo:TURBO_0000629 | shortcut biobank encounter to encounter registry denoter                                    |
-| turbo:TURBO_0000630 | shortcut biobank encounter to encounter identifier registry URI string                      |
-| turbo:TURBO_0000635 | shortcut biobank encounter to BMI                                                           |
-| turbo:TURBO_0000641 | shortcut health care encounter to data                                                      |
-| turbo:TURBO_0000643 | shortcut health care encounter to data set title                                            |
-| turbo:TURBO_0000644 | shortcut health care encounter to textual encounter date                                    |
-| turbo:TURBO_0000645 | shortcut health care encounter to xsd-formatted encounter date                              |
-| turbo:TURBO_0000646 | shortcut health care encounter to height in cm                                              |
-| turbo:TURBO_0000647 | shortcut health care encounter to weight in kg                                              |
-| turbo:TURBO_0000648 | shortcut health care encounter to encounter ID symbol                                       |
-| turbo:TURBO_0000649 | shortcut health care encounter to encounter registry denoter                                |
-| turbo:TURBO_0000650 | shortcut health care encounter to encounter identifier registry URI string                  |
-| turbo:TURBO_0000655 | shortcut health care encounter to BMI                                                       |
-| turbo:TURBO_0000661 | shortcut health care encounter to diagnosis code symbol                                     |
-| turbo:TURBO_0000662 | shortcut health care encounter to diagnosis code registry denoter                           |
-| turbo:TURBO_0000663 | shortcut health care encounter to diagnosis code registry URI string                        |
-| turbo:TURBO_0000670 | instantiation hybrid shortcut                                                               |
-| turbo:TURBO_0001600 | shortcut biobank encounter CRID to data                                                     |
-| turbo:TURBO_0001601 | shortcut health care encounter CRID to data                                                 |
-| turbo:TURBO_0001603 | shortcut biobank encounter CRID to dataset title                                            |
-| turbo:TURBO_0001608 | shortcut biobank encounter CRID to biobank encounter CRID symbol                            |
-| turbo:TURBO_0001609 | shortcut biobank encounter CRID to biobank encounter registry denoter                       |
-| turbo:TURBO_0001610 | shortcut biobank encounter CRID to biobank encounter identifier registry URI string         |
-| turbo:TURBO_0001641 | shortcut health care encounter to drug prescription text                                    |
-| turbo:TURBO_0001642 | shortcut health care encounter to drug prescription CRID symbol                             |
-| turbo:TURBO_0002603 | shortcut health care encounter CRID to dataset title                                        |
-| turbo:TURBO_0002608 | shortcut health care encounter CRID to health care encounter CRID symbol                    |
-| turbo:TURBO_0002609 | shortcut health care encounter CRID to health care encounter registry denoter               |
-| turbo:TURBO_0002610 | shortcut health care encounter CRID to health care encounter identifier registry URI string |
-| turbo:TURBO_0003600 | shortcut biobank consenter CRID to data                                                     |
-| turbo:TURBO_0003603 | shortcut biobank consenter CRID to dataset title                                            |
-| turbo:TURBO_0003608 | shortcut biobank consenter CRID to biobank consenter CRID symbol                            |
-| turbo:TURBO_0003609 | shortcut biobank consenter CRID to biobank consenter registry denoter                       |
-| turbo:TURBO_0003610 | shortcut biobank consenter CRID to biobank consenter identifier registry URI string         |
-| turbo:TURBO_0004600 | shortcut diagnosis to data                                                                  |
-| turbo:TURBO_0004601 | shortcut diagnosis to diagnosis code symbol                                                 |
-| turbo:TURBO_0004602 | shortcut diagnosis to diagnosis code registry denoter                                       |
-| turbo:TURBO_0004603 | shortcut diagnosis to diagnosis code registry                                               |
-| turbo:TURBO_0005600 | shortcut prescription to data                                                               |
-| turbo:TURBO_0005601 | shortcut prescription to prescription CRID symbol                                           |
-| turbo:TURBO_0005611 | shortcut prescription to prescription fullname/order_name                                   |
-| turbo:TURBO_0005612 | shortcut prescription to drug uri string                                                    |
+|      Property       |                                            Label                                            |    Description |
+|---------------------|---------------------------------------------------------------------------------------------|----------------|
+| turbo:TURBO_0000601 | biobank consenter to data shortcut                                                          |                |
+| turbo:TURBO_0000602 | shortcut biobank consenter to biological sex URI string                                     |                |
+| turbo:TURBO_0000603 | shortcut biobank consenter to dataset title                                                 |  A textua descriptor for the dataset that is serving as the input into Karma. Preferably a filename like "penn_biobank_encs-2017.csv"          |
+| turbo:TURBO_0000604 | shortcut biobank consenter to textual date of birth text                                    |                |
+| turbo:TURBO_0000605 | shortcut biobank consenter to xsd-formatted date of birth                                   |                |
+| turbo:TURBO_0000606 | shortcut biobank consenter to gender identity datum text                                    |                |
+| turbo:TURBO_0000607 | shortcut biobank consenter to gender identity datum URI string                              |                |
+| turbo:TURBO_0000608 | shortcut biobank consenter to biobank consenter CRID symbol                                 |                |
+| turbo:TURBO_0000609 | shortcut biobank consenter to biobank consenter registry denoter                            |                |
+| turbo:TURBO_0000610 | shortcut biobank consenter to biobank consenter identifier registry URI string              |                |
+| turbo:TURBO_0000621 | shortcut biobank encounter to data                                                          |                |
+| turbo:TURBO_0000623 | shortcut biobank encounter to data set title                                                |                |
+| turbo:TURBO_0000624 | shortcut biobank encounter to textual encounter date                                        |                |
+| turbo:TURBO_0000625 | shortcut biobank encounter to xsd-formatted  encounter date                                 |                |
+| turbo:TURBO_0000626 | shortcut biobank encounter to height in cm                                                  |                |
+| turbo:TURBO_0000627 | shortcut biobank encounter to weight in kg                                                  |                |
+| turbo:TURBO_0000628 | shortcut biobank encounter to encounter CRID symbol                                         |                |
+| turbo:TURBO_0000629 | shortcut biobank encounter to encounter registry denoter                                    |                |
+| turbo:TURBO_0000630 | shortcut biobank encounter to encounter identifier registry URI string                      |                |
+| turbo:TURBO_0000635 | shortcut biobank encounter to BMI                                                           |                |
+| turbo:TURBO_0000641 | shortcut health care encounter to data                                                      |                |
+| turbo:TURBO_0000643 | shortcut health care encounter to data set title                                            |                |
+| turbo:TURBO_0000644 | shortcut health care encounter to textual encounter date                                    |                |
+| turbo:TURBO_0000645 | shortcut health care encounter to xsd-formatted encounter date                              |                |
+| turbo:TURBO_0000646 | shortcut health care encounter to height in cm                                              |                |
+| turbo:TURBO_0000647 | shortcut health care encounter to weight in kg                                              |                |
+| turbo:TURBO_0000648 | shortcut health care encounter to encounter ID symbol                                       |                |
+| turbo:TURBO_0000649 | shortcut health care encounter to encounter registry denoter                                |                |
+| turbo:TURBO_0000650 | shortcut health care encounter to encounter identifier registry URI string                  |                |
+| turbo:TURBO_0000655 | shortcut health care encounter to BMI                                                       |                |
+| turbo:TURBO_0000661 | shortcut health care encounter to diagnosis code symbol                                     |                |
+| turbo:TURBO_0000662 | shortcut health care encounter to diagnosis code registry denoter                           |                |
+| turbo:TURBO_0000663 | shortcut health care encounter to diagnosis code registry URI string                        |                |
+| turbo:TURBO_0000670 | instantiation hybrid shortcut                                                               |                |
+| turbo:TURBO_0001600 | shortcut biobank encounter CRID to data                                                     |                |
+| turbo:TURBO_0001601 | shortcut health care encounter CRID to data                                                 |                |
+| turbo:TURBO_0001603 | shortcut biobank encounter CRID to dataset title                                            |                |
+| turbo:TURBO_0001608 | shortcut biobank encounter CRID to biobank encounter CRID symbol                            |                |
+| turbo:TURBO_0001609 | shortcut biobank encounter CRID to biobank encounter registry denoter                       |                |
+| turbo:TURBO_0001610 | shortcut biobank encounter CRID to biobank encounter identifier registry URI string         |                |
+| turbo:TURBO_0001641 | shortcut health care encounter to drug prescription text                                    |                |
+| turbo:TURBO_0001642 | shortcut health care encounter to drug prescription CRID symbol                             |                |
+| turbo:TURBO_0002603 | shortcut health care encounter CRID to dataset title                                        |                |
+| turbo:TURBO_0002608 | shortcut health care encounter CRID to health care encounter CRID symbol                    |                |
+| turbo:TURBO_0002609 | shortcut health care encounter CRID to health care encounter registry denoter               |                |
+| turbo:TURBO_0002610 | shortcut health care encounter CRID to health care encounter identifier registry URI string |                |
+| turbo:TURBO_0003600 | shortcut biobank consenter CRID to data                                                     |                |
+| turbo:TURBO_0003603 | shortcut biobank consenter CRID to dataset title                                            |                |
+| turbo:TURBO_0003608 | shortcut biobank consenter CRID to biobank consenter CRID symbol                            |                |
+| turbo:TURBO_0003609 | shortcut biobank consenter CRID to biobank consenter registry denoter                       |                |
+| turbo:TURBO_0003610 | shortcut biobank consenter CRID to biobank consenter identifier registry URI string         |                |
+| turbo:TURBO_0004600 | shortcut diagnosis to data                                                                  |                |
+| turbo:TURBO_0004601 | shortcut diagnosis to diagnosis code symbol                                                 |                |
+| turbo:TURBO_0004602 | shortcut diagnosis to diagnosis code registry denoter                                       |                |
+| turbo:TURBO_0004603 | shortcut diagnosis to diagnosis code registry                                               |                |
+| turbo:TURBO_0005600 | shortcut prescription to data                                                               |                |
+| turbo:TURBO_0005601 | shortcut prescription to prescription CRID symbol                                           |                |
+| turbo:TURBO_0005611 | shortcut prescription to prescription fullname/order_name                                   |                |
+| turbo:TURBO_0005612 | shortcut prescription to drug uri string                                                    |                |
