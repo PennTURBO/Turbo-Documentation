@@ -5,7 +5,7 @@ lof.mat.file <-
 
 print(Sys.time())
 
-# Parsing strings as factors would notmally be OK, 
+# Parsing strings as factors would notmally be OK,
 # but it seems to be incompatible or tricky with sparse matrix operations used in other scripts
 wes.lof.frame <- read.table(
   file = lof.mat.file,
@@ -67,10 +67,13 @@ data2genoid2packetid2patient <-
 
 print(sapply(data2genoid2packetid2patient, class))
 
-data2genoid2packetid2patient$GENO_ID <- factor(data2genoid2packetid2patient$GENO_ID)
+data2genoid2packetid2patient$GENO_ID <-
+  factor(data2genoid2packetid2patient$GENO_ID)
 
 print(sapply(data2genoid2packetid2patient, class))
 
 print(summary(data2genoid2packetid2patient))
 
-
+write.csv(data2genoid2packetid2patient,
+          file = "data2genoid2packetid2patient.csv",
+          row.names = FALSE)
