@@ -171,3 +171,21 @@ group by ?c ?l
 | http://transformunify.org/ontologies/TURBO_0000554 | diagnosis code symbol                                          |  181420 |
 | http://transformunify.org/ontologies/TURBO_0000553 | diagnosis CRID                                                 |  181420 |
 | http://purl.obolibrary.org/obo/OBI_0001352         | allele information                                             | 5338498 |
+
+
+### Queries and pre-query link discovery
+
+Could insert triples binding things that share the same CUI (like drugs... might still require a similar action on RxNorm for compling path to DRON classes)
+
+```
+PREFIX umls: <http://bioportal.bioontology.org/ontologies/umls/>
+select * where {
+    graph ?g1 {
+        ?s1 umls:cui  ?o .
+    }
+    graph ?g2 {
+        ?s2 umls:cui  ?o .
+    }
+    filter (?s1 != ?s2)
+} limit 1000
+```
