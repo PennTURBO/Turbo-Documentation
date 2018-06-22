@@ -347,6 +347,8 @@ select * where {
 
 CRID instance counting...
 
+---
+
 Knowledge linking challenges:  
 
 - some drug prescriptions mention a drug product that has "DrOn" rosuvastatin  as an ingredient.  "ChEBI" rosuvastatin is a subclass+ of "statins", but "DrOn" rosuvastatin.  
@@ -373,3 +375,90 @@ select * where {
     filter (?s1 != ?s2)
 } limit 1000
 ```
+
+---
+
+List all properties used with a particular class (biobank consenter in this case)
+
+Fastest with graphs specified, but be careful not to bundle statements that occur in different graphs
+
+Best to start with reasoning off?
+
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select 
+distinct ?p (str(?pl) as ?plstr) ?t (str(?tl) as ?tlstr)
+where {
+    ?s a <http://transformunify.org/ontologies/TURBO_0000502> ;
+       ?p ?o .
+    optional {
+        graph <http://www.itmat.upenn.edu/biobank/ontology> {
+            ?p rdfs:label ?pl
+        }
+    }
+    optional {
+        ?o a ?t .
+        graph <http://www.itmat.upenn.edu/biobank/ontology> {
+            ?t rdfs:label ?tl
+        }
+    }
+}
+```
+
+WITH INFERENCES
+
+|                         p                          |          plstr           |                         t                          |                tlstr                 |
+|----------------------------------------------------|--------------------------|----------------------------------------------------|--------------------------------------|
+| http://www.w3.org/1999/02/22-rdf-syntax-ns#type    |                          |                                                    |                                      |
+| http://transformunify.org/ontologies/TURBO_0006500 | referent tracked?        |                                                    |                                      |
+| http://transformunify.org/ontologies/TURBO_0006601 | pre-expansion URI text   |                                                    |                                      |
+| http://transformunify.org/ontologies/TURBO_0006602 | pre-reftracking URI text |                                                    |                                      |
+| http://purl.obolibrary.org/obo/BFO_0000051         | has part                 | http://purl.obolibrary.org/obo/UBERON_0001013      | adipose tissue                       |
+| http://purl.obolibrary.org/obo/BFO_0000051         | has_part                 | http://purl.obolibrary.org/obo/UBERON_0001013      | adipose tissue                       |
+| http://purl.obolibrary.org/obo/RO_0000056          | participates in          | http://transformunify.org/ontologies/TURBO_0000527 | biobank encounter                    |
+| http://purl.obolibrary.org/obo/RO_0000056          | participates in          | http://purl.obolibrary.org/obo/OGMS_0000097        | health care encounter                |
+| http://purl.obolibrary.org/obo/RO_0000086          | has quality              | http://purl.obolibrary.org/obo/PATO_0000047        | biological sex                       |
+| http://purl.obolibrary.org/obo/RO_0000086          | has quality              | http://purl.obolibrary.org/obo/PATO_0000383        | female                               |
+| http://purl.obolibrary.org/obo/RO_0000086          | has quality              | http://purl.obolibrary.org/obo/PATO_0000119        | height                               |
+| http://purl.obolibrary.org/obo/RO_0000086          | has quality              | http://purl.obolibrary.org/obo/PATO_0000128        | weight                               |
+| http://purl.obolibrary.org/obo/RO_0000087          | has role                 | http://purl.obolibrary.org/obo/OBI_0000097         | participant under investigation role |
+| http://transformunify.org/ontologies/TURBO_0000303 | born at                  | http://purl.obolibrary.org/obo/UBERON_0035946      | start of neonate stage               |
+| http://purl.obolibrary.org/obo/RO_0000086          | has quality              | http://purl.obolibrary.org/obo/PATO_0000384        | male                                 |
+
+Inverse:
+
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select 
+distinct ?p (str(?l) as ?lstr)
+where {
+    ?s a <http://transformunify.org/ontologies/TURBO_0000502> .
+    ?o ?p ?s .
+    optional {
+        graph <http://www.itmat.upenn.edu/biobank/ontology> {
+            ?p rdfs:label ?l
+        }
+    }
+}
+```
+
+
+|                         p                          |              lstr               |
+|----------------------------------------------------|---------------------------------|
+| http://purl.obolibrary.org/obo/IAO_0100001         | term replaced by                |
+| http://transformunify.org/ontologies/TURBO_0001700 | replaced with IUI               |
+| http://purl.obolibrary.org/obo/BFO_0000050         | is part of                      |
+| http://purl.obolibrary.org/obo/BFO_0000050         | part of                         |
+| http://purl.obolibrary.org/obo/RO_0002131          | overlaps                        |
+| http://www.w3.org/2002/07/owl#topObjectProperty    |                                 |
+| http://purl.obolibrary.org/obo/IAO_0000136         | is about                        |
+| http://purl.obolibrary.org/obo/IAO_0000219         | denotes                         |
+| http://purl.obolibrary.org/obo/RO_0000057          | has participant                 |
+| http://purl.obolibrary.org/obo/RO_0000057          | has_participant                 |
+| http://purl.obolibrary.org/obo/RO_0000052          | inheres in                      |
+| http://purl.obolibrary.org/obo/RO_0000052          | inheres_in                      |
+| http://purl.obolibrary.org/obo/RO_0000080          | quality of                      |
+| http://purl.obolibrary.org/obo/RO_0000081          | role of                         |
+| http://purl.obolibrary.org/obo/BFO_0000176         | part of continuant at some time |
+| http://purl.obolibrary.org/obo/OBI_0000293         | has_specified_input             |
+| http://purl.obolibrary.org/obo/OGG_0000000014      | is genome of organism           |
