@@ -1,17 +1,17 @@
 ## Creation of current production-like TURBO repository
 
-"Production like" because loss-of-function (LOF) allele infmormation is was not expanded or linked if the corresponding sampel was gathered in a PMBB Tissue encounter (due to a limitation in some encouter-guessing Karma PyTransform)
+"Production like" because loss-of-function (LOF) allele information is was not expanded or linked if the corresponding sample was gathered in a PMBB Tissue encounter (due to a limitation in some encounter-guessing Karma PyTransform)
 Updated status:
 
 Based on http://turbo-prd-db01:7200/repository/turbo_6MillLOF_20180618
  - Dumped that to RDF4J's BRF format (http://docs.rdf4j.org/rdf4j-binary/)
  - loaded into two new repos
  - stripped both of all public data/ontology content
- - removed the <http://www.itmat.upenn.edu/biobank/expanded> graph from one (the alrgest graph)
+ - removed the <http://www.itmat.upenn.edu/biobank/expanded> graph from one (the largest graph)
  - removed all but <http://www.itmat.upenn.edu/biobank/expanded> from the other
  - dumped to two different BRF files
  
- Created a new repo with public content and public-derrived content and dumped to BRF
+ Created a new repo with public content and public-derived content and dumped to BRF
 
 `[markampa@turbo-prd-db01 ~]$ ls -l --block-size=M`
 
@@ -22,7 +22,7 @@ Based on http://turbo-prd-db01:7200/repository/turbo_6MillLOF_20180618
 | 978M   | Jun   |  21 | 10:23 | turbo_6MillLOF_20180618_everything_else.brf |
 | 9323M  | Jun   |  21 | 10:20 | turbo_6MillLOF_20180618_just_expanded.brf   |
 
-Loaded the three BRF files into a new RDFS+/optimized repositiry with loadrdf
+Loaded the three BRF files into a new RDFS+/optimized repository with loadrdf 
 
 ### Named graph contexts in turbo_6MillLOF_20180618_recon_rdfspo
 
@@ -199,19 +199,19 @@ select * where {
 
 CRID instance counting...
 
-KNoweldge linking challenges:  
+Knowledge linking challenges:  
 
-- some drug prescriptiosn mention a drug product that has "dron" rosuvastatin as an ingredient.  "Chebi" rosuvastatin is a subclass+ of "statins", but "dron" rosuvastatin.  
+- some drug prescriptions mention a drug product that has "DrOn" rosuvastatin  as an ingredient.  "ChEBI" rosuvastatin is a subclass+ of "statins", but "DrOn" rosuvastatin.  
 
 solution:  inserted owl:equivalentClass statements into 
 
-- LOF allele information instances mention "protein ontology" proteins (genes?)  Proteins from Uniprot have associations with GO terms, but "protein ontology" proteins don't.  As above, used owl:equivalentClass
+- LOF allele information instances mention "protein ontology" proteins (genes?)  Proteins from UniProt have associations with GO terms, but "protein ontology" proteins don't.  As above, used owl:equivalentClass
 
-- Chebi doesn't consider midazolam a benzodiazapine but NDFRT does.  There is a pathbetween teh two including CUI and RxNORM data values.  How to join?
+- ChEBI doesn't consider midazolam a Benzedrine but NDF-RT does.  There is a path between the two including CUI and RxNorm data values.  How to join?
 
-- ANything similar for diagnoses?
+- Anything similar for diagnoses?
 
-Could insert triples binding things that share the same CUI (like drugs... might still require a similar action on RxNorm for compling path to DRON classes)
+Could insert triples binding things that share the same CUI (like drugs... might still require a similar action on RxNorm for completing path to DRON classes)
 
 ```
 PREFIX umls: <http://bioportal.bioontology.org/ontologies/umls/>
