@@ -5,7 +5,7 @@
 "Production like" because loss-of-function (LOF) allele information is was not expanded or linked if the corresponding sample was gathered in a PMBB Tissue encounter (due to a limitation in some encounter-guessing Karma PyTransform)
 Updated status:
 
-Based on http://turbo-prd-db01:7200/repository/turbo_6MillLOF_20180618
+Based on turbo_6MillLOF_20180618 in http://turbo-prd-db01:7200/repository
  - Dumped that to RDF4J's BRF format (http://docs.rdf4j.org/rdf4j-binary/)
  - loaded into two new repos
  - stripped both of all public data/ontology content
