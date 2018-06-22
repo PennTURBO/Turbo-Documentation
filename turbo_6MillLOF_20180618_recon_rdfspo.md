@@ -198,21 +198,21 @@ took < 1 hour
 auto-complete indexing... might be better (faster to build and to search) with URI indexing off?
 
 #### Label IRIs
-http://bioportal.bioontology.org/ontologies/umls/cui
-http://purl.obolibrary.org/obo/DRON_00010000
-http://purl.obolibrary.org/obo/IAO_0000118
-http://transformunify.org/ontologies/TURBO_0006510
-http://transformunify.org/ontologies/TURBO_0006512
-http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
-http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
-http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
-http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
-http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
-http://www.w3.org/2000/01/rdf-schema#label
-http://www.w3.org/2004/02/skos/core#altLabel
-http://www.w3.org/2004/02/skos/core#notation
-http://www.w3.org/2004/02/skos/core#prefLabel
+- http://bioportal.bioontology.org/ontologies/umls/cui
+- http://purl.obolibrary.org/obo/DRON_00010000
+- http://purl.obolibrary.org/obo/IAO_0000118
+- http://transformunify.org/ontologies/TURBO_0006510
+- http://transformunify.org/ontologies/TURBO_0006512
+- http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+- http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
+- http://www.geneontology.org/formats/oboInOwl#hasDbXref
+- http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+- http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
+- http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
+- http://www.w3.org/2000/01/rdf-schema#label
+- http://www.w3.org/2004/02/skos/core#altLabel
+- http://www.w3.org/2004/02/skos/core#notation
+- http://www.w3.org/2004/02/skos/core#prefLabel
 
 
 Node ranks  took < 30 minutes
