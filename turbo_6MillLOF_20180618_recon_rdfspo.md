@@ -1,7 +1,6 @@
 ## Creation of current production-like TURBO repository
 
-*todo:  log times required for operations like these and number of statements (per graph?) (or disk space) before and after
-*
+*todo:  log times required for operations like these and number of statements (per graph?) (or disk space) before and after.  Also note GraphDB version, port numbers and data directories.  Purchased version will be v8.5...  will Drivetrain be compatible with both password protected and "free" repositories?*
 
 "Production like" because loss-of-function (LOF) allele information is was not expanded or linked if the corresponding sample was gathered in a PMBB Tissue encounter (due to a limitation in some encounter-guessing Karma PyTransform)
 Updated status:
@@ -55,7 +54,9 @@ clear graph <http://www.itmat.upenn.edu/biobank/ICD10Ontology>
 ```
 
  
- Created a new repo with public content and public-derived content and dumped to BRF
+Created a new repo with public content and public-derived content and dumped to BRF
+
+ENABLE CONTEXT INDEXING!
 
 `[markampa@turbo-prd-db01 ~]$ ls -l --block-size=M`
 
@@ -124,6 +125,20 @@ sudo -E -u graphdb /usr/local/graphdb-free-8.4.1/bin/loadrdf -f -m parallel -v -
 
 
 ### Named graph contexts in turbo_6MillLOF_20180618_recon_rdfspo
+
+using one named graph per datasource... could go back to soemthing more collapsed
+
+is there really any benefit to using the full ChEBI dataset?  We probably don't need chemical data (charge, mass, strucutre) and the cross references don't seem to be very useful for linking to drug knowledge
+
+ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/
+
+|       file        |   size   |
+|-------------------|----------|
+| chebi_lite.owl.gz | 6924 KB  |
+| chebi_core.owl.gz | 19025 KB |
+| chebi.owl.gz      | 30109 KB |
+
+
 
 |                                                        Graphs                                                        |                 file source                 |                                                      notes                                                      |
 |----------------------------------------------------------------------------------------------------------------------|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
