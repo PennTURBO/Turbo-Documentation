@@ -86,20 +86,36 @@ In order to enter a transformation, click on a column's name and select `PyTrans
 The following section describes proper shortcut usage for input data into Drivetrain.
 
 Example: Biobank Consenter (TURBO_0000502)
+Consenters can have as many CRIDs as needed to represent the identifiers which are to be modeled. This example shows 2 but can have 1 <= X >
     
     Required Shortcuts
     pmbb:consenter1 rdf:type turbo:TURBO_0000502 .
-    pmbb:consenter1 turbo:TURBO_0000603 ?datasetTitle .
-    pmbb:consenter1 turbo:TURBO_0000608 ?consenterSymbol .
-    pmbb:consenter1 turbo:TURBO_0000610 ?consenterRegistry .
+    pmbb:consenter1 obo:IAO_0000219 pmbb:consenterCrid1 .
+    pmbb:consenter2 obo:IAO_0000219 pmbb:consenterCrid2 .
+    pmbb:consenterCrid1 a turbo:TURBO_0000503 .
+    pmbb:consenterCrid2 a turbo:TURBO_0000503 .
+    pmbb:consenterCrid1 turbo:TURBO_0003603 ?dataset1 .
+    pmbb:consenterCrid1 turbo:TURBO_0003608 ?consenterSymbol1 .
+    pmbb:consenterCrid1 turbo:TURBO_0003610 ?consenterRegistry1 .
+    pmbb:consenterCrid2 turbo:TURBO_0003603 ?dataset2 .
+    pmbb:consenterCrid2 turbo:TURBO_0003608 ?consenterSymbol2 .
+    pmbb:consenterCrid2 turbo:TURBO_0003610 ?consenterRegistry2 .
+
     Optional Shortcuts
-    pmbb:consenter1 turbo:TURBO_0000609 ?registryDenoter .
     pmbb:consenter1 turbo:TURBO_0000604 ?dateOfBirthString .
     pmbb:consenter1 turbo:TURBO_0000605 ?dateOfBirthXsd .
     pmbb:consenter1 turbo:TURBO_0000606 ?genderIdentityDatum .
     pmbb:consenter1 turbo:TURBO_0000607 ?genderIdentityType .
+    pmbb:consenter1 turbo:TURBO_0000615 ?raceIdentityDatum .
+    pmbb:consenter1 turbo:TURBO_0000614 ?raceIdentityType .
+    
 
-* ?datasetTitle: a literal value representing the relational dataset from where this consenter came
+| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| -------------------- |-------------| ---------| --------|------------|
+| ?dataset  | a literal value representing the relational dataset from where this consenter came | None | "this_is_my_dataset.csv" |None|
+
+
+* ?datasetTitle: 
 	* example: "this_is_my_dataset.csv"
 * ?consenterSymbol: a literal value representing the patient's identifier as it appears in the relational dataset
 	* example: "3abc"
