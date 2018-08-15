@@ -85,13 +85,14 @@ In order to enter a transformation, click on a column's name and select `PyTrans
 
 The following section describes proper shortcut usage for input data into Drivetrain.
 
-Example: Biobank Consenter (TURBO_0000502)
+Biobank Consenter (TURBO_0000502)
+
 Consenters can have as many CRIDs as needed to represent the identifiers which are to be modeled. This example shows 2 but can have 1 <= X >
     
     Required Shortcuts
     pmbb:consenter1 rdf:type turbo:TURBO_0000502 .
     pmbb:consenter1 obo:IAO_0000219 pmbb:consenterCrid1 .
-    pmbb:consenter2 obo:IAO_0000219 pmbb:consenterCrid2 .
+    pmbb:consenter1 obo:IAO_0000219 pmbb:consenterCrid2 .
     pmbb:consenterCrid1 a turbo:TURBO_0000503 .
     pmbb:consenterCrid2 a turbo:TURBO_0000503 .
     pmbb:consenterCrid1 turbo:TURBO_0003603 ?dataset1 .
@@ -121,6 +122,34 @@ Consenters can have as many CRIDs as needed to represent the identifiers which a
 | ?genderIdentityType  | a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender | "anyURI" | "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI> |?genderIdentityDatum|
 | ?raceIdentityDatum  | a literal value representing the race of the associated consenter, as it appears in the original dataset | None | "BLACK" |?raceIdentityType|
 | ?raceIdentityType  | a string representation of the URI of the appropriate ontology class which properly designates this consenter's race | "anyURI" | "http://purl.obolibrary.org/obo/OMRSE_00000182"^^xsd:anyURI |?raceIdentityDatum|
+
+Biobank Encounter (TURBO_0000527)
+
+    Required Shortcuts
+    pmbb:bbEncounter1 rdf:type turbo:TURBO_0000527 .
+    pmbb:bbEncounter1 turbo:TURBO_0000623 ?dataset .
+    pmbb:bbEncounter1 turbo:TURBO_0000628 ?encounterSymbol .
+    pmbb:bbEncounter1 turbo:TURBO_0000630 ?encounterRegistry .
+
+    Optional Shortcuts
+    pmbb:bbEncounter1 turbo:TURBO_0000629 ?encounterRegistryString .
+    pmbb:bbEncounter1 turbo:TURBO_0000635 ?BMI .
+    pmbb:bbEncounter1 turbo:TURBO_0000627 ?weight .
+    pmbb:bbEncounter1 turbo:TURBO_0000626 ?height .
+    pmbb:bbEncounter1 turbo:TURBO_0000624 ?encounterDateString .
+    pmbb:bbEncounter1 turbo:TURBO_0000625 ?encounterDateXsd .
+
+| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| -------------------- |-------------| ---------| --------|------------|
+| ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
+| ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "B" |None|
+| ?encounterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000422"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?encounterRegistryString  | a literal value holding the string name of the encounter's registry | None | "PmbbBlood" |None|
+| ?BMI  | a literal value representing the BMI of the patient who this encounter is about at the time of the encounter | xsd:float | "36"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?weight  | a literal value representing the weight of the patient who this encounter is about at the time of the encounter | xsd:float | "94"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?height  | a literal value representing the height of the patient who this encounter is about at the time of the encounter | xsd:float | "160"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?encounterDateString  | a literal value representing the date on which the encounter occurred, as it appears in the original relational dataset | None | "12/05/2013" |None|
+| ?encounterDateXsd  | a literal value representing the date on which the encounter occurred, formatted as yyyy-mm-dd | xsd:date | "2013-12-05"^^<http://www.w3.org/2001/XMLSchema#date> |?encounterDateString|
 
 
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
