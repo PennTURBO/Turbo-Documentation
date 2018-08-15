@@ -113,29 +113,14 @@ Consenters can have as many CRIDs as needed to represent the identifiers which a
 | Object Variable Name | Description | Tagged Datatype | Example | Dependents |
 | -------------------- |-------------| ---------| --------|------------|
 | ?dataset  | a literal value representing the relational dataset from where this consenter came | None | "this_is_my_dataset.csv" |None|
-
-
-* ?datasetTitle: 
-	* example: "this_is_my_dataset.csv"
-* ?consenterSymbol: a literal value representing the patient's identifier as it appears in the relational dataset
-	* example: "3abc"
-* ?consenterRegistry: a literal value representing the URI of the registry from where this information came, tagged as "anyURI"
-	* example: "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI>
-* ?registryDenoter: a string description of the registry as it appears in the original dataset
-	* example: "PDS"
-* ?dateOfBirthString: a literal value representing the date of birth of the associated consenter as it appears in the original relational dataset
-	* example: "1985-08-30"
-* ?dateOfBirthXsd: a formatted literal value representing the date of birth of the associated consenter, tagged as "date" and formatted as yyyy-mm-dd
-	* example: "1985-08-30"^^<http://www.w3.org/2001/XMLSchema#date>
-* ?genderIdentityDatum: a literal value representing the biological sex of the associated consenter, as it appears in the original dataset
-	* example: "M"
-* ?genderIdentityType: a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender, tagged as "anyURI"
-	* male: "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI>
-	* female: "http://purl.obolibrary.org/obo/OMRSE_00000138"^^<http://www.w3.org/2001/XMLSchema#anyURI>
-
-Additional usage notes: 
-It is illegal for optional property ?dateOfBirthXsd to be present if optional property ?dateOfBirthString is not present.
-It is illegal for optional property ?genderIdentityType to be present if optional property ?genderIdentityDatum is not present.
+| ?consenterSymbol  | a literal value representing the patient's identifier as it appears in the relational dataset | None | "3abc" |None|
+| ?consenterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?dateOfBirthString  | a literal value representing the date of birth of the associated consenter as it appears in the original relational dataset | None | "08/30/1985" |None|
+| ?dateOfBirthXsd  | a literal value representing the date of birth of the associated consenter, formatted as yyyy-mm-dd | xsd:date | "1985-08-30"^^<http://www.w3.org/2001/XMLSchema#date> |?dateOfBirthString|
+| ?genderIdentityDatum  | a literal value representing the biological sex of the associated consenter, as it appears in the original dataset | None | "M" |None|
+| ?genderIdentityType  | a string representation of the URI of the OMRSE ontology class which properly designates this consenter's gender | "anyURI" | "http://purl.obolibrary.org/obo/OMRSE_00000141"^^<http://www.w3.org/2001/XMLSchema#anyURI> |?genderIdentityDatum|
+| ?raceIdentityDatum  | a literal value representing the race of the associated consenter, as it appears in the original dataset | None | "BLACK" |?raceIdentityType|
+| ?raceIdentityType  | a string representation of the URI of the appropriate ontology class which properly designates this consenter's race | "anyURI" | "http://purl.obolibrary.org/obo/OMRSE_00000182"^^xsd:anyURI |?raceIdentityDatum|
 
 
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
