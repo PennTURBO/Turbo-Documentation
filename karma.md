@@ -194,6 +194,36 @@ Healthcare Encounter (OGMS_0000097)
 | ?encounterDateString  | a literal value representing the date on which the encounter occurred, as it appears in the original relational dataset | None | "12/05/2013" |None|
 | ?encounterDateXsd  | a literal value representing the date on which the encounter occurred, formatted as yyyy-mm-dd | xsd:date | "2013-12-05"^^<http://www.w3.org/2001/XMLSchema#date> |?encounterDateString|
 
+Loss-of-Function Allele (obo:OBI_0001352)
+
+    Required Shortcuts
+    pmbb:allele1 rdf:type obo:OBI_0001352 .
+    pmbb:allele1 turbo:TURBO_0007608 ?dataset .
+    pmbb:allele1 turbo:TURBO_0007601 ?biobankEncounterSymbol .
+	pmbb:allele1 turbo:TURBO_0007609 ?biobankEncounterRegistry .
+    pmbb:allele1 turbo:TURBO_0007606 ?zygosityValueString .
+	pmbb:allele1 turbo:TURBO_0007607 ?zygosityValue .
+	pmbb:allele1 turbo:TURBO_0007602 ?genomeSymbol .
+	pmbb:allele1 turbo:TURBO_0007603 ?genomeRegistry .
+	pmbb:allele1 turbo:TURBO_0007605 ?genomeString .
+
+    Optional Shortcuts
+
+    pmbb:allele1 turbo:TURBO_0007604 ?protein .
+    pmbb:allele1 turbo:TURBO_0007610 ?geneTerm .
+
+| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| -------------------- |-------------| ---------| --------|------------|
+| ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
+| ?biobankEncounterSymbol  | a literal value representing the symbol of the biobank encounter associated with this loss of function allele | None | "B" |None|
+| ?biobankEncounterRegistry  | a literal value representing the registry of the biobank encounter associated with this loss of function allele | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000422"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?zygosityValueString  | a literal value representing the zygosity value of the associated loss of function allele | None | "1" |None|
+| ?zygosityValue  | a literal value representing the URI of the zygosity value of the associated loss of function allele | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000591"^^xsd:anyURI |None|
+| ?genomeSymbol  | a literal value representing the value of the gene associated with this loss of function allele | None | "UPENN_UPENN10000001_01e1e6e5-a310-45e5-a843-41aa47ef333a" |None|
+| ?genomeRegistry  | a literal value representing the registry of the gene associated with this loss of function allele | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000451"^^xsd:anyURI |None|
+| ?genomeString  | a literal value representing the text of the gene associated with this loss of function allele | None | "TSPAN6(ENSG00000000003)" |None|
+| ?protein  | a literal value representing the URI of the protein associated with this loss of function allele | xsd:anyURI | "http://purl.obolibrary.org/obo/PR_O43657"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?geneTerm  | a literal value holding the URI of the term representing the gene associated with this loss of function allele | xsd:anyURI | "http://rdf.ebi.ac.uk/resource/ensembl/ENSG00000081237"^^xsd:anyURI |None|
 
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
 
