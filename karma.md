@@ -151,6 +151,49 @@ Biobank Encounter (TURBO_0000527)
 | ?encounterDateString  | a literal value representing the date on which the encounter occurred, as it appears in the original relational dataset | None | "12/05/2013" |None|
 | ?encounterDateXsd  | a literal value representing the date on which the encounter occurred, formatted as yyyy-mm-dd | xsd:date | "2013-12-05"^^<http://www.w3.org/2001/XMLSchema#date> |?encounterDateString|
 
+Healthcare Encounter (OGMS_0000097)
+
+    Required Shortcuts
+    pmbb:hcEncounter1 rdf:type obo:OGMS_0000097 .
+    pmbb:hcEncounter1 turbo:TURBO_0000643 ?dataset .
+    pmbb:hcEncounter1 turbo:TURBO_0000648 ?encounterSymbol .
+    pmbb:hcEncounter1 turbo:TURBO_0000650 ?encounterRegistry .
+
+    Optional Shortcuts
+
+    pmbb:hcEncounter1 obo:RO_0002234 pmbb:diagnosis1 .
+    pmbb:diagnosis1 a obo:OGMS_0000073 .
+    pmbb:diagnosis1 turbo:TURBO_0004602 ?diagnosisCodeRegistryString .
+    pmbb:diagnosis1 turbo:TURBO_0004603 ?diagnosisCodeRegistry .
+    pmbb:diagnosis1 turbo:TURBO_0004601 ?diagnosisCode .
+
+    pmbb:hcEncounter1 obo:RO_0002234 pmbb:prescription1 .
+    pmbb:prescription1 a obo:PDRO_0000001 .
+    pmbb:prescription1 turbo:TURBO_0005601 ?medicationSymbol . 
+    pmbb:prescription1 turbo:TURBO_0005611 ?medicationString .
+
+    pmbb:hcEncounter1 turbo:TURBO_0000655 ?BMI .
+    pmbb:hcEncounter1 turbo:TURBO_0000647 ?weight .
+    pmbb:hcEncounter1 turbo:TURBO_0000646 ?height .
+    pmbb:hcEncounter1 turbo:TURBO_0000644 ?encounterDateString .
+    pmbb:hcEncounter1 turbo:TURBO_0000645 ?encounterDateXsd .
+
+| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| -------------------- |-------------| ---------| --------|------------|
+| ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
+| ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "20" |None|
+| ?encounterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000440"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?diagnosisCodeRegistryString  | a literal value holding a textual representation of the registry from where this diagnosis came | None | "ICD-9" |an instance of type diagnosis|
+| ?diagnosisCodeRegistry  | a literal value representing the URI of the registry from where this diagnosis came | xsd:anyURI | "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C71890"^^<http://www.w3.org/2001/XMLSchema#anyURI> |?diagnosisCodeRegistryString|
+| ?diagnosisCode  | a literal value representing the billing code which was assigned as part of this diagnosis | None | "401.9" |?diagnosisCodeRegistryString|
+| ?medicationSymbol  | a literal value holding the symbol which represents the medication which was prescribed as part of this prescription | None | "12345" |an instance of type prescription|
+| ?medicationString  | a literal value holding the medication description which appears in the relational data | None | "ACETAMINOPHEN TABLET" |?medicationSymbol|
+| ?BMI  | a literal value representing the BMI of the patient who this encounter is about at the time of the encounter | xsd:float | "36"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?weight  | a literal value representing the weight of the patient who this encounter is about at the time of the encounter | xsd:float | "94"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?height  | a literal value representing the height of the patient who this encounter is about at the time of the encounter | xsd:float | "160"^^<http://www.w3.org/2001/XMLSchema#float> |None|
+| ?encounterDateString  | a literal value representing the date on which the encounter occurred, as it appears in the original relational dataset | None | "12/05/2013" |None|
+| ?encounterDateXsd  | a literal value representing the date on which the encounter occurred, formatted as yyyy-mm-dd | xsd:date | "2013-12-05"^^<http://www.w3.org/2001/XMLSchema#date> |?encounterDateString|
+
 
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
 
