@@ -111,7 +111,7 @@ Consenters can have as many CRIDs as needed to represent the identifiers which a
     pmbb:consenter1 turbo:TURBO_0000614 ?raceIdentityType .
     
 
-| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
 | -------------------- |-------------| ---------| --------|------------|
 | ?dataset  | a literal value representing the relational dataset from where this consenter came | None | "this_is_my_dataset.csv" |None|
 | ?consenterSymbol  | a literal value representing the patient's identifier as it appears in the relational dataset | None | "3abc" |None|
@@ -139,7 +139,7 @@ Biobank Encounter (TURBO_0000527)
     pmbb:bbEncounter1 turbo:TURBO_0000624 ?encounterDateString .
     pmbb:bbEncounter1 turbo:TURBO_0000625 ?encounterDateXsd .
 
-| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
 | -------------------- |-------------| ---------| --------|------------|
 | ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
 | ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "B" |None|
@@ -178,7 +178,7 @@ Healthcare Encounter (OGMS_0000097)
     pmbb:hcEncounter1 turbo:TURBO_0000644 ?encounterDateString .
     pmbb:hcEncounter1 turbo:TURBO_0000645 ?encounterDateXsd .
 
-| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
 | -------------------- |-------------| ---------| --------|------------|
 | ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
 | ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "20" |None|
@@ -212,7 +212,7 @@ Loss-of-Function Allele (obo:OBI_0001352)
     pmbb:allele1 turbo:TURBO_0007604 ?protein .
     pmbb:allele1 turbo:TURBO_0007610 ?geneTerm .
 
-| Object Variable Name | Description | Tagged Datatype | Example | Dependents |
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
 | -------------------- |-------------| ---------| --------|------------|
 | ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
 | ?biobankEncounterSymbol  | a literal value representing the symbol of the biobank encounter associated with this loss of function allele | None | "B" |None|
@@ -224,6 +224,65 @@ Loss-of-Function Allele (obo:OBI_0001352)
 | ?genomeString  | a literal value representing the text of the gene associated with this loss of function allele | None | "TSPAN6(ENSG00000000003)" |None|
 | ?protein  | a literal value representing the URI of the protein associated with this loss of function allele | xsd:anyURI | "http://purl.obolibrary.org/obo/PR_O43657"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
 | ?geneTerm  | a literal value holding the URI of the term representing the gene associated with this loss of function allele | xsd:anyURI | "http://rdf.ebi.ac.uk/resource/ensembl/ENSG00000081237"^^xsd:anyURI |None|
+
+Biobank Encounter -> Biobank Consenter Joins
+
+    Required Shortcuts
+
+    pmbb:biobankEncounterCrid1 a turbo:TURBO_0000533 .
+    pmbb:biobankEncounterCrid1 turbo:TURBO_0001608 ?encounterSymbol .
+    pmbb:biobankEncounterCrid1 turbo:TURBO_0001610 ?encounterRegistry .
+
+    pmbb:consenterCrid1 a turbo:TURBO_0000503 .
+    pmbb:consenterCrid1 turbo:TURBO_0003608 ?consenterSymbol .
+    pmbb:consenterCrid1 turbo:TURBO_0003610 ?consenterRegistry .
+    pmbb:consenterCrid1 turbo:TURBO_0003603 ?dataset .
+
+    pmbb:consenterCrid1 turbo:TURBO_0000302 pmbb:biobankEncounterCrid1 .
+
+    Optional Shortcuts
+
+    pmbb:consenterCrid1 turbo:TURBO_0003609 ?consenterRegistryString .
+    pmbb:biobankEncounterCrid1 turbo:TURBO_0001609 ?encounterRegistryString .
+
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
+| -------------------- |-------------| ---------| --------|------------|
+| ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "B" |None|
+| ?encounterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000420"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?consenterSymbol  | a literal value representing the patient's identifier as it appears in the relational dataset | None | "3abc" |None|
+| ?consenterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
+| ?consenterRegistryString  | a literal value holding the string name of this consenter's registry | None | "HUP" |None|
+| ?encounterRegistryString  | a literal value holding the string name of this encounter's registry | None | "PmbbBlood" |None|
+
+Healthcare Encounter -> Biobank Consenter Joins
+
+    Required Shortcuts
+
+    pmbb:healthcareEncounterCrid1 a turbo:TURBO_0000508 .
+    pmbb:healthcareEncounterCrid1 turbo:TURBO_0002608 ?encounterSymbol .
+    pmbb:healthcareEncounterCrid1 turbo:TURBO_0002610 ?encounterRegistry .
+
+    pmbb:consenterCrid1 a turbo:TURBO_0000503 .
+    pmbb:consenterCrid1 turbo:TURBO_0003608 ?consenterSymbol .
+    pmbb:consenterCrid1 turbo:TURBO_0003610 ?consenterRegistry .
+    pmbb:consenterCrid1 turbo:TURBO_0003603 ?dataset .
+
+    pmbb:consenterCrid1 turbo:TURBO_0000302 pmbb:healthcareEncounterCrid1 .
+
+    Optional Shortcuts
+
+    pmbb:consenterCrid1 turbo:TURBO_0003609 ?consenterRegistryString .
+
+| Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
+| -------------------- |-------------| ---------| --------|------------|
+| ?encounterSymbol  | a literal value representing the encounter's identifier as it appears in the relational dataset | None | "20" |None|
+| ?encounterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000440"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?consenterSymbol  | a literal value representing the patient's identifier as it appears in the relational dataset | None | "3abc" |None|
+| ?consenterRegistry  | a literal value representing the URI of the registry from where this information came | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000403"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
+| ?dataset  | a literal value representing the relational dataset from where this encounter came | None | "this_is_my_dataset.csv" |None|
+| ?consenterRegistryString  | a literal value holding the string name of this consenter's registry | None | "HUP" |None|
+
 
 The TURBO ontology uses the [Basic Formal Ontology](https://github.com/BFO-ontology/BFO) as its upper ontology and is therefore reality-based.  That  means that, in its final state, data items in a TURBO triplestore should generally be modeled as being about entities that exist in time and or space.  To the greatest degree possible, the relationships or properties in the triplestore should connect those entities, using terms from the TURBO ontology, to reflect the ways in which they interact or relate to one another in reality.
 
