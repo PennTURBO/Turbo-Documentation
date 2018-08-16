@@ -206,10 +206,6 @@ Loss-of-Function Allele (obo:OBI_0001352)
 	pmbb:allele1 turbo:TURBO_0007602 ?genomeSymbol .
 	pmbb:allele1 turbo:TURBO_0007603 ?genomeRegistry .
 	pmbb:allele1 turbo:TURBO_0007605 ?genomeString .
-
-    Optional Shortcuts
-
-    pmbb:allele1 turbo:TURBO_0007604 ?protein .
     pmbb:allele1 turbo:TURBO_0007610 ?geneTerm .
 
 | Object Variable Name | Description | Tagged Datatype | Example | is_Dependent_On |
@@ -222,7 +218,6 @@ Loss-of-Function Allele (obo:OBI_0001352)
 | ?genomeSymbol  | a literal value representing the value of the gene associated with this loss of function allele | None | "UPENN_UPENN10000001_01e1e6e5-a310-45e5-a843-41aa47ef333a" |None|
 | ?genomeRegistry  | a literal value representing the registry of the gene associated with this loss of function allele | xsd:anyURI | "http://transformunify.org/ontologies/TURBO_0000451"^^xsd:anyURI |None|
 | ?genomeString  | a literal value representing the text of the gene associated with this loss of function allele | None | "TSPAN6(ENSG00000000003)" |None|
-| ?protein  | a literal value representing the URI of the protein associated with this loss of function allele | xsd:anyURI | "http://purl.obolibrary.org/obo/PR_O43657"^^<http://www.w3.org/2001/XMLSchema#anyURI> |None|
 | ?geneTerm  | a literal value holding the URI of the term representing the gene associated with this loss of function allele | xsd:anyURI | "http://rdf.ebi.ac.uk/resource/ensembl/ENSG00000081237"^^xsd:anyURI |None|
 
 Biobank Encounter -> Biobank Consenter Joins
