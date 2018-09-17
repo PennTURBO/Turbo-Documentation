@@ -520,16 +520,15 @@ If you are planning to develop in Eclipse, run the "eclipse" command in SBT to g
 
 ###### Running Drivetrain Piecewise
 
-To step through the Drivetrain stack one process at a time, enter the following commands.
+To step through the Drivetrain stack one process at a time, enter the following commands. Note that Drivetrain should not be run piecewise if running for production purposes. 
 
 1. "run dataload" - this will load the data specified in the properties file, as well as the TURBO ontology (as long as 'importOntologies' is set to true)
 2. "run expand" - runs the expansion process and the data validation process, after which the shortcut triples will be represented in their fully ontologized form, and the shortcut named graphs will be cleared.
-3. "run reftrack" - runs the referent tracking process and entity linking process on the entire pmbb:expanded graph.
-4. "run conclusionate .51 .51" - runs the conclusionation process on the entire pmbb:expanded graph, creating a new Conclusionations graph specific to this Conclusionation process. The decimal numbers provided as arguments can be between .5 and 1, and represent the threshold required for drawing a Biological sex and Date of birth conclusion.
-5. "run diagmap" - runs the Diagnosis Mapping process
-6. "run medmap" - runs the Medication Mapping process. This requires some additional setup (see Running Drivetrain) and can only be run if relevant services and technologies are in place.
+3. "run reftrack" - runs the referent tracking process on the entire pmbb:expanded graph.
+4. "run entLink true" - runs the entity linking process. This links up consenters with their associated encounters based on the join data. If second argument is 'true', loss of function data will also be imported, linked, and expanded during this step.
+5. "run conclusionate .51 .51" - runs the conclusionation process on the entire pmbb:expanded graph, creating a new Conclusionations graph specific to this Conclusionation process. The decimal numbers provided as arguments can be between .5 and 1, and represent the threshold required for drawing a Biological sex and Date of birth conclusion.
 
-Additionally, the full stack can be run using the command "run all .51 .51".
+Additionally, the full stack can be run using the command "run all .51 .51". This is acceptable to use for production.
 
 ###### Running Drivetrain in Benchmarking mode
 
