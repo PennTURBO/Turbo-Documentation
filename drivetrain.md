@@ -466,17 +466,11 @@ Unlike in the Biological Sex Conclusionator, where the Biological Sex instance i
 ### Running Drivetrain
 
 A few prerequisites are required before running Drivetrain.
+
 * You should have Java 1.8 installed and on your system path.
 * There are two ways to run Drivetrain: [using SBT and using a precompiled .jar file](#waystorundrivetrain). If you want to run the source code without using a precompiled .jar file, you need to install [SBT](https://www.scala-sbt.org/), which will compile and execute the application.  [Windows](http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Windows.html) users may have to install SBT and add it as a system variable for this to work. If you are running from a precompiled .jar file, SBT is not necessary. 
 * You will need a running instance of [Ontotext Graph DB](http://graphdb.ontotext.com/) with an empty, non-reasoning repository. The free version should work fine.
-* For the medication mapping system to work, the R language must be installed, along with the following R packages:
-	- e1071
-	- stringr
-	- stringdist
-	- plyr
-* A Solr instance containing a collection loaded with the relevant dictionary is also required for our Medication Mapping in its current state. If you want to use the Medication Mapping functionality, you will have to create your own Solr collection and Support Vector Machine. More details will follow.
 
-If you attempt to run the full Drivetrain stack and you do not have R and all the relevant packages installed and an instance of Solr running with a collection named 'dtmeds', the program will notify you that it is not able to run the Medication Mapping segment. 
 
 Once you have all of these technologies installed, you are ready to clone the repository and start working with the Drivetrain software.
 
@@ -497,11 +491,11 @@ Next, open the file in a text editor and fill out the necessary fields.
 * inputFilesFormat - the file format of each of the inputFiles, matched on index (the first format type specified in inputFilesFormat should be the format of the first file listed in inputFiles, etc.)
 	- Currently supported file formats: TURTLE, RDFXML
 	- If all input files are the same format, you need only write the format one time, not once for each input file.
+* inputLOFFiles - a list of all Loss of Function data files for Drivetrain to import during entity linking
 * importOntologies - boolean flag determines whether TURBO ontology is loaded on initialization. Should always be set to 'true' unless the TURBO ontology has been manually loaded into named graph pmbb:ontologies.
 * ontologyURL - the URL where the TURBO ontology can be found. Unless you are using your own custom ontology, the URL in the template file should be appropriate.
-* solrURL - the address of your Solr instance. This is only necessary if you are planning to utilize the Medication Mapping feature.
 * errorLogFile - specify a location for errors to be logged
-* ontologySize/setReasoningTo/reinferRepo - ignore these
+* applyLabels - determines whether Drivetrain will add labels to all nodes in graph. This is performance intensive but will lead to more readability when browsing.
 
 ##### SBT
 
@@ -520,16 +514,46 @@ If you are planning to develop in Eclipse, run the "eclipse" command in SBT to g
 
 ###### Running Drivetrain Piecewise
 
-To step through the Drivetrain stack one process at a time, enter the following commands.
+To step through the Drivetrain stack one process at a time, enter the following commands. Note that Drivetrain should not be run piecewise if running for production purposes. For more detailed information on what processes each command will execute, see [Drivetrain Piecewise Execution in Detail](#Piecewise).
 
 1. "run dataload" - this will load the data specified in the properties file, as well as the TURBO ontology (as long as 'importOntologies' is set to true)
 2. "run expand" - runs the expansion process and the data validation process, after which the shortcut triples will be represented in their fully ontologized form, and the shortcut named graphs will be cleared.
-3. "run reftrack" - runs the referent tracking process and entity linking process on the entire pmbb:expanded graph.
-4. "run conclusionate .51 .51" - runs the conclusionation process on the entire pmbb:expanded graph, creating a new Conclusionations graph specific to this Conclusionation process. The decimal numbers provided as arguments can be between .5 and 1, and represent the threshold required for drawing a Biological sex and Date of birth conclusion.
-5. "run diagmap" - runs the Diagnosis Mapping process
-6. "run medmap" - runs the Medication Mapping process. This requires some additional setup (see Running Drivetrain) and can only be run if relevant services and technologies are in place.
+3. "run reftrack" - runs the referent tracking process on the entire pmbb:expanded graph.
+4. "run entlink true" - runs the entity linking process. This links up consenters with their associated encounters based on the join data. If second argument is 'true', loss of function data will also be imported, linked, and expanded during this step.
+5. "run conclusionate .51 .51" - runs the conclusionation process on the entire pmbb:expanded graph, creating a new Conclusionations graph specific to this Conclusionation process. The decimal numbers provided as arguments can be between .5 and 1, and represent the threshold required for drawing a Biological sex and Date of birth conclusion.
 
-Additionally, the full stack can be run using the command "run all .51 .51".
+Additionally, the full stack can be run using the command "run all .51 .51". This is acceptable to use for production.
+
+
+##### Drivetrain Piecewise Execution in Detail<a name="Piecewise"></a>
+
+There are many functions and processes within Drivetrain. By breaking the stack up into a few chunks, it is easy for a user to call the processes they want, but it is important to understand that there is more going on. For instance, entering command "run expand" will lead to more than just shortcut expansion. It will also trigger other processes which make sense to run at the same time as expansion. This section details exactly what will happen with each piecewise call.
+
+* dataload - load all data EXCEPT Loss of Function data into shortcut named graphs, add TURBO ontology
+* expand -
+	* Run pre-expansion check suite over data in shortcut named graphs. Halt run if any check fails. Console will alert user of a failure and details can be found in error log file.
+	* If pre-expansion checks pass:
+		* Apply symetrical properties to graph. For instance, if triple "**?s turbo:TURBO\_0000302 ?o**", insert "**?o turbo:TURBO_0000302 ?s**". TURBO\_0000302 is "sharesRowWith".
+		* Run expansion process over all encounters, consenters, and join data in shortcut named graphs, output data to post-expansion checking graph
+		* Run post-expansion check suite over data in post-expansion checking graph. Halt if any check fails. Console will alert user of a failure and details can be found in error log file.
+		* If post-expansion checks pass:
+			* Copy all data in post-expansion checking graph to expanded graph.
+			* Remove all data in post-expansion checking graph.
+			* Remove all data in shortcut named graphs.
+			* Add string labels to ontology named graph. Some TURBO ontology classes have labels tagged as @en, and it is necessary to have them in String form for later stages. This is a workaround and should probably be corrected in the ontology at some point, though not urgent.
+* reftrack - Run referent tracking over the expanded graph. Referent tracks (in order) all encounters, their dependents, consenters, and their dependents.
+* entlink - 
+	* Link consenters with biobank encounters and healthcare encounters
+	* Load all Loss of Function data into LOF shortcut named graphs
+	* Connect shortcut LOF data to biobank encounters
+	* Expand LOF data which has connections to biobank encounters which have connections to biobank consenters
+	* Log errors for unexpanded LOF data. This error data can be found in the named graph pmbb:errorLogging
+* conclusionate - 
+	* Run conclusionation process over expanded graph for date of birth, biological sex, and BMI
+	* Apply symmetrical properties again
+	* Apply labels to all nodes (if applyLabels == "true" in properties file)
+	* Run post-expansion check suite over data in expanded graph. Halt run if any check fails. Console will alert user of a failure and details can be found in error log file.
+		* If expanded graph post-expansion checks pass, run post-expansion check suite over data in Conclusionation named graphs. Halt run if any check fails. Console will alert user of a failure and details can be found in error log file.
 
 ###### Running Drivetrain in Benchmarking mode
 
