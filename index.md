@@ -13,6 +13,8 @@ The TURBO group has developed an application ontology, [TURBO ontology](turbo-on
 
 The TURBO group has developed a technology stack that implements a pipeline to transform tabular data into semantic triples, stored in a Resource Description Framework (RDF) triple store, using terms from the TURBO Ontology.
 
+TURBO also uses text analytics and machine learning for tasks like mapping medication orders from an EHR to semantic terms, including the pharmaceutical roles of the mapped drugs.
+
 ## Overview of steps in TURBO
 
 ![TURBO overview image](overview.png)
