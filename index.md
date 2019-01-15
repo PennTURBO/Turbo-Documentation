@@ -5,6 +5,7 @@
 The goal of the PennTURBO project is to accelerate finding and connecting key information from clinical records for research through semantic associations to the processes that generated the clinical data. Discovery of previously unappreciated relations between the data are made possible by these associations. The PennTURBO Group will be applying ontologies primarily from the Open Biological and Biomedical Ontologies (OBO) Foundry [obofoundry.org](http://http://www.obofoundry.org/) to provide a common semantic framework for Penn data. Transforming clinical data in this way allows the group to use graph database technologies for navigating the highly heterogeneous data.at 
 
 A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018
+A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IBI_CIC_TURBO_MAM_20190102.pdf) was presented at the January 2019 Genomics and EHR workshop at Penn.
 
 ## Ontology
 
