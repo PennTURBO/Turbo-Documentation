@@ -12,6 +12,7 @@ A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IB
 
 The TURBO group has developed an application ontology, [TURBO ontology](turbo-ontology.md), that is based on the Ontology for Biobanking and uses OBO Foundry terms wherever possible.
 
+The TURBO group also makes use of OBO Foundry ontologies for tasks such as [ICD code mapping to disease classes](ICD_disease_associations.md).
 
 ## Technology
 
