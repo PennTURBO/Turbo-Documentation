@@ -1,6 +1,6 @@
 <h1>TURBO Data Pipeline</h1>
 
-The PennTURBO system uses various technological components to transform data from Penn Data Store into triples for our Ontotext GraphDB instance known as Drivetrain. The purpose of this document is to describe this pipeline in an understandable and up-to-date manner using a very small toy dataset of 2 patients and their demographic information (biological sex, date of birth, and racial identity). 
+The PennTURBO system uses various technological components to transform data from its relational source in Penn Data Store into expanded and ontologized triples in our Ontotext GraphDB instance known as Drivetrain. The purpose of this document is to describe this pipeline in an understandable and up-to-date manner using a very small toy dataset of 2 patients and their demographic information (biological sex, date of birth, and racial identity). 
 
 <h2>Step 1: Penn Data Store to Carnival Property Graph</h2>
 
