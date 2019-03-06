@@ -22,4 +22,48 @@ Carnival relies on querying PDS using SQL to populate its graph with data about 
 
 ![image failed to load](images/pds_example.png)
 
-When imported into Carnival's property graph, the same data is represented by two patient nodes, attached to a patient group. The demographic information is provided as properties of each patient node.
+When imported into Carnival's property graph, the same data is represented by two patient nodes, attached to a patient group. Each patient has an identifier and a demographics summary. The demographic information is provided as properties of each demographics summary. 
+
+![image failed to load](images/carnival_example.png)
+
+<h2> Step 2: Carnival Property Graph to Drivetrain Shortcuts</h2>
+
+<h3>What is Drivetrain?</h3>
+
+Drivetrain is an application developed by the TURBO group that provides core informatics components to load relational data into a fully ontologized RDF triple store. It reads data that have been mapped to the TURBO ontology as "shortcut" triples and expands them to meet the standards of our semantic model. It is written in the Scala programming language and interacts with an Ontotext GraphDB instance. Drivetrain can receive input from any application with a connection to the triplestore, or from local files containing shortcut triples.
+
+Drivetrain is an open source project, and the code can be found here: https://github.com/PennTURBO/Drivetrain
+
+<h3>The Drivetrain Vine</h3>
+
+Currently, Carnival is the main source of input data for Drivetrain. The Drivetrain Vine, a component of the Carnival application, pulls data out of the Carnival property graph and maps it to TURBO ontology terms to create the shortcuts. In shortcut form, our two patient dataset now looks like this:
+
+    pmbb:patient1 a obo:NCBITaxon_9606 ;
+        turbo:TURBO_0000604 "01/15/1986" ;
+        turbo:TURBO_0000604 "01-14-1986"^^xsd:Date ;
+        turbo:TURBO_0000615 "WHITE" ;
+        turbo:TURBO_0000614 "http://purl.obolibrary.org/obo/OMRSE_00000184"^^xsd:anyURI ;
+        turbo:TURBO_0000606 "M" ;
+        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000141"^^xsd:anyURI ;
+    pmbb:patientCrid1 a turbo:TURBO_0000503 ;
+        obo:IAO_0000219 pmbb:patient1 ;
+        turbo:TURBO_0003603 "carnival_dataset_03062910" ;
+        turbo:TURBO_0003608 "1";
+        turbo:TURBO_0003610 "http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI .
+        
+        pmbb:patient2 a obo:NCBITaxon_9606 ;
+        turbo:TURBO_0000604 "11/28/1935" ;
+        turbo:TURBO_0000604 "11-28-1935"^^xsd:Date ;
+        turbo:TURBO_0000615 "BLACK" ;
+        turbo:TURBO_0000614 "http://purl.obolibrary.org/obo/OMRSE_00000182"^^xsd:anyURI ;
+        turbo:TURBO_0000606 "F" ;
+        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000138"^^xsd:anyURI ;
+    pmbb:patientCrid2 a turbo:TURBO_0000503 ;
+        obo:IAO_0000219 pmbb:patient2 ;
+        turbo:TURBO_0003603 "carnival_dataset_03062910" ;
+        turbo:TURBO_0003608 "2";
+        turbo:TURBO_0003610 "http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI .
+        
+In order to create these triples, it is necessary that Carnival have some domain knowledge. The string texts of "BLACK" and "WHITE" for race and "M" and "F" for gender were automatically mapped to the appropriate ontology terms representing these concepts, which can be seen in the above example, as the corresponding ontology term appears one triple below the string in each case. Likewise, the identifier type (in this case primary key patient identifier) was mapped to an ontology term which corresponds with this specific registry. String dates are transformed into a standard date format. Whenever possible in these cases the original string is preserved and also imported into the triplestore along with the formatted datum or mapped concept.
+
+<h2>Step 3: Drivetrain Shortcuts to Drivetrain Expanded Model</h2>
