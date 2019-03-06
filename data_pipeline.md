@@ -40,24 +40,24 @@ Currently, Carnival is the main source of input data for Drivetrain. The Drivetr
 
     pmbb:patient1 a obo:NCBITaxon_9606 ;
         turbo:TURBO_0000604 "01/15/1986" ;
-        turbo:TURBO_0000604 "01-14-1986"^^xsd:Date ;
+        turbo:TURBO_0000605 "01-15-1986"^^xsd:Date ;
         turbo:TURBO_0000615 "WHITE" ;
         turbo:TURBO_0000614 "http://purl.obolibrary.org/obo/OMRSE_00000184"^^xsd:anyURI ;
         turbo:TURBO_0000606 "M" ;
-        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000141"^^xsd:anyURI ;
+        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000141"^^xsd:anyURI .
     pmbb:patientCrid1 a turbo:TURBO_0000503 ;
         obo:IAO_0000219 pmbb:patient1 ;
         turbo:TURBO_0003603 "carnival_dataset_03062910" ;
         turbo:TURBO_0003608 "1";
         turbo:TURBO_0003610 "http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI .
         
-        pmbb:patient2 a obo:NCBITaxon_9606 ;
+    pmbb:patient2 a obo:NCBITaxon_9606 ;
         turbo:TURBO_0000604 "11/28/1935" ;
-        turbo:TURBO_0000604 "11-28-1935"^^xsd:Date ;
+        turbo:TURBO_0000605 "11-28-1935"^^xsd:Date ;
         turbo:TURBO_0000615 "BLACK" ;
         turbo:TURBO_0000614 "http://purl.obolibrary.org/obo/OMRSE_00000182"^^xsd:anyURI ;
         turbo:TURBO_0000606 "F" ;
-        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000138"^^xsd:anyURI ;
+        turbo:TURBO_0000607 "http://purl.obolibrary.org/obo/OMRSE_00000138"^^xsd:anyURI .
     pmbb:patientCrid2 a turbo:TURBO_0000503 ;
         obo:IAO_0000219 pmbb:patient2 ;
         turbo:TURBO_0003603 "carnival_dataset_03062910" ;
@@ -65,5 +65,11 @@ Currently, Carnival is the main source of input data for Drivetrain. The Drivetr
         turbo:TURBO_0003610 "http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI .
         
 In order to create these triples, it is necessary that Carnival have some domain knowledge. The string texts of "BLACK" and "WHITE" for race and "M" and "F" for gender were automatically mapped to the appropriate ontology terms representing these concepts, which can be seen in the above example, as the corresponding ontology term appears one triple below the string in each case. Likewise, the identifier type (in this case primary key patient identifier) was mapped to an ontology term which corresponds with this specific registry. String dates are transformed into a standard date format. Whenever possible in these cases the original string is preserved and also imported into the triplestore along with the formatted datum or mapped concept.
+
+Once inserted into an Ontotext repository, the triples can be visualized like this:
+
+![image failed to load](images/drivetrain_shortcuts_example.png)
+
+What we can see here is that there are two patient CRIDS (Centrally Registered Identifiers) which "denote" (obo:OBI_0000219) two intsances of type HomoSapiens (obo:NCBITaxon_9606). Each of the four instance level nodes has properties associated with it representing the values of the shortcuts. The two class level nodes representing the rdf:type of the instance level nodes are directly referenced in the TURBO ontology and thus can also be expanded to obtain more information on what these classes mean in reality.
 
 <h2>Step 3: Drivetrain Shortcuts to Drivetrain Expanded Model</h2>
