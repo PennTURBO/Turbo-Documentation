@@ -70,6 +70,6 @@ Once inserted into an Ontotext repository, the triples can be visualized like th
 
 ![image failed to load](images/drivetrain_shortcuts_example.png)
 
-What we can see here is that there are two patient CRIDS (Centrally Registered Identifiers) which "denote" (obo:OBI_0000219) two intsances of type HomoSapiens (obo:NCBITaxon_9606). Each of the four instance level nodes has properties associated with it representing the values of the shortcuts. The two class level nodes representing the rdf:type of the instance level nodes are directly referenced in the TURBO ontology and thus can also be expanded to obtain more information on what these classes mean in reality.
+What we can see here is that there are two patient CRIDS (Centrally Registered Identifiers) which "denote" (obo:OBI_0000219) two instances of type HomoSapiens (obo:NCBITaxon_9606). Each of the four instance level nodes has properties associated with it representing the values of the shortcuts. The two class level nodes representing the rdf:type of the instance level nodes are directly referenced in the TURBO ontology and thus can also be expanded to obtain more information on what these classes mean in reality.
 
 <h2>Step 3: Drivetrain Shortcuts to Drivetrain Expanded Model</h2>
