@@ -5,7 +5,6 @@
     - *gremlin/tinkerpop*
     - *cypher*
     - *Vines,reapers, sowers*
-    - dump to graph modelling language?
 - *Drivetrain... application?  database?*
 - *TURBO... minimally an ontology and an abbreviated strategy.
     - team?  "solution"? project?   database?  schema?*
@@ -34,10 +33,6 @@ These topic will be illustrated with a minimal synthetic dataset about patient d
 | 1                      | M           | 1/15/1986  | WHITE     |
 | 2                      | F           | 11/28/1935 | BLACK     |
 
-
-*[MAM] are these the column names used by PDS or one of our other components?  What are the advantages and disadvantages of using the exact column names?*
-
-*[MAM] this table had been an image.  is it important to keep it that way?*
 
 ## Background
 
@@ -75,13 +70,12 @@ The Carnival codebase has not yet been released to the pubic, but the possibilit
 
 Carnival uses SQL queries to gather data from PDS and populate its graph.  Portions of reality already modeled by Carnival and PennTURBO include demographic and  anthropometric data about patients, medication orders and assigned diagnosis codes.  The table in the introduction of this paper contains representative patient demographics.
 
-Once loaded into Carnival's property graph, the same data is modeled as two patient *nodes*, both attached to a patient *group*. Each patient has an identifier and a *demographics summary*. The demographic values are implemented as properties of each demographics summary. 
+Once loaded into Carnival's property graph, the data are modeled as two patient *nodes*, with an `is_member_of` relationship to a patient *group* node, an `is_identified_by` relationship with an *identifier* node, and a `has_demographics_summary` relationship with a *demographics summary* node. The demographic values themselves are implemented as properties of each demographics summary. 
 
-*[MAM] what does "has" mean?  what kind of thing is a demographics summary?*
 
 ![image failed to load](images/carnival_example.png)
 
-*[MAM] in addition to the image, can this be illustrated with a Neo4J data/code block, like we would do with Turtle for triples?*
+*[MAM] in addition to the image, can this be illustrated with a Neo4J data/code block, like we would do with Turtle for triples? graph markup language dump?*
 
 ### Step 2: From the Carnival Property Graph to Shortcut Triples via *Drivetrain*
 
@@ -104,7 +98,6 @@ In other words, the relationship isn't really between the patient and the regist
 In contrast with OWL2 [object property chains](https://www.w3.org/TR/owl2-primer/#Property_Chains), the current generation of TURBO shortcuts are implicit chains of object properties between two or more things, terminating in a data property.  When a shortcut needs to connect one (subject) entity to another (object) entity, the [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) for the object is wrapped in a string, like `"http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI`.  Without this design, it would be difficult or impossible to assert that the identifier itself has a *value* of `1`.
 
 *A separate branch of pure property-chain shortcuts is under development.*
-
 
 #### Shortcuts Written by Carnival's Drivetrain Vine
 
@@ -151,8 +144,6 @@ Carnival's Drivetrain vine pulls data out of the Carnival property graph and re-
     	patient2patient-id-text_sc:      "2";
     	patient2patient-registry-URI_sc: "http://transformunify.org/ontologies/TURBO_0000402"^^xsd:anyURI .
 
-*[MAM] tidied up date portion of data set title*
-
 Here, [Turtle prefixes](https://www.w3.org/TR/turtle/#prefixed-name) have been used not just to abbreviate the base portion of terms:
 
 `prefix xsd: <http://www.w3.org/2001/XMLSchema#> `
@@ -171,8 +162,6 @@ Therefore, readers who aren't interested in the URI representation of TURBO term
 
 
 These shortcut triples illustrate that Drivetrain doesn't just rewrite the tabular data in a different format.  It also starts the process of asserting what entities the data are about, even though that might be done in an indirect fashion.  For example, a date of birth datum can only exist (in good faith) if it is about some human or other organism that exists (or existed) in reality.  Furthermore, Drivetrain recodes data values that have a discrete but implicit meaning into explicit and discrete ontology terms.  In order to do this, Drivetrain must must be configured with some basic source- and domain-specific knowledge. For example `Race_code` column values of `BLACK` and `WHITE` are retained for provenance, but also represented with string-wrapped semantic terms from the [Ontology for Medically Relevant Social Entities](https://github.com/ufbmi/OMRSE/wiki/OMRSE-Overview):  http://purl.obolibrary.org/obo/OMRSE_00000182 for a "black or African American identity datum" and http://purl.obolibrary.org/obo/OMRSE_00000184 for a "white identity datum."  The gender identity "datums" are processed in a similar manner.
-
-*[MAM] these aren't concepts or nodes.  They are things.*
 
 Drivetrain has also asserted the registry which assigned the two identifiers that denote the two patients:  `http://transformunify.org/ontologies/TURBO_0000402` or 'PDS EMPI patient identifier registry'. This was driven by an understanding of the source of the file and the column header (Enterprise_Master_Patient_ID), not by values present in the database.
 
