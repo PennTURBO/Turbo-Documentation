@@ -10,9 +10,6 @@
 - PennTURBO
 - TURBO/Drivetrain, Carnival/TURBO etc.
 
-
-**[MAM] define terms upon their first use, and give a sense of what will follow in the text**
-
 ## Introduction
 
 "PennTURBO" refers to a solution for the semantic modeling of biomedical information, especially electronic healthcare records.  This initiative takes its name from the underlying principle:  *Transforming and Unifying Research with Biomedical Ontologies*.  The same name is used for the supporting ontology itself:  `turbo_merged.owl`.  The TURBO ontology, written in the [OWL2 language](https://www.w3.org/TR/owl2-primer/), follows the principles of the [Open Biological and Biomedical Ontology Foundry](http://www.obofoundry.org/) including the use of [BFO](http://basic-formal-ontology.org/) as an upper ontology, and therefore adherence to ontological realism.  In addition to terms that were developed for the TURBO ontology *per se*, many other classes (like [`healthcare encounter`](http://purl.obolibrary.org/obo/OGMS_0000097)) and proprieties (like [`has specified output`](http://purl.obolibrary.org/obo/OBI_0000299)) were imported from other OBO foundry ontologies, using tools like [OntoFox](http://ontofox.hegroup.org/),  [OntoDog](http://ontodog.hegroup.org/), and/or [ROBOT](http://robot.obolibrary.org/).  The TURBO ontology has a [GitHub repository](https://github.com/PennTURBO/Turbo-Ontology/tree/master/ontologies).
