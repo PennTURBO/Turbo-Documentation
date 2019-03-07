@@ -2,8 +2,7 @@
 
 *[MAM] clarify term definitions?*
 - *Carnival "technology?"... application?  database?*
-    - *gremlin/tinkerpop*
-    - *cypher*
+    - dump to graph modelling langage?
     - *Vines,reapers, sowers*
 - *Drivetrain... application?  database?*
 - *TURBO... minimally an ontology and an abbreviated strategy.
