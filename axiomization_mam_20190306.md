@@ -5,6 +5,7 @@
     - *gremlin/tinkerpop*
     - *cypher*
     - *Vines,reapers, sowers*
+    - dump to graph modelling language?
 - *Drivetrain... application?  database?*
 - *TURBO... minimally an ontology and an abbreviated strategy.
     - team?  "solution"? project?   database?  schema?*
