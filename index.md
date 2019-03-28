@@ -2,7 +2,9 @@
 
 *Transforming and Unifying Research with Biomedical Ontologies.*
 
-The goal of the PennTURBO project is to accelerate finding and connecting key information from clinical records for research through semantic associations to the processes that generated the clinical data. Discovery of previously unappreciated relations between the data are made possible by these associations. The PennTURBO Group will be applying ontologies primarily from the Open Biological and Biomedical Ontologies (OBO) Foundry [obofoundry.org](http://http://www.obofoundry.org/) to provide a common semantic framework for Penn data. Transforming clinical data in this way allows the group to use graph database technologies for navigating the highly heterogeneous data.at 
+PennTURBO accelerates the processes of finding and connecting key information from clinical records, via semantic modeling of the processes that generated the data. This makes the discovery of previously unappreciated relations between the data possible for research and for operational tasks. The PennTURBO Group uses ontologies, primarily from the [Open Biological and Biomedical Ontologies (OBO) Foundry](http://http://www.obofoundry.org/) to provide a common semantic framework for UPHS/PennMedicine data. Transforming clinical data in this way allows use of graph database technologies for navigating highly heterogeneous data.
+
+PennTURBO uses shortcut reification to simplify the process of instantiating Electronic Heath Records from relational sources. The shortcuts are then expanded into triples following the principles of ontological realism. Documentation is available for the [current shortcut reification process and the resulting types of expanded axioms.(https://github.com/PennTURBO/Turbo-Documentation/blob/master/turbo_axiomization.md)
 
 A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018.
 
@@ -10,22 +12,20 @@ A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IB
 
 ## Ontology
 
-The TURBO group has developed an application ontology, [TURBO ontology](turbo-ontology.md), that is based on the Ontology for Biobanking and uses OBO Foundry terms wherever possible.
+PennTURBO has its own [application ontology](turbo-ontology.md), which is based on the Ontology for Biobanking and uses OBO Foundry terms wherever possible.
 
-The TURBO group also makes use of OBO Foundry ontologies for tasks such as [ICD code mapping to disease classes](ICD_disease_associations.md).
+Additionally, the the PennTURBO graph imports several OBO foundry ontologies are imported in their entirety.  THat enables tasks such as [mapping ICD codes to disease classes](ICD_disease_associations.md).
 
 ## Technology
 
-The TURBO group has developed a technology stack that implements a pipeline to transform tabular data into semantic triples, stored in a Resource Description Framework (RDF) triple store, using terms from the TURBO Ontology.
+The PennTURBO group has developed a technology stack/pipeline that transforms tabular data into semantic triples, which are stored in a Resource Description Framework (RDF) triple store.  The subjects of those triples are instances of classes present in the TURBO Ontology.
 
-TURBO also uses text analytics and machine learning for tasks like [mapping medication orders](medication_text_to_terms_to_roles.md) from an EHR to semantic terms, including the pharmaceutical roles of the mapped drugs.
+PennTURBO also uses text analytics and machine learning for tasks like [mapping medication orders](medication_text_to_terms_to_roles.md) from an EHR to drug classes, along with the pharmaceutical roles of the mapped drugs.
 
-## Overview of steps in TURBO
+## Overview of steps in the PennTURBO pipeline
 
 ![TURBO overview image](overview.png)
 
 1. Export the relational data to .csv files.
 1. Map the relational data files to the TURBO ontology using [Karma](karma.md).
 1. Use the [Drivetrain](drivetrain.md) application to import the data into a [GraphDB](http://graphdb.ontotext.com) instance.
-
-
