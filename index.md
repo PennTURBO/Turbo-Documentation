@@ -6,9 +6,10 @@ PennTURBO accelerates the processes of finding and connecting key information fr
 
 PennTURBO uses shortcut reification to simplify the process of instantiating Electronic Heath Records from relational sources. The shortcuts are then expanded into triples following the principles of ontological realism. Documentation is available for the [current shortcut reification process and the resulting types of expanded axioms.](turbo_axiomization.md)
 
-A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018.
+Additional reading:
 
-A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IBI_CIC_TURBO_MAM_20190102.pdf) was presented at the January 2019 Genomics and EHR workshop at Penn.
+- A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018.
+- A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IBI_CIC_TURBO_MAM_20190102.pdf) was presented at the January 2019 Genomics and EHR workshop at Penn.
 
 ## Ontology
 
