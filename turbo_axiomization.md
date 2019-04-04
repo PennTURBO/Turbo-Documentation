@@ -1,4 +1,4 @@
-# Semantic Axioms in Electronic Health Records, as Instantiated by PennTURBO
+# Semantic Axioms in Electronic Health Records, as Instantiated by the TURBO Cohort Pipeline in PennTURBO
 
 ## Introduction
 
