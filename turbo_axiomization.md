@@ -20,7 +20,7 @@ These topic will be illustrated with a minimal synthetic dataset about patient d
 | 2                      | F           | 11/28/1935 | BLACK     |
 
 
-## Background and Types of Data Ingested by TURBO
+## Background and Types of Data Ingested by the TURBO Cohort pipeline
 
 PennTURBO uses multiple computational technologies to transform data into realism-based RDF triples.  The TURBO team envisions supporting multiple data sources with various levels of structure, but there is currently one predominant use case.  It's expected that most of what is found in the TURBO Semantic repository will come from a clinical data warehouse, presumably implemented as a relational database.  The TURBO Cohort pipeline starts with the TURBO Carnival server (employing the Carnival system built for the Penn Medicine BioBank), moving data from a clinical data warehouse (and related systems) into a shallow property graph. Related systems include [RedCap](https://redcap.med.upenn.edu/) (e.g. biobank records, like case report forms) and CSV files (e.g. loss-of-function calls based on whole exome sequencing).
 
@@ -42,18 +42,18 @@ Future plans for the TURBO Carnival server:
 
 The TURBO Carnival server uses SQL queries to gather data from a clinical data warehouse and populate the property graph.  Portions of reality already modeled by Carnival and PennTURBO include demographic and  anthropometric data about patients, medication orders, and assigned diagnosis codes.  The table in the introduction of this paper illustrates representative patient demographics.
 
-Once loaded into Carnival's property graph, the data are modeled as two patient *nodes*, with an `is_member_of` relationship to a patient *group* node, an `is_identified_by` relationship with an *identifier* node, and a `has_demographics_summary` relationship with a *demographics summary* node. The demographic values themselves are implemented as properties of each demographics summary. 
+Once loaded into TURBO Carnival's property graph, the data are modeled as two patient *nodes*, with an `is_member_of` relationship to a patient *group* node, an `is_identified_by` relationship with an *identifier* node, and a `has_demographics_summary` relationship with a *demographics summary* node. The demographic values themselves are implemented as properties of each demographics summary. 
 
 
 ![image failed to load](carnival_example.png)
 
-### Step 2: From the Carnival Property Graph to Shortcut Triples via *Drivetrain*
+### Step 2: From the TURBO Carnival server to Shortcut Triples in the TURBO Semantic repository
 
-CLinical data warehouses and the Carnival property graph are prominent parts of the PennTURBO ecosystem.  Nonetheless, PennTURBO has been designed to ingest data from other sources and in other forms.  PennTURBO makes the following contract:  if a system can write terse *shortcut* triples using classes and predicates form the TURBO ontology, then a Scala application (written by the TURBO team) called *Drivetrain* will expand those shortcuts into statements about reality.  The expanded statements can even include rule-based conclusions.  Furthermore, if the data (like "1" and "WHITE") come from a trusted source like the Carnival property graph, then *Drivetrain will even write the shortcut triples.*  
+Clinical data warehouses and the TURBO Carnival server are key to the TURBO Cohort pipeline.  Nonetheless, the TURBO Cohort pipeline has been designed to ingest data from other sources and in other forms.  If a system can write terse *shortcut* triples using classes and predicates form the TURBO ontology, then a Scala application in the TURBO Cohort pipeline will expand those shortcuts into statements about reality.  The expanded statements can even include rule-based conclusions.  Furthermore, if the data (like "1" and "WHITE") come from a trusted source like the TURBO Carnival server, then *the TURBO Cohort pipeline will even write the shortcut triples.*  
 
-Drivetrain uses the SPARQL language, plus methods from the [RDF4J](http://rdf4j.org/) library to write and expand shortcuts in a triplestore like [Ontotext GraphDB](http://graphdb.ontotext.com/).
+The TURBO Cohort pipeline uses the SPARQL language, plus methods from the [RDF4J](http://rdf4j.org/) library to write and expand shortcuts in a triplestore like [Ontotext GraphDB](http://graphdb.ontotext.com/).
 
-Drivetrain has been made public in a [GitHUb repository](https://github.com/PennTURBO/Drivetrain).
+The TURBO Semantic repository component of the TURBO Cohort pipeline was previously referred to as Drivetrain [GitHUb repository](https://github.com/PennTURBO/Drivetrain).
 
 #### Shortcut Relations in the TURBO Ontology
 
@@ -63,15 +63,15 @@ TURBO shortcuts enable statements that have weak semantics and only imply some p
 - there is some composite identifier that denotes the patient
 - one part of the identifier is a pointer to the central registry that assigned the identifier
 
-In other words, the relationship isn't really between the patient and the registry.  PennTURBO uses shortcuts to lessen the semantic burden on cooperating systems and teams.
+In other words, the relationship isn't really between the patient and the registry.  The TURBO Cohort pipeline uses shortcuts to lessen the semantic burden on cooperating systems and teams.
 
 In contrast with OWL2 [object property chains](https://www.w3.org/TR/owl2-primer/#Property_Chains), the current generation of TURBO shortcuts are implicit chains of object properties between two or more things, terminating in a data property.  When a shortcut needs to connect one (subject) entity to another (object) entity, the [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) for the object is wrapped in a string, like `"http://transformunify.org/ontologies/TURBO_0000440"^^xsd:anyURI`.  Without this design, it would be difficult or impossible to assert that the identifier itself has a *value* of `1`.
 
 *A separate branch of pure property-chain shortcuts is under development.*
 
-#### Shortcuts Written by Carnival's Drivetrain Vine
+#### Shortcuts Written by the TURBO Cohort pipeline
 
-Carnival's Drivetrain vine pulls data out of the Carnival property graph and re-writes it with class and property terms from the TURBO ontology.  As a collection of shortcut triples, the two-patient demographic dataset would look like this:
+The TURBO Cohort pipeline vine pulls data out of the TURBO Carnival property graph and re-writes it with class and property terms from the TURBO ontology.  As a collection of shortcut triples, the two-patient demographic dataset would look like this:
 
     prefix xsd:                             <http://www.w3.org/2001/XMLSchema#> 
     prefix pmbb:                            <http://www.itmat.upenn.edu/biobank/>
@@ -131,21 +131,20 @@ Therefore, readers who aren't interested in the URI representation of TURBO term
 | RID          | racial identity datum                                                        |
 
 
-These shortcut triples illustrate that Drivetrain doesn't just rewrite the tabular data in a different format.  It also starts the process of asserting what entities the data are about, even though that might be done in an indirect fashion.  For example, a date of birth datum can only exist (in good faith) if it is about some human or other organism that exists (or existed) in reality.  Furthermore, Drivetrain recodes data values that have a discrete but implicit meaning into explicit and discrete ontology terms.  In order to do this, Drivetrain must must be configured with some basic source- and domain-specific knowledge. For example `Race_code` column values of `BLACK` and `WHITE` are retained for provenance, but also represented with string-wrapped semantic terms from the [Ontology for Medically Relevant Social Entities](https://github.com/ufbmi/OMRSE/wiki/OMRSE-Overview):  http://purl.obolibrary.org/obo/OMRSE_00000182 for a "black or African American identity datum" and http://purl.obolibrary.org/obo/OMRSE_00000184 for a "white identity datum."  The gender identity "datums" are processed in a similar manner.
+These shortcut triples illustrate that the TURBO Cohort pipeline doesn't just rewrite the tabular data in a different format.  It also starts the process of asserting what entities the data are about, even though that might be done in an indirect fashion.  For example, a date of birth datum can only exist (in good faith) if it is about some human or other organism that exists (or existed) in reality.  Furthermore, the TURBO Cohort pipeline recodes data values that have a discrete but implicit meaning into explicit and discrete ontology terms.  In order to do this, the TURBO Cohort pipeline must must be configured with some basic source- and domain-specific knowledge. For example `Race_code` column values of `BLACK` and `WHITE` are retained for provenance, but also represented with string-wrapped semantic terms from the [Ontology for Medically Relevant Social Entities](https://github.com/ufbmi/OMRSE/wiki/OMRSE-Overview):  http://purl.obolibrary.org/obo/OMRSE_00000182 for a "black or African American identity datum" and http://purl.obolibrary.org/obo/OMRSE_00000184 for a "white identity datum."  The gender identity "datums" are processed in a similar manner.
 
-Drivetrain has also asserted the registry which assigned the two identifiers that denote the two patients:  `http://transformunify.org/ontologies/TURBO_0000402` or 'PDS EMPI patient identifier registry'. This was driven by an understanding of the source of the file and the column header (Enterprise_Master_Patient_ID), not by values present in the database.
+The TURBO Cohort pipeline has also asserted the registry which assigned the two identifiers that denote the two patients:  `http://transformunify.org/ontologies/TURBO_0000402` or 'PDS EMPI patient identifier registry'. This was driven by an understanding of the source of the file and the column header (Enterprise_Master_Patient_ID), not by values present in the database.
 
-Finally, Drivetrain understands that different sources my express dates in different formats, like MM/DD/YYYY, MM/DD/YY, YYYY-MM-DD etc. Therefore, Drivetrain retains the original textual representations of dates but also rewrites them, based on knowledge of the sources, to comply the the XX standard
+Finally, the TURBO Cohort pipeline understands that different sources my express dates in different formats, like MM/DD/YYYY, MM/DD/YY, YYYY-MM-DD etc. Therefore, the TURBO Cohort pipeline retains the original textual representations of dates but also rewrites them, based on knowledge of the sources.
 
 In summary, this step has instantiated two individuals each from the classes for `Homo sapiens` and `patient identifier`.  Upon loading the TURBO ontology, the labels, superclass assertions and other reality-oriented axiomatic knowledge about humans and patient identifiers will be accessible.  The fact that the identifiers denote the humans has been stated explicitly with ad object property, but all additional knowledge about the humans the identifiers is still in a shortcutted, data-only realm, using data properties.
 
-Once inserted into a GraphDB repository, a visualization like the following can be easily generated.  Note that the textual panels next to each entity are not intrinsic parts of the visualization.  They have to be opened one at a time in a right-hand panel by clicking on the entity of interest and further clicking on a nearby "i" icon.
+Once inserted into the TURBO Semnatic repository, a visualization like the following can be easily generated.  Note that the textual panels next to each entity are not intrinsic parts of the visualization.  They have to be opened one at a time in a right-hand panel by clicking on the entity of interest and further clicking on a nearby "i" icon.
 
 ![image failed to load](patient_demog_scs_for_axioms_doc_centralized.png)
 
 ### Step 3: : Reality-Based Expansion of Shortcut Triples, via Drivetrain
-
-Drivetrain expands shortcut patterns like these into BFO-compliant statements about reality.  The rules for the expansions currently consist of parameterized SPARQL, hard coded into the Drivetrain source code.  Opportunities for expressing the rules in some kind of graph structure (in Neo4J, raw RDF, or as part of the TURBO ontology itself) are under evaluation.
+The TURBO Cohort pipeline expands shortcut patterns like these into BFO-compliant statements about reality.  The rules for the expansions currently consist of parameterized SPARQL, hard coded into the the TURBO Cohort pipeline source code.  Opportunities for expressing the rules in some kind of graph structure (in Neo4J, raw RDF, or as part of the TURBO ontology itself) are under evaluation.
 
 #### Expanded Triples about Patient1 and Patient2
 
@@ -237,7 +236,7 @@ Drivetrain expands shortcut patterns like these into BFO-compliant statements ab
 
 ## Appendices
 
-### Accounting of instances appearing in a production TURBO Graph 
+### Accounting of instances appearing in a production TURBO Semantic repository 
 
 The visualization above shows a general pattern for describing some patient knowledge from a realism perspective.  However, it omits several other important patterns, and it doesn't provide any quantitative information.
 
