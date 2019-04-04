@@ -31,3 +31,22 @@ MONDO disease subclass -> SNOMED equivalent class -> ICD class (via shared CUI) 
 
 For either path, we take advantage of the hierarchical class structure to identify ICD codes associated with disease subclasses. For greatest coverage, we are using the union of the paths. While this increases the coverage of ICD codes, users of TURBO ICD-disease class associations should understand that not all associations may be appropriate for their purposes and the results should reviewed. To reduce false associations, we remove rare disease and syndromic codes. 
 
+Even with the above aproach, key associations (e.g., Type 1 diabetes, Tye 2 diabetes) were missing for ICD0 codes. To address that shortfall we also are including mappings from https://www.nlm.nih.gov/research/umls/mapping_projects/icd9cm_to_snomedct.html. (thanks to A. Verma, UPENN for this pointer). 
+
+The associations are stored in 16 named graphs reflecting the provenance of the method used to generate them. They are:
+1. mondo owl:equivalentClass snomed -> shared cui
+2. mondo owl:equivalentClass snomed with icd9 map
+3. mondo oboInOwl:hasDbXref snomed -> shared cui
+4. mondo oboInOwl:hasDbXref snomed with icd9 map
+5. mondo skos:closeMatch snomed -> shared cui
+6. mondo skos:closeMatch snomed with icd9 map
+7. mondo skos:exactMatch snomed -> shared cui
+8. mondo skos:exactMatch snomed with icd9 map
+9. mondo oboInOwl:hasDbXref cui
+10. mondo skos:closeMatch cui
+11. mondo skos:exactMatch cui
+12. mondo oboInOwl:hasDbXref icd10
+13. mondo oboInOwl:hasDbXref icd9 WITHOUT range subclasses
+14. cui owl:equivalentClass mondo
+15. icd9 owl:equivalentClass mondo
+16. icd10 owl:equivalentClass mondo
