@@ -50,3 +50,10 @@ The associations are stored in 16 named graphs reflecting the provenance of the 
 14. cui owl:equivalentClass mondo
 15. icd9 owl:equivalentClass mondo
 16. icd10 owl:equivalentClass mondo
+
+## Example reported associations
+
+| ICD | MONDO | MONDO label | mapping method | hierarchy level |
+|------------------------|-------------|------------|-----------|-----|
+| http://purl.bioontology.org/ontology/ICD10CM/A00.0 | http://purl.obolibrary.org/obo/MONDO_0021678 | gram-negative bacterial infections | mondo skos:exactMatch snomed -> shared cui | 4 |
+| http://purl.bioontology.org/ontology/ICD10CM/A001.0 | http://purl.obolibrary.org/obo/MONDO_0000827 | salmonellosis | mondo skos:exactMatch snomed -> shared cui | 5 |
