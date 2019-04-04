@@ -2,14 +2,14 @@
 
 ## Introduction
 
-"PennTURBO" refers to a solution for the semantic modeling of biomedical information, especially electronic healthcare records.  This initiative takes its name from the underlying principle:  *Transforming and Unifying Research with Biomedical Ontologies*.  The same name is used for the supporting ontology itself:  `turbo_merged.owl`.  The TURBO ontology, written in the [OWL2 language](https://www.w3.org/TR/owl2-primer/), follows the principles of the [Open Biological and Biomedical Ontology Foundry](http://www.obofoundry.org/) including the use of [BFO](http://basic-formal-ontology.org/) as an upper ontology, and therefore adherence to ontological realism.  In addition to terms that were developed for the TURBO ontology *per se*, many other classes (like [`healthcare encounter`](http://purl.obolibrary.org/obo/OGMS_0000097)) and proprieties (like [`has specified output`](http://purl.obolibrary.org/obo/OBI_0000299)) were imported from other OBO foundry ontologies, using tools like [OntoFox](http://ontofox.hegroup.org/),  [OntoDog](http://ontodog.hegroup.org/), and/or [ROBOT](http://robot.obolibrary.org/).  The TURBO ontology has a [GitHub repository](https://github.com/PennTURBO/Turbo-Ontology/tree/master/ontologies).
+"PennTURBO" refers to a solution for the semantic modeling of biomedical information, especially electronic healthcare records.  This initiative takes its name from the underlying principle:  *Transforming and Unifying Research with Biomedical Ontologies*.  The same name is used for the supporting ontology itself:  `turbo_merged.owl`.  The TURBO ontology, written in the [OWL2 language](https://www.w3.org/TR/owl2-primer/), follows the principles of the [Open Biological and Biomedical Ontology Foundry](http://www.obofoundry.org/) including the use of [BFO](http://basic-formal-ontology.org/) as an upper ontology, and therefore adherence to ontological realism.  In addition to terms that were developed for the TURBO ontology *per se*, many other classes (like [`healthcare encounter`](http://purl.obolibrary.org/obo/OGMS_0000097)) and properties (like [`has specified output`](http://purl.obolibrary.org/obo/OBI_0000299)) were imported from other OBO foundry ontologies, using tools like [OntoFox](http://ontofox.hegroup.org/),  [OntoDog](http://ontodog.hegroup.org/), and/or [ROBOT](http://robot.obolibrary.org/).  The TURBO ontology has a [GitHub repository](https://github.com/PennTURBO/Turbo-Ontology/tree/master/ontologies).
 
-This whitepaper addresses the axiom patterns (or types of semantic triples) that might be found in an RDF triplestore that has been populated according to the TURBO vision, specifically:
+This whitepaper describes the axiom patterns (or types of semantic triples) that the TURBO Cohort pipeline generates to populate the TURBO Semantic repository, an RDF triplestore, specifically:
 - How are the axioms created or "instantiated"?
 - What do the patterns mean?
 - What is the relative abundance of each axiom pattern?
 
-The roles of two software components, Carnival and Drivetrain, are described, and a distinction is drawn between shortcut semantics and expanded (or reality-based) semantics.
+The TURBO Cohort pipeline is described, and a distinction is drawn between shortcut semantics and expanded (or reality-based) semantics.
 
 These topic will be illustrated with a minimal synthetic dataset about patient demographics:
 
@@ -22,19 +22,17 @@ These topic will be illustrated with a minimal synthetic dataset about patient d
 
 ## Background and Types of Data Ingested by TURBO
 
-PennTURBO uses multiple computational technologies to transform data into realism-based RDF triples.  The TURBO team envisions supporting multiple data sources with various levels of structure, but there is currently one predominant use case.  It's expected that most of the knowledge in a TURBO graph will come from a clinical data warehouse, presumably implemented as a relational database.  The Carnival system, on which TURBO depends, also has *vine* methods that ingest data from [RedCap](https://redcap.med.upenn.edu/) (e.g. biobank records, like case report forms) and CSV files (e.g. loss-of-function calls based on whole exome sequencing).
-
-Therefore, a TURBO instantiation process **starts** with the *Carnival* application moving data from a clinical data warehouse (and related systems) into a shallow property graph.
+PennTURBO uses multiple computational technologies to transform data into realism-based RDF triples.  The TURBO team envisions supporting multiple data sources with various levels of structure, but there is currently one predominant use case.  It's expected that most of what is found in the TURBO Semantic repository will come from a clinical data warehouse, presumably implemented as a relational database.  The TURBO Cohort pipeline starts with the TURBO Carnival server (employing the Carnival system built for the Penn Medicine BioBank), moving data from a clinical data warehouse (and related systems) into a shallow property graph. Related systems include [RedCap](https://redcap.med.upenn.edu/) (e.g. biobank records, like case report forms) and CSV files (e.g. loss-of-function calls based on whole exome sequencing).
 
 ## Steps involved in transforming relational EHR data into realism-based axioms
 
-### Step 1: From the Penn Data Store to the Carnival Property Graph
+### Step 1: From the Penn Data Store to the TURBO Carnival server.
 
 *Carnival* is a data aggregation and unification technology stack, written in Groovy, and using a Neo4J property graph back-end.  Among other things, it integrates and further normalizes data from sources like thse described above.  Carnival implements *vines* that tunnel data from the tabular or relational sources into a consistent and intuitive model.  Convenience features include chunking of large SQL queries, resumption of failed queries, local caching of query results, and more.  
 
-A Carnival command line interface is available for users who do not wish to interact directly with the Neo4J graph.  This interface uses TURBO-Carnival APIs to identify patients with user-specified characteristics, by comparing data values form the EHR against semantic resources like the Drug Ontology, ChEBI, RxNORM and the Monarch Disease Ontology.  Carnival can also use set arithmetic to assemble the patients into stratified test/control cohorts.
+A Carnival command line interface is available for users who do not wish to interact directly with the Neo4J graph.  This interface uses the TURBO API server to identify patients with user-specified characteristics, by comparing data values form the EHR against semantic resources like the Drug Ontology, ChEBI, RxNORM and the Monarch Disease Ontology.  The TURBO Carnival server also uses set arithmetic to assemble the patients into stratified test/control cohorts.
 
-Future plans for Carnival:
+Future plans for the TURBO Carnival server:
 
 - While Carnival is not bound by a realism-based semantic artifact like the TURBO ontology, the Carnival and TURBO teams are tightly integrated and strive for a reasonable (and potentially growing) alignment between the two models.
 - The Carnival codebase has not yet been released to the pubic, but the intention is to make it open-source in the near future.
@@ -42,7 +40,7 @@ Future plans for Carnival:
 
 #### A Carnival Vine into a Clinical Data Warehouse
 
-Carnival uses SQL queries to gather data from a clinical data warehouse and populate the Carnival graph.  Portions of reality already modeled by Carnival and PennTURBO include demographic and  anthropometric data about patients, medication orders, and assigned diagnosis codes.  The table in the introduction of this paper illustrates representative patient demographics.
+The TURBO Carnival server uses SQL queries to gather data from a clinical data warehouse and populate the property graph.  Portions of reality already modeled by Carnival and PennTURBO include demographic and  anthropometric data about patients, medication orders, and assigned diagnosis codes.  The table in the introduction of this paper illustrates representative patient demographics.
 
 Once loaded into Carnival's property graph, the data are modeled as two patient *nodes*, with an `is_member_of` relationship to a patient *group* node, an `is_identified_by` relationship with an *identifier* node, and a `has_demographics_summary` relationship with a *demographics summary* node. The demographic values themselves are implemented as properties of each demographics summary. 
 
