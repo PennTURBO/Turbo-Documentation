@@ -24,7 +24,7 @@ The PennTURBO group has developed a technology stack/pipeline that transforms ta
 PennTURBO also uses text analytics and machine learning for tasks like [mapping medication orders](medication_text_to_terms_to_roles.md) from an EHR to drug classes, along with the pharmaceutical roles of the mapped drugs.
 
 ## Overview of steps in the PennTURBO pipeline
-### We are now using the TURBO Cohort pipeline described [here](turbo_axiomization.md) which uses the TURBO Carnival server instead of Karma.
+### We are now using the TURBO Cohort pipeline described [here](turbo_axiomization.md) which uses the TURBO Carnival server instead of Karma. The TURBO Semantic repository component of the TURBO Cohort pipeline is what used to be called Drivetrain.
 ![TURBO overview image](overview.png)
 
 1. Export the relational data to .csv files.
