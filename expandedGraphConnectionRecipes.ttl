@@ -1,0 +1,2250 @@
+@prefix : <http://transformunify.org/ontologies/> .
+@prefix Thesaurus: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix fakeprefix: <http://turbo/fakeprefix/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix graph: <http://haydensgraph.org/> .
+@prefix graphBuilder: <http://graphBuilder.org/> .
+@prefix ns1: <http://example.com/resource/> .
+@prefix ncbitaxon: <http://purl.obolibrary.org/obo/ncbitaxon#> .
+@prefix ns11: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix ns3: <http://www.ebi.ac.uk/efo/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix ontoneo: <http://purl.obolibrary.org/obo/ontoneo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pmbb: <http://www.itmat.upenn.edu/biobank/> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ro: <http://www.obofoundry.org/ro/ro.owl#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix snomed: <http://purl.bioontology.org/ontology/SNOMEDCT/> .
+@prefix sys: <http://www.ontotext.com/owlim/system#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:homoSapiensIdToSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensSymbolToSymbolValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensIdToRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensRegistryDenoterToId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genderIdentityDatumToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToBiosex a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensRegistryDenoterToRegistry a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensRegistryDenoterToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToHomoSapiensRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensSymbolToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToHomoSapiensSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genderIdentityDatumToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToGenderIdentityDatum a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue a :DatatypeConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:genderIdentityDatumToGenderIdentityDatumType a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:raceIdentityDatumToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:raceIdentityDatumToRaceIdentityDatumType a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:raceIdentificationProcessToRaceIdentityDatum a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:raceIdentityDatumToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToRaceIdentityDatum a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:dateOfBirthDatumToBirth a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToBirth a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:dateOfBirthDatumToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToDateOfBirthDatum a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:dateOfBirthDatumToStringLiteral a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:dateOfBirthDatumToDateLiteral a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutHomoSapiensToExpandedHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:identifierToHealthcareEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:bmiToBmiDoubleLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:bmiToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToBmi a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToDatasetTitle a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToDiagnosis a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToHealthcareEncounterDate a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToHealthcareEncounterRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToHealthcareEncounterSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToPrescription a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToIcdRegistry a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToIcdTerm a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterDateToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterDateToDateLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterDateToHealthcareEncounterStart a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterDateToStringLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterIdToRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterIdToSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterRegistryDenoterToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterRegistryDenoterToId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterRegistryDenoterToRegistry a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterStartToHealthcareEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterSymbolToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterSymbolToId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterSymbolToSymbolValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterToBMI a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterToDiagnosis a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterToPrescription a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensIdentifierToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:identifierToMedicationSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:identifierToPrescription a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:instantiationToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue a :DatatypeConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:medicationSymbolToidentifier a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:prescriptionToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:prescriptionToDrug a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:prescriptionToMedicationOrderNameStringLiteralValue a :DatatypeConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:symbolToHomoSapiensId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:medicationSymbolToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToMedicationSybol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter a :ObjectConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:bmiToHealthcareEncounterDate a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToHealthcareEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToHeight a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToInvestigationRole a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToWeight a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterIdToBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterToBMI a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToBiobankEncounterRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToBiobankEncounterSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterIdToRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterIdToSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterRegistryDenoterToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterRegistryDenoterToId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterRegistryDenoterToRegistry a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterSymbolToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterSymbolToId a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterSymbolToSymbolValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToBiobankEncounterDate a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterDateToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterDateToDateLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterDateToBiobankEncounterStart a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterDateToStringLiteralValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterStartToBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:homoSapiensToBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:investigationRoleToBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:bmiToBiobankEncounterDate a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterToLengthMeasurementValueSpecification a :ObjectConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:biobankEncounterToMassMeasurementValueSpecification a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToLengthMeasurementValueSpecification a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToMassMeasurementValueSpecification a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:healthcareEncounterToLengthMeasurementValueSpecification a :ObjectConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:healthcareEncounterToMassValueSpecification a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:lengthMeasurementValueSpecificationToCentimeter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:lengthMeasurementValueSpecificationToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:lengthMeasurementValueSpecificationToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight a :ObjectConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue a :DatatypeConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:massMeasurementValueSpecificationToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:massMeasurementValueSpecificationToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:massMeasurementValueSpecificationToKilogram a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue a :DatatypeConnectionRecipe,
+    :TurboGraphConnectionRecipe .
+
+:homoSapiensToPatientRole a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:patientRoleToHealthcareEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:bmiToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToGeneSymbolUri a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToAllele a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleCridRegDenToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleCridSymbolToDataset a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToDNA a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToGeneSymbolFirstPart a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToGeneSymbolSecondPart a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToZygosityIntegerValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:alleleToZygosityUri a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToAlleleCridRegDen a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:datasetToAlleleCridSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:formProcessToAllele a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:formProcessToSequenceData a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:DNAExtractionProcessToDNAExtract a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:DNAExtractionProcessToSpecimen a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:DNAToDNAExtract a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:DNAToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:biobankEncounterToCollectionProcess a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:collectionProcessToBiobankEncounter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:collectionProcessToHomoSapiens a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:collectionProcessToSpecimen a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:exomeSequenceProcessToDNAExtract a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:exomeSequenceProcessToSequenceData a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridRegistryDenoterToGenomeCrid a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridSymbolToGenomeCrid a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridSymbolToSymbolValue a :DatatypeConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridToGenomeCridRegistryDenoter a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridToGenomeCridSymbol a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeCridToSpecimen a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:genomeRegistryDenoterToRegistryUri a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:shortcutAlleleToExpandedAllele a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe .
+
+:diagnosisToSnomedTerm a :ObjectConnectionRecipe, :TurboGraphConnectionRecipe;
+  rdfs:label "diagnosis to snomed term connection" .
+
+:identifierToHealthcareEncounter :subject :TURBO_0000508;
+  rdfs:label "Identifier to Healthcare Encounter Connection" .
+
+:bmiToBmiDoubleLiteralValue :subject ns3:EFO_0004340;
+  rdfs:label "bmi double literal value" .
+
+:bmiToDataset :subject ns3:EFO_0004340;
+  rdfs:label "BMI to dataset connection" .
+
+:datasetToBmi :subject obo:IAO_0000100;
+  rdfs:label "dataset to BMI connection" .
+
+:datasetToDiagnosis :subject obo:IAO_0000100;
+  rdfs:label "dataset to diagnosis connection" .
+
+:datasetToHealthcareEncounterDate :subject obo:IAO_0000100;
+  rdfs:label "dataset to healthcare encounter date connection" .
+
+:datasetToHealthcareEncounterRegistryDenoter :subject obo:IAO_0000100;
+  rdfs:label "dataset to healthcare registry denoter symbol" .
+
+:datasetToHealthcareEncounterSymbol :subject obo:IAO_0000100;
+  rdfs:label "dataset to healthcare encounter symbol" .
+
+:datasetToPrescription :subject obo:IAO_0000100;
+  rdfs:label "dataset to prescription connection" .
+
+:diagnosisToDataset :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to dataset connection" .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to diagnosis code suffix literal value" .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to diagnosis coding sequence literal value" .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to diagnosis registry literal string value" .
+
+:diagnosisToIcdRegistry :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to icd registry connection" .
+
+:diagnosisToIcdTerm :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to icd term connection" .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :subject obo:OGMS_0000073;
+  rdfs:label "diagnosis to primary diagnosis boolean value connection" .
+
+:healthcareEncounterDateToDataset :subject :TURBO_0000512;
+  rdfs:label "healthcare encounter date to dataset connection" .
+
+:healthcareEncounterDateToDateLiteralValue :subject :TURBO_0000512;
+  rdfs:label "healthcare encounter date to date string value connection" .
+
+:healthcareEncounterDateToHealthcareEncounterStart :subject :TURBO_0000512;
+  rdfs:label "healthcare encounter date to healthcare encounter start connection" .
+
+:healthcareEncounterDateToStringLiteralValue :subject :TURBO_0000512;
+  rdfs:label "healthcare encounter date to string literal value connection" .
+
+:healthcareEncounterIdToRegistryDenoter :subject :TURBO_0000508;
+  rdfs:label "healthcare encounter id to registry denoter connection" .
+
+:healthcareEncounterIdToSymbol :subject :TURBO_0000508;
+  rdfs:label "healthcare enc id to symbol connection" .
+
+:healthcareEncounterRegistryDenoterToDataset :subject :TURBO_0000510;
+  rdfs:label "healthcare enc registry denoter to dataset connection" .
+
+:healthcareEncounterRegistryDenoterToId :subject :TURBO_0000510;
+  rdfs:label "healthcare encounter registry denoter to id connection" .
+
+:healthcareEncounterRegistryDenoterToRegistry :subject :TURBO_0000510;
+  rdfs:label "healthcare encounter registry denoter to registry connection" .
+
+:healthcareEncounterStartToHealthcareEncounter :subject :TURBO_0000511;
+  rdfs:label "healthcare encounter start to healthcare encounter" .
+
+:healthcareEncounterSymbolToDataset :subject :TURBO_0000509;
+  rdfs:label "healthcare enc symbol to dataset connection" .
+
+:healthcareEncounterSymbolToId :subject :TURBO_0000509;
+  rdfs:label "healthcare enc symbol to id connection" .
+
+:healthcareEncounterSymbolToSymbolValue :subject :TURBO_0000509;
+  rdfs:label "healthcare enc symbol to symbol value connection" .
+
+:healthcareEncounterToBMI :subject obo:OGMS_0000097;
+  rdfs:label "healthcare encounter to BMI connection" .
+
+:healthcareEncounterToDiagnosis :subject obo:OGMS_0000097;
+  rdfs:label "healthcare encounter to diagnosis connection" .
+
+:healthcareEncounterToPrescription :subject obo:OGMS_0000097;
+  rdfs:label "healthcare encounter to drug prescription connection" .
+
+:identifierToMedicationSymbol :subject :TURBO_0000561;
+  rdfs:label "identifier to medication symbol connection" .
+
+:identifierToPrescription :subject :TURBO_0000561;
+  rdfs:label "identifier to prescription connection" .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :subject :TURBO_0000562;
+  rdfs:label "medication symbol to medication symbol string literal value" .
+
+:medicationSymbolToidentifier :subject :TURBO_0000562;
+  rdfs:label "medication symbol to identifier connection" .
+
+:prescriptionToDataset :subject obo:PDRO_0000001;
+  rdfs:label "prescription to dataset connection" .
+
+:prescriptionToDrug :subject obo:PDRO_0000001;
+  rdfs:label "prescription to drug connection" .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :subject obo:PDRO_0000001;
+  rdfs:label "prescription to med order name lit value connection" .
+
+:medicationSymbolToDataset :subject :TURBO_0000562;
+  rdfs:label "medication symbol to dataset connection" .
+
+:datasetToMedicationSybol :subject obo:IAO_0000100;
+  rdfs:label "dataset to medication symbol connection" .
+
+:datasetToBiobankEncounterRegistryDenoter :subject obo:IAO_0000100;
+  rdfs:label "dataset to biobank registry denoter symbol" .
+
+:datasetToBiobankEncounterSymbol :subject obo:IAO_0000100;
+  rdfs:label "dataset to biobank encounter symbol" .
+
+:biobankEncounterIdToRegistryDenoter :subject :TURBO_0000533;
+  rdfs:label "biobank encounter id to registry denoter connection" .
+
+:biobankEncounterIdToSymbol :subject :TURBO_0000533;
+  rdfs:label "biobank enc id to symbol connection" .
+
+:biobankEncounterRegistryDenoterToDataset :subject :TURBO_0000535;
+  rdfs:label "biobank enc registry denoter to dataset connection" .
+
+:biobankEncounterRegistryDenoterToId :subject :TURBO_0000535;
+  rdfs:label "biobank encounter registry denoter to id connection" .
+
+:biobankEncounterRegistryDenoterToRegistry :subject :TURBO_0000535;
+  rdfs:label "biobank encounter registry denoter to registry connection" .
+
+:biobankEncounterSymbolToDataset :subject :TURBO_0000534;
+  rdfs:label "biobank enc symbol to dataset connection" .
+
+:biobankEncounterSymbolToId :subject :TURBO_0000534;
+  rdfs:label "biobank enc symbol to id connection" .
+
+:biobankEncounterSymbolToSymbolValue :subject :TURBO_0000534;
+  rdfs:label "biobank enc symbol to symbol value connection" .
+
+:datasetToBiobankEncounterDate :subject obo:IAO_0000100;
+  rdfs:label "dataset to biobank encounter date connection" .
+
+:biobankEncounterDateToDataset :subject :TURBO_0000532;
+  rdfs:label "biobank encounter date to dataset connection" .
+
+:biobankEncounterDateToDateLiteralValue :subject :TURBO_0000532;
+  rdfs:label "biobank encounter date to date string value connection" .
+
+:biobankEncounterDateToBiobankEncounterStart :subject :TURBO_0000532;
+  rdfs:label "biobank encounter date to biobank encounter start connection" .
+
+:biobankEncounterDateToStringLiteralValue :subject :TURBO_0000532;
+  rdfs:label "biobank encounter date to string literal value connection" .
+
+:biobankEncounterStartToBiobankEncounter :subject :TURBO_0000531;
+  rdfs:label "biobank encounter start to biobank encounter" .
+
+:biobankEncounterToLengthMeasurementValueSpecification :subject :TURBO_0000527;
+  rdfs:label "object connection to length measurement datum" .
+
+:datasetToLengthMeasurementValueSpecification :subject obo:IAO_0000100;
+  rdfs:label "dataset to length measurement connection" .
+
+:datasetToMassMeasurementValueSpecification :subject obo:IAO_0000100;
+  rdfs:label "dataset to mass measurement connection" .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :subject obo:OGMS_0000097;
+  rdfs:label "object connection to length measurement datum" .
+
+:lengthMeasurementValueSpecificationToDataset :subject :TURBO_0010138;
+  rdfs:label "length measurement connection to dataset" .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :subject :TURBO_0010138;
+  rdfs:label "length measurement datum to length measurement literal value connection" .
+
+:massMeasurementValueSpecificationToDataset :subject obo:OBI_0001929;
+  rdfs:label "mass measurement connection to dataset" .
+
+:massMeasurementValueSpecificationToKilogram :subject obo:OBI_0001929;
+  rdfs:label "mass measurement datum to kilogram" .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :subject obo:OBI_0001929;
+  rdfs:label "mass measurement datum to mass measurement double literal value connection" .
+
+:homoSapiensIdToSymbol :predicate obo:BFO_0000051;
+  :subject :TURBO_0000503 .
+
+:homoSapiensSymbolToSymbolValue :predicate :TURBO_0010094;
+  :subject :TURBO_0000504 .
+
+:homoSapiensIdToRegistryDenoter :predicate obo:BFO_0000051;
+  :subject :TURBO_0000503 .
+
+:homoSapiensRegistryDenoterToId :predicate obo:BFO_0000050;
+  :subject :TURBO_0000505 .
+
+:genderIdentityDatumToHomoSapiens :predicate obo:IAO_0000136;
+  :subject :GenderIdentityDatumOfVariousTypes .
+
+:homoSapiensToBiosex :predicate obo:RO_0000086;
+  :subject obo:NCBITaxon_9606 .
+
+:homoSapiensRegistryDenoterToRegistry :predicate obo:IAO_0000219;
+  :subject :TURBO_0000505 .
+
+:homoSapiensRegistryDenoterToDataset :predicate obo:BFO_0000050;
+  :subject :TURBO_0000505 .
+
+:datasetToHomoSapiensRegistryDenoter :predicate obo:BFO_0000051;
+  :subject obo:IAO_0000100 .
+
+:homoSapiensSymbolToDataset :predicate obo:BFO_0000050;
+  :subject :TURBO_0000504 .
+
+:datasetToHomoSapiensSymbol :predicate obo:BFO_0000051;
+  :subject obo:IAO_0000100 .
+
+:genderIdentityDatumToDataset :predicate obo:BFO_0000050;
+  :subject :GenderIdentityDatumOfVariousTypes .
+
+:datasetToGenderIdentityDatum :predicate obo:BFO_0000051;
+  :subject obo:IAO_0000100 .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue :predicate :TURBO_0010094;
+  :subject :GenderIdentityDatumOfVariousTypes .
+
+:genderIdentityDatumToGenderIdentityDatumType :predicate rdf:type;
+  :subject :GenderIdentityDatumOfVariousTypes .
+
+:raceIdentityDatumToHomoSapiens :predicate obo:IAO_0000136;
+  :subject :RaceIdentityDatumOfVariousTypes .
+
+:raceIdentityDatumToRaceIdentityDatumType :predicate rdf:type;
+  :subject :RaceIdentityDatumOfVariousTypes .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue :predicate :TURBO_0010094;
+  :subject :RaceIdentityDatumOfVariousTypes .
+
+:raceIdentityDatumToDataset :predicate obo:BFO_0000050;
+  :subject :RaceIdentityDatumOfVariousTypes .
+
+:datasetToRaceIdentityDatum :predicate obo:BFO_0000051;
+  :subject obo:IAO_0000100 .
+
+:dateOfBirthDatumToBirth :predicate obo:IAO_0000136;
+  :subject ns3:EFO_0004950 .
+
+:homoSapiensToBirth :predicate :TURBO_0000303;
+  :subject obo:NCBITaxon_9606 .
+
+:dateOfBirthDatumToDataset :predicate obo:BFO_0000050;
+  :subject ns3:EFO_0004950 .
+
+:datasetToDateOfBirthDatum :predicate obo:BFO_0000051;
+  :subject obo:IAO_0000100 .
+
+:dateOfBirthDatumToStringLiteral :predicate :TURBO_0010095;
+  :subject ns3:EFO_0004950 .
+
+:dateOfBirthDatumToDateLiteral :predicate :TURBO_0010096;
+  :subject ns3:EFO_0004950 .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :predicate :TURBO_0010113;
+  :subject :TURBO_0010161 .
+
+:datasetToDatasetTitle :predicate dc11:title;
+  :subject obo:IAO_0000100 .
+
+:homoSapiensIdentifierToHomoSapiens :predicate obo:IAO_0000219;
+  :subject :TURBO_0000503 .
+
+:instantiationToDataset :predicate obo:OBI_0000293;
+  :subject :TURBO_0000522 .
+
+:symbolToHomoSapiensId :predicate obo:BFO_0000050;
+  :subject :TURBO_0000504 .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter :predicate :TURBO_0010113;
+  :subject :TURBO_0010158 .
+
+:bmiToHealthcareEncounterDate :predicate obo:IAO_0000581;
+  :subject ns3:EFO_0004340 .
+
+:homoSapiensToHealthcareEncounter :predicate obo:RO_0000056;
+  :subject obo:NCBITaxon_9606 .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI :predicate :TURBO_0010131;
+  :subject :TURBO_0010158 .
+
+:homoSapiensToHeight :predicate obo:RO_0000086;
+  :subject obo:NCBITaxon_9606 .
+
+:homoSapiensToInvestigationRole :predicate obo:RO_0000087;
+  :subject obo:NCBITaxon_9606 .
+
+:homoSapiensToWeight :predicate obo:RO_0000086;
+  :subject obo:NCBITaxon_9606 .
+
+:biobankEncounterIdToBiobankEncounter :predicate obo:IAO_0000219;
+  :subject :TURBO_0000533 .
+
+:biobankEncounterToBMI :predicate obo:OBI_0000299;
+  :subject :TURBO_0000527 .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :subject :TURBO_0010169 .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :subject :TURBO_0010169 .
+
+:homoSapiensToBiobankEncounter :subject obo:NCBITaxon_9606 .
+
+:investigationRoleToBiobankEncounter :subject obo:OBI_0000097 .
+
+:bmiToBiobankEncounterDate :subject ns3:EFO_0004340 .
+
+:biobankEncounterToMassMeasurementValueSpecification :subject :TURBO_0000527 .
+
+:healthcareEncounterToMassValueSpecification :subject obo:OGMS_0000097 .
+
+:lengthMeasurementValueSpecificationToCentimeter :subject :TURBO_0010138 .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :subject :TURBO_0010138 .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :subject :TURBO_0010138 .
+
+:massMeasurementValueSpecificationToHomoSapiens :subject obo:OBI_0001929 .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :subject obo:OBI_0001929 .
+
+:homoSapiensToPatientRole :subject obo:NCBITaxon_9606 .
+
+:patientRoleToHealthcareEncounter :subject obo:OBI_0000093 .
+
+:bmiToHomoSapiens :subject ns3:EFO_0004340 .
+
+:alleleToGeneSymbolUri :subject obo:OBI_0001352 .
+
+:alleleToDataset :subject obo:OBI_0001352 .
+
+:datasetToAllele :subject obo:IAO_0000100 .
+
+:alleleCridRegDenToDataset :subject :TURBO_0000567 .
+
+:alleleCridSymbolToDataset :subject :TURBO_0000568 .
+
+:alleleToDNA :subject obo:OBI_0001352 .
+
+:alleleToGeneSymbolFirstPart :subject obo:OBI_0001352 .
+
+:alleleToGeneSymbolSecondPart :subject obo:OBI_0001352 .
+
+:alleleToZygosityIntegerValue :subject obo:OBI_0001352 .
+
+:alleleToZygosityUri :subject obo:OBI_0001352 .
+
+:datasetToAlleleCridRegDen :subject obo:IAO_0000100 .
+
+:datasetToAlleleCridSymbol :subject obo:IAO_0000100 .
+
+:formProcessToAllele :subject obo:OBI_0200000 .
+
+:formProcessToSequenceData :subject obo:OBI_0200000 .
+
+:DNAExtractionProcessToDNAExtract :subject obo:OBI_0000257 .
+
+:DNAExtractionProcessToSpecimen :subject obo:OBI_0000257 .
+
+:DNAToDNAExtract :subject obo:OBI_0001868 .
+
+:DNAToHomoSapiens :subject obo:OBI_0001868 .
+
+:biobankEncounterToCollectionProcess :subject :TURBO_0000527 .
+
+:collectionProcessToBiobankEncounter :subject obo:OBI_0600005 .
+
+:collectionProcessToHomoSapiens :subject obo:OBI_0600005 .
+
+:collectionProcessToSpecimen :subject obo:OBI_0600005 .
+
+:exomeSequenceProcessToDNAExtract :subject obo:OBI_0002118 .
+
+:exomeSequenceProcessToSequenceData :subject obo:OBI_0002118 .
+
+:genomeCridRegistryDenoterToGenomeCrid :subject :TURBO_0000567 .
+
+:genomeCridSymbolToGenomeCrid :subject :TURBO_0000568 .
+
+:genomeCridSymbolToSymbolValue :subject :TURBO_0000568 .
+
+:genomeCridToGenomeCridRegistryDenoter :subject :TURBO_0000566 .
+
+:genomeCridToGenomeCridSymbol :subject :TURBO_0000566 .
+
+:genomeCridToSpecimen :subject :TURBO_0000566 .
+
+:genomeRegistryDenoterToRegistryUri :subject :TURBO_0000567 .
+
+:shortcutAlleleToExpandedAllele :subject :TURBO_0010144 .
+
+:diagnosisToSnomedTerm :subject obo:OGMS_0000073 .
+
+:raceIdentificationProcessToRaceIdentityDatum :predicate obo:OBI_0000299 .
+
+:identifierToHealthcareEncounter :predicate obo:IAO_0000219 .
+
+:bmiToBmiDoubleLiteralValue :predicate :TURBO_0010094 .
+
+:bmiToDataset :predicate obo:BFO_0000050 .
+
+:datasetToBmi :predicate obo:BFO_0000051 .
+
+:datasetToDiagnosis :predicate obo:BFO_0000051 .
+
+:datasetToHealthcareEncounterDate :predicate obo:BFO_0000051 .
+
+:datasetToHealthcareEncounterRegistryDenoter :predicate obo:BFO_0000051 .
+
+:datasetToHealthcareEncounterSymbol :predicate obo:BFO_0000051 .
+
+:datasetToPrescription :predicate obo:BFO_0000051 .
+
+:diagnosisToDataset :predicate obo:BFO_0000050 .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :predicate :TURBO_0010094 .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :predicate :TURBO_0010014 .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :predicate :TURBO_0006515 .
+
+:diagnosisToIcdRegistry :predicate :TURBO_0000703 .
+
+:diagnosisToIcdTerm :predicate obo:IAO_0000142 .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :predicate :TURBO_0010013 .
+
+:healthcareEncounterDateToDataset :predicate obo:BFO_0000050 .
+
+:healthcareEncounterDateToDateLiteralValue :predicate :TURBO_0010096 .
+
+:healthcareEncounterDateToHealthcareEncounterStart :predicate obo:IAO_0000136 .
+
+:healthcareEncounterDateToStringLiteralValue :predicate :TURBO_0010095 .
+
+:healthcareEncounterIdToRegistryDenoter :predicate obo:BFO_0000051 .
+
+:healthcareEncounterIdToSymbol :predicate obo:BFO_0000051 .
+
+:healthcareEncounterRegistryDenoterToDataset :predicate obo:BFO_0000050 .
+
+:healthcareEncounterRegistryDenoterToId :predicate obo:BFO_0000050 .
+
+:healthcareEncounterRegistryDenoterToRegistry :predicate obo:IAO_0000219 .
+
+:healthcareEncounterStartToHealthcareEncounter :predicate obo:RO_0002223 .
+
+:healthcareEncounterSymbolToDataset :predicate obo:BFO_0000050 .
+
+:healthcareEncounterSymbolToId :predicate obo:BFO_0000050 .
+
+:healthcareEncounterSymbolToSymbolValue :predicate :TURBO_0010094 .
+
+:healthcareEncounterToBMI :predicate obo:OBI_0000299 .
+
+:healthcareEncounterToDiagnosis :predicate obo:OBI_0000299 .
+
+:healthcareEncounterToPrescription :predicate obo:OBI_0000299 .
+
+:identifierToMedicationSymbol :predicate obo:BFO_0000051 .
+
+:identifierToPrescription :predicate obo:IAO_0000219 .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :predicate :TURBO_0010094 .
+
+:medicationSymbolToidentifier :predicate obo:BFO_0000050 .
+
+:prescriptionToDataset :predicate obo:BFO_0000050 .
+
+:prescriptionToDrug :predicate obo:IAO_0000142 .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :predicate :TURBO_0010094 .
+
+:medicationSymbolToDataset :predicate obo:BFO_0000050 .
+
+:datasetToMedicationSybol :predicate obo:BFO_0000051 .
+
+:datasetToBiobankEncounterRegistryDenoter :predicate obo:BFO_0000051 .
+
+:datasetToBiobankEncounterSymbol :predicate obo:BFO_0000051 .
+
+:biobankEncounterIdToRegistryDenoter :predicate obo:BFO_0000051 .
+
+:biobankEncounterIdToSymbol :predicate obo:BFO_0000051 .
+
+:biobankEncounterRegistryDenoterToDataset :predicate obo:BFO_0000050 .
+
+:biobankEncounterRegistryDenoterToId :predicate obo:BFO_0000050 .
+
+:biobankEncounterRegistryDenoterToRegistry :predicate obo:IAO_0000219 .
+
+:biobankEncounterSymbolToDataset :predicate obo:BFO_0000050 .
+
+:biobankEncounterSymbolToId :predicate obo:BFO_0000050 .
+
+:biobankEncounterSymbolToSymbolValue :predicate :TURBO_0010094 .
+
+:datasetToBiobankEncounterDate :predicate obo:BFO_0000051 .
+
+:biobankEncounterDateToDataset :predicate obo:BFO_0000050 .
+
+:biobankEncounterDateToDateLiteralValue :predicate :TURBO_0010096 .
+
+:biobankEncounterDateToBiobankEncounterStart :predicate obo:IAO_0000136 .
+
+:biobankEncounterDateToStringLiteralValue :predicate :TURBO_0010095 .
+
+:biobankEncounterStartToBiobankEncounter :predicate obo:RO_0002223 .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :predicate :TURBO_0010113 .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :predicate :TURBO_0010133 .
+
+:homoSapiensToBiobankEncounter :predicate obo:RO_0000056 .
+
+:investigationRoleToBiobankEncounter :predicate obo:BFO_0000054 .
+
+:bmiToBiobankEncounterDate :predicate obo:IAO_0000581 .
+
+:biobankEncounterToLengthMeasurementValueSpecification :predicate :TURBO_0010139 .
+
+:biobankEncounterToMassMeasurementValueSpecification :predicate :TURBO_0010139 .
+
+:datasetToLengthMeasurementValueSpecification :predicate obo:BFO_0000051 .
+
+:datasetToMassMeasurementValueSpecification :predicate obo:BFO_0000051 .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :predicate :TURBO_0010139 .
+
+:healthcareEncounterToMassValueSpecification :predicate :TURBO_0010139 .
+
+:lengthMeasurementValueSpecificationToCentimeter :predicate obo:IAO_0000039 .
+
+:lengthMeasurementValueSpecificationToDataset :predicate obo:BFO_0000050 .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :predicate obo:IAO_0000136 .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :predicate obo:IAO_0000221 .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :predicate :TURBO_0010094 .
+
+:massMeasurementValueSpecificationToDataset :predicate obo:BFO_0000050 .
+
+:massMeasurementValueSpecificationToHomoSapiens :predicate obo:IAO_0000136 .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :predicate obo:IAO_0000221 .
+
+:massMeasurementValueSpecificationToKilogram :predicate obo:IAO_0000039 .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :predicate :TURBO_0010094 .
+
+:homoSapiensToPatientRole :predicate obo:RO_0000087 .
+
+:patientRoleToHealthcareEncounter :predicate obo:BFO_0000054 .
+
+:bmiToHomoSapiens :predicate obo:IAO_0000136 .
+
+:alleleToGeneSymbolUri :predicate obo:IAO_0000142 .
+
+:alleleToDataset :predicate obo:BFO_0000050 .
+
+:datasetToAllele :predicate obo:BFO_0000051 .
+
+:alleleCridRegDenToDataset :predicate obo:BFO_0000050 .
+
+:alleleCridSymbolToDataset :predicate obo:BFO_0000050 .
+
+:alleleToDNA :predicate obo:IAO_0000136 .
+
+:alleleToGeneSymbolFirstPart :predicate :TURBO_0010016 .
+
+:alleleToGeneSymbolSecondPart :predicate :TURBO_0010015 .
+
+:alleleToZygosityIntegerValue :predicate :TURBO_0010095 .
+
+:alleleToZygosityUri :predicate obo:OBI_0001938 .
+
+:datasetToAlleleCridRegDen :predicate obo:BFO_0000051 .
+
+:datasetToAlleleCridSymbol :predicate obo:BFO_0000051 .
+
+:formProcessToAllele :predicate obo:OBI_0000299 .
+
+:formProcessToSequenceData :predicate obo:OBI_0000293 .
+
+:DNAExtractionProcessToDNAExtract :predicate obo:OBI_0000299 .
+
+:DNAExtractionProcessToSpecimen :predicate obo:OBI_0000293 .
+
+:DNAToDNAExtract :predicate obo:OBI_0000643 .
+
+:DNAToHomoSapiens :predicate obo:OGG_0000000014 .
+
+:biobankEncounterToCollectionProcess :predicate obo:BFO_0000051 .
+
+:collectionProcessToBiobankEncounter :predicate obo:BFO_0000050 .
+
+:collectionProcessToHomoSapiens :predicate obo:OBI_0000293 .
+
+:collectionProcessToSpecimen :predicate obo:OBI_0000299 .
+
+:exomeSequenceProcessToDNAExtract :predicate obo:OBI_0000293 .
+
+:exomeSequenceProcessToSequenceData :predicate obo:OBI_0000299 .
+
+:genomeCridRegistryDenoterToGenomeCrid :predicate obo:BFO_0000050 .
+
+:genomeCridSymbolToGenomeCrid :predicate obo:BFO_0000050 .
+
+:genomeCridSymbolToSymbolValue :predicate :TURBO_0010094 .
+
+:genomeCridToGenomeCridRegistryDenoter :predicate obo:BFO_0000051 .
+
+:genomeCridToGenomeCridSymbol :predicate obo:BFO_0000051 .
+
+:genomeCridToSpecimen :predicate obo:IAO_0000219 .
+
+:genomeRegistryDenoterToRegistryUri :predicate obo:IAO_0000219 .
+
+:shortcutAlleleToExpandedAllele :predicate :TURBO_0010113 .
+
+:diagnosisToSnomedTerm :predicate obo:IAO_0000142 .
+
+:homoSapiensIdToSymbol :object :TURBO_0000504 .
+
+:homoSapiensSymbolToSymbolValue :object :homoSapiensSymbolStringLiteralValue .
+
+:homoSapiensIdToRegistryDenoter :object :TURBO_0000505 .
+
+:homoSapiensRegistryDenoterToId :object :TURBO_0000503 .
+
+:genderIdentityDatumToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:homoSapiensToBiosex :object obo:PATO_0000047 .
+
+:homoSapiensRegistryDenoterToRegistry :object :HomoSapiensRegistryOfVariousTypes .
+
+:homoSapiensRegistryDenoterToDataset :object obo:IAO_0000100 .
+
+:datasetToHomoSapiensRegistryDenoter :object :TURBO_0000505 .
+
+:homoSapiensSymbolToDataset :object obo:IAO_0000100 .
+
+:datasetToHomoSapiensSymbol :object :TURBO_0000504 .
+
+:genderIdentityDatumToDataset :object obo:IAO_0000100 .
+
+:datasetToGenderIdentityDatum :object :GenderIdentityDatumOfVariousTypes .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue :object :homoSapiensGenderIdentityStringLiteralValue .
+
+:genderIdentityDatumToGenderIdentityDatumType :object :genderIdentityDatumType .
+
+:raceIdentityDatumToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:raceIdentityDatumToRaceIdentityDatumType :object :raceIdentityDatumType .
+
+:raceIdentificationProcessToRaceIdentityDatum :object :RaceIdentityDatumOfVariousTypes .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue :object :homoSapiensRaceIdentityStringLiteralValue .
+
+:raceIdentityDatumToDataset :object obo:IAO_0000100 .
+
+:datasetToRaceIdentityDatum :object :RaceIdentityDatumOfVariousTypes .
+
+:dateOfBirthDatumToBirth :object obo:UBERON_0035946 .
+
+:homoSapiensToBirth :object obo:UBERON_0035946 .
+
+:dateOfBirthDatumToDataset :object obo:IAO_0000100 .
+
+:datasetToDateOfBirthDatum :object ns3:EFO_0004950 .
+
+:dateOfBirthDatumToStringLiteral :object :homoSapiensDateOfBirthStringLiteralValue .
+
+:dateOfBirthDatumToDateLiteral :object :homoSapiensDateOfBirthDateLiteralValue .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :object obo:NCBITaxon_9606 .
+
+:identifierToHealthcareEncounter :object obo:OGMS_0000097 .
+
+:bmiToBmiDoubleLiteralValue :object :bmiDoubleLiteralValue .
+
+:bmiToDataset :object obo:IAO_0000100 .
+
+:datasetToBmi :object ns3:EFO_0004340 .
+
+:datasetToDatasetTitle :object :datasetTitleStringLiteralValue .
+
+:datasetToDiagnosis :object obo:OGMS_0000073 .
+
+:datasetToHealthcareEncounterDate :object :TURBO_0000512 .
+
+:datasetToHealthcareEncounterRegistryDenoter :object :TURBO_0000510 .
+
+:datasetToHealthcareEncounterSymbol :object :TURBO_0000509 .
+
+:datasetToPrescription :object obo:PDRO_0000001 .
+
+:diagnosisToDataset :object obo:IAO_0000100 .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :object :diagnosisIcdSuffixStringLiteralValue .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :object :diagnosisCodingSequenceIntegerLiteralValue .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :object :diagnosisRegistryStringLiteralValue .
+
+:diagnosisToIcdRegistry :object :IcdRegistryOfVariousTypes .
+
+:diagnosisToIcdTerm :object :IcdTermOfVariousTypes .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :object :primaryDiagnosisBooleanLiteralValue .
+
+:healthcareEncounterDateToDataset :object obo:IAO_0000100 .
+
+:healthcareEncounterDateToDateLiteralValue :object :healthcareEncounterDateLiteralValue .
+
+:healthcareEncounterDateToHealthcareEncounterStart :object :TURBO_0000511 .
+
+:healthcareEncounterDateToStringLiteralValue :object :healthcareEncounterDateStringLiteralValue .
+
+:healthcareEncounterIdToRegistryDenoter :object :TURBO_0000510 .
+
+:healthcareEncounterIdToSymbol :object :TURBO_0000509 .
+
+:healthcareEncounterRegistryDenoterToDataset :object obo:IAO_0000100 .
+
+:healthcareEncounterRegistryDenoterToId :object :TURBO_0000508 .
+
+:healthcareEncounterRegistryDenoterToRegistry :object :HealthcareEncounterRegistryOfVariousTypes .
+
+:healthcareEncounterStartToHealthcareEncounter :object obo:OGMS_0000097 .
+
+:healthcareEncounterSymbolToDataset :object obo:IAO_0000100 .
+
+:healthcareEncounterSymbolToId :object :TURBO_0000508 .
+
+:healthcareEncounterSymbolToSymbolValue :object :healthcareEncounterSymbolLiteralValue .
+
+:healthcareEncounterToBMI :object ns3:EFO_0004340 .
+
+:healthcareEncounterToDiagnosis :object obo:OGMS_0000073 .
+
+:healthcareEncounterToPrescription :object obo:PDRO_0000001 .
+
+:homoSapiensIdentifierToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:identifierToMedicationSymbol :object :TURBO_0000562 .
+
+:identifierToPrescription :object obo:PDRO_0000001 .
+
+:instantiationToDataset :object obo:IAO_0000100 .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :object :medicationSymbolStringLiteralValue .
+
+:medicationSymbolToidentifier :object :TURBO_0000561 .
+
+:prescriptionToDataset :object obo:IAO_0000100 .
+
+:prescriptionToDrug :object :DrugTermOfVariousTypes .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :object :medicationOrderNameStringLiteralValue .
+
+:symbolToHomoSapiensId :object :TURBO_0000503 .
+
+:medicationSymbolToDataset :object obo:IAO_0000100 .
+
+:datasetToMedicationSybol :object :TURBO_0000562 .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter :object obo:OGMS_0000097 .
+
+:bmiToHealthcareEncounterDate :object :TURBO_0000512 .
+
+:homoSapiensToHealthcareEncounter :object obo:OGMS_0000097 .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI :object :TURBO_0010161 .
+
+:homoSapiensToHeight :object obo:PATO_0000119 .
+
+:homoSapiensToInvestigationRole :object obo:OBI_0000097 .
+
+:homoSapiensToWeight :object obo:PATO_0000128 .
+
+:biobankEncounterIdToBiobankEncounter :object :TURBO_0000527 .
+
+:biobankEncounterToBMI :object ns3:EFO_0004340 .
+
+:datasetToBiobankEncounterRegistryDenoter :object :TURBO_0000535 .
+
+:datasetToBiobankEncounterSymbol :object :TURBO_0000534 .
+
+:biobankEncounterIdToRegistryDenoter :object :TURBO_0000535 .
+
+:biobankEncounterIdToSymbol :object :TURBO_0000534 .
+
+:biobankEncounterRegistryDenoterToDataset :object obo:IAO_0000100 .
+
+:biobankEncounterRegistryDenoterToId :object :TURBO_0000533 .
+
+:biobankEncounterRegistryDenoterToRegistry :object :BiobankEncounterRegistryOfVariousTypes .
+
+:biobankEncounterSymbolToDataset :object obo:IAO_0000100 .
+
+:biobankEncounterSymbolToId :object :TURBO_0000533 .
+
+:biobankEncounterSymbolToSymbolValue :object :biobankEncounterSymbolStringLiteralValue .
+
+:datasetToBiobankEncounterDate :object :TURBO_0000532 .
+
+:biobankEncounterDateToDataset :object obo:IAO_0000100 .
+
+:biobankEncounterDateToDateLiteralValue :object :biobankEncounterDateLiteralValue .
+
+:biobankEncounterDateToBiobankEncounterStart :object :TURBO_0000531 .
+
+:biobankEncounterDateToStringLiteralValue :object :biobankEncounterDateStringLiteralValue .
+
+:biobankEncounterStartToBiobankEncounter :object :TURBO_0000527 .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :object :TURBO_0000527 .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :object :TURBO_0010161 .
+
+:homoSapiensToBiobankEncounter :object :TURBO_0000527 .
+
+:investigationRoleToBiobankEncounter :object :TURBO_0000527 .
+
+:bmiToBiobankEncounterDate :object :TURBO_0000532 .
+
+:biobankEncounterToLengthMeasurementValueSpecification :object :TURBO_0010138 .
+
+:biobankEncounterToMassMeasurementValueSpecification :object obo:OBI_0001929 .
+
+:datasetToLengthMeasurementValueSpecification :object :TURBO_0010138 .
+
+:datasetToMassMeasurementValueSpecification :object obo:OBI_0001929 .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :object :TURBO_0010138 .
+
+:healthcareEncounterToMassValueSpecification :object obo:OBI_0001929 .
+
+:lengthMeasurementValueSpecificationToCentimeter :object obo:UO_0000015 .
+
+:lengthMeasurementValueSpecificationToDataset :object obo:IAO_0000100 .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :object obo:PATO_0000119 .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :object :lengthMeasurementDoubleLiteralValue .
+
+:massMeasurementValueSpecificationToDataset :object obo:IAO_0000100 .
+
+:massMeasurementValueSpecificationToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :object obo:PATO_0000128 .
+
+:massMeasurementValueSpecificationToKilogram :object obo:UO_0000009 .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :object :massMeasurementDoubleLiteralValue .
+
+:homoSapiensToPatientRole :object obo:OBI_0000093 .
+
+:patientRoleToHealthcareEncounter :object obo:OGMS_0000097 .
+
+:bmiToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:alleleToGeneSymbolUri :object :GeneSymbolUriOfVariousTypes .
+
+:alleleToDataset :object obo:IAO_0000100 .
+
+:datasetToAllele :object obo:OBI_0001352 .
+
+:alleleCridRegDenToDataset :object obo:IAO_0000100 .
+
+:alleleCridSymbolToDataset :object obo:IAO_0000100 .
+
+:alleleToDNA :object obo:OBI_0001868 .
+
+:alleleToGeneSymbolFirstPart :object :alleleGeneSymbolFirstPartStringLiteralValue .
+
+:alleleToGeneSymbolSecondPart :object :alleleGeneSymbolSecondPartStringLiteralValue .
+
+:alleleToZygosityIntegerValue :object :alleleZygosityIntegerLiteralValue .
+
+:alleleToZygosityUri :object :ZygosityUriOfVariousTypes .
+
+:datasetToAlleleCridRegDen :object :TURBO_0000567 .
+
+:datasetToAlleleCridSymbol :object :TURBO_0000568 .
+
+:formProcessToAllele :object obo:OBI_0001352 .
+
+:formProcessToSequenceData :object obo:OBI_0001573 .
+
+:DNAExtractionProcessToDNAExtract :object obo:OBI_0001051 .
+
+:DNAExtractionProcessToSpecimen :object obo:OBI_0001479 .
+
+:DNAToDNAExtract :object obo:OBI_0001051 .
+
+:DNAToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:biobankEncounterToCollectionProcess :object obo:OBI_0600005 .
+
+:collectionProcessToBiobankEncounter :object :TURBO_0000527 .
+
+:collectionProcessToHomoSapiens :object obo:NCBITaxon_9606 .
+
+:collectionProcessToSpecimen :object obo:OBI_0001479 .
+
+:exomeSequenceProcessToDNAExtract :object obo:OBI_0001051 .
+
+:exomeSequenceProcessToSequenceData :object obo:OBI_0001573 .
+
+:genomeCridRegistryDenoterToGenomeCrid :object :TURBO_0000566 .
+
+:genomeCridSymbolToGenomeCrid :object :TURBO_0000566 .
+
+:genomeCridSymbolToSymbolValue :object :alleleGenoIdStringLiteralValue .
+
+:genomeCridToGenomeCridRegistryDenoter :object :TURBO_0000567 .
+
+:genomeCridToGenomeCridSymbol :object :TURBO_0000568 .
+
+:genomeCridToSpecimen :object obo:OBI_0001479 .
+
+:genomeRegistryDenoterToRegistryUri :object :GenomeRegistryOfVariousTypes .
+
+:shortcutAlleleToExpandedAllele :object obo:OBI_0001352 .
+
+:diagnosisToSnomedTerm :object :SnomedTermOfVariousTypes .
+
+:homoSapiensIdToSymbol :required true .
+
+:homoSapiensSymbolToSymbolValue :required true .
+
+:homoSapiensIdToRegistryDenoter :required true .
+
+:homoSapiensRegistryDenoterToId :required true .
+
+:genderIdentityDatumToHomoSapiens :required false .
+
+:homoSapiensToBiosex :required false .
+
+:homoSapiensRegistryDenoterToRegistry :required true .
+
+:homoSapiensRegistryDenoterToDataset :required true .
+
+:datasetToHomoSapiensRegistryDenoter :required true .
+
+:homoSapiensSymbolToDataset :required true .
+
+:datasetToHomoSapiensSymbol :required true .
+
+:genderIdentityDatumToDataset :required false .
+
+:datasetToGenderIdentityDatum :required false .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue :required true .
+
+:genderIdentityDatumToGenderIdentityDatumType :required true .
+
+:raceIdentityDatumToHomoSapiens :required false .
+
+:raceIdentityDatumToRaceIdentityDatumType :required true .
+
+:raceIdentificationProcessToRaceIdentityDatum :required true .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue :required true .
+
+:raceIdentityDatumToDataset :required false .
+
+:datasetToRaceIdentityDatum :required false .
+
+:dateOfBirthDatumToBirth :required true .
+
+:homoSapiensToBirth :required false .
+
+:dateOfBirthDatumToDataset :required false .
+
+:datasetToDateOfBirthDatum :required false .
+
+:dateOfBirthDatumToStringLiteral :required true .
+
+:dateOfBirthDatumToDateLiteral :required false .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :required true .
+
+:identifierToHealthcareEncounter :required true .
+
+:bmiToBmiDoubleLiteralValue :required true .
+
+:bmiToDataset :required true .
+
+:datasetToBmi :required true .
+
+:datasetToDatasetTitle :required true .
+
+:datasetToDiagnosis :required true .
+
+:datasetToHealthcareEncounterDate :required true .
+
+:datasetToHealthcareEncounterRegistryDenoter :required true .
+
+:datasetToHealthcareEncounterSymbol :required true .
+
+:datasetToPrescription :required true .
+
+:diagnosisToDataset :required true .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :required false .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :required false .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :required true .
+
+:diagnosisToIcdRegistry :required false .
+
+:diagnosisToIcdTerm :required false .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :required false .
+
+:healthcareEncounterDateToDataset :required true .
+
+:healthcareEncounterDateToDateLiteralValue :required false .
+
+:healthcareEncounterDateToHealthcareEncounterStart :required true .
+
+:healthcareEncounterDateToStringLiteralValue :required true .
+
+:healthcareEncounterIdToRegistryDenoter :required true .
+
+:healthcareEncounterIdToSymbol :required true .
+
+:healthcareEncounterRegistryDenoterToDataset :required true .
+
+:healthcareEncounterRegistryDenoterToId :required true .
+
+:healthcareEncounterRegistryDenoterToRegistry :required true .
+
+:healthcareEncounterStartToHealthcareEncounter :required false .
+
+:healthcareEncounterSymbolToDataset :required true .
+
+:healthcareEncounterSymbolToId :required true .
+
+:healthcareEncounterSymbolToSymbolValue :required true .
+
+:healthcareEncounterToBMI :required false .
+
+:healthcareEncounterToDiagnosis :required false .
+
+:healthcareEncounterToPrescription :required false .
+
+:homoSapiensIdentifierToHomoSapiens :required true .
+
+:identifierToMedicationSymbol :required true .
+
+:identifierToPrescription :required true .
+
+:instantiationToDataset :required true .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :required true .
+
+:medicationSymbolToidentifier :required true .
+
+:prescriptionToDataset :required true .
+
+:prescriptionToDrug :required false .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :required false .
+
+:symbolToHomoSapiensId :required true .
+
+:medicationSymbolToDataset :required true .
+
+:datasetToMedicationSybol :required true .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter :required true .
+
+:bmiToHealthcareEncounterDate :required false .
+
+:homoSapiensToHealthcareEncounter :required true .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI :required true .
+
+:homoSapiensToHeight :required false .
+
+:homoSapiensToInvestigationRole :required false .
+
+:homoSapiensToWeight :required false .
+
+:biobankEncounterIdToBiobankEncounter :required true .
+
+:biobankEncounterToBMI :required false .
+
+:datasetToBiobankEncounterRegistryDenoter :required true .
+
+:datasetToBiobankEncounterSymbol :required true .
+
+:biobankEncounterIdToRegistryDenoter :required true .
+
+:biobankEncounterIdToSymbol :required true .
+
+:biobankEncounterRegistryDenoterToDataset :required true .
+
+:biobankEncounterRegistryDenoterToId :required true .
+
+:biobankEncounterRegistryDenoterToRegistry :required true .
+
+:biobankEncounterSymbolToDataset :required true .
+
+:biobankEncounterSymbolToId :required true .
+
+:biobankEncounterSymbolToSymbolValue :required true .
+
+:datasetToBiobankEncounterDate :required true .
+
+:biobankEncounterDateToDataset :required true .
+
+:biobankEncounterDateToDateLiteralValue :required false .
+
+:biobankEncounterDateToBiobankEncounterStart :required true .
+
+:biobankEncounterDateToStringLiteralValue :required true .
+
+:biobankEncounterStartToBiobankEncounter :required false .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :required true .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :required true .
+
+:homoSapiensToBiobankEncounter :required true .
+
+:investigationRoleToBiobankEncounter :required false .
+
+:bmiToBiobankEncounterDate :required false .
+
+:biobankEncounterToLengthMeasurementValueSpecification :required false .
+
+:biobankEncounterToMassMeasurementValueSpecification :required false .
+
+:datasetToLengthMeasurementValueSpecification :required true .
+
+:datasetToMassMeasurementValueSpecification :required true .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :required false .
+
+:healthcareEncounterToMassValueSpecification :required false .
+
+:lengthMeasurementValueSpecificationToCentimeter :required true .
+
+:lengthMeasurementValueSpecificationToDataset :required true .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :required false .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :required false .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :required true .
+
+:massMeasurementValueSpecificationToDataset :required true .
+
+:massMeasurementValueSpecificationToHomoSapiens :required false .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :required false .
+
+:massMeasurementValueSpecificationToKilogram :required true .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :required true .
+
+:homoSapiensToPatientRole :required false .
+
+:patientRoleToHealthcareEncounter :required false .
+
+:bmiToHomoSapiens :required false .
+
+:alleleToGeneSymbolUri :required true .
+
+:alleleToDataset :required true .
+
+:datasetToAllele :required true .
+
+:alleleCridRegDenToDataset :required true .
+
+:alleleCridSymbolToDataset :required true .
+
+:alleleToDNA :required true .
+
+:alleleToGeneSymbolFirstPart :required true .
+
+:alleleToZygosityIntegerValue :required true .
+
+:alleleToZygosityUri :required true .
+
+:datasetToAlleleCridRegDen :required true .
+
+:datasetToAlleleCridSymbol :required true .
+
+:formProcessToAllele :required true .
+
+:formProcessToSequenceData :required true .
+
+:DNAExtractionProcessToDNAExtract :required true .
+
+:DNAExtractionProcessToSpecimen :required true .
+
+:DNAToDNAExtract :required true .
+
+:DNAToHomoSapiens :required false .
+
+:biobankEncounterToCollectionProcess :required false .
+
+:collectionProcessToBiobankEncounter :required false .
+
+:collectionProcessToHomoSapiens :required false .
+
+:collectionProcessToSpecimen :required true .
+
+:exomeSequenceProcessToDNAExtract :required true .
+
+:exomeSequenceProcessToSequenceData :required true .
+
+:genomeCridRegistryDenoterToGenomeCrid :required true .
+
+:genomeCridSymbolToGenomeCrid :required true .
+
+:genomeCridSymbolToSymbolValue :required true .
+
+:genomeCridToGenomeCridRegistryDenoter :required true .
+
+:genomeCridToGenomeCridSymbol :required true .
+
+:genomeCridToSpecimen :required true .
+
+:genomeRegistryDenoterToRegistryUri :required true .
+
+:shortcutAlleleToExpandedAllele :required true .
+
+:diagnosisToSnomedTerm :required false .
+
+:homoSapiensIdToSymbol :multiplicity :1-1 .
+
+:homoSapiensSymbolToSymbolValue :multiplicity :1-1 .
+
+:homoSapiensIdToRegistryDenoter :multiplicity :1-1 .
+
+:homoSapiensRegistryDenoterToId :multiplicity :1-1 .
+
+:genderIdentityDatumToHomoSapiens :multiplicity :1-1 .
+
+:homoSapiensToBiosex :multiplicity :1-1 .
+
+:homoSapiensRegistryDenoterToRegistry :multiplicity :1-1 .
+
+:homoSapiensRegistryDenoterToDataset :multiplicity :many-1 .
+
+:datasetToHomoSapiensRegistryDenoter :multiplicity :1-many .
+
+:homoSapiensSymbolToDataset :multiplicity :many-1 .
+
+:datasetToHomoSapiensSymbol :multiplicity :1-many .
+
+:genderIdentityDatumToDataset :multiplicity :many-1 .
+
+:datasetToGenderIdentityDatum :multiplicity :1-many .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue :multiplicity :1-1 .
+
+:genderIdentityDatumToGenderIdentityDatumType :multiplicity :1-1 .
+
+:raceIdentityDatumToHomoSapiens :multiplicity :1-1 .
+
+:raceIdentityDatumToRaceIdentityDatumType :multiplicity :1-1 .
+
+:raceIdentificationProcessToRaceIdentityDatum :multiplicity :1-1 .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue :multiplicity :1-1 .
+
+:raceIdentityDatumToDataset :multiplicity :many-1 .
+
+:datasetToRaceIdentityDatum :multiplicity :1-many .
+
+:dateOfBirthDatumToBirth :multiplicity :1-1 .
+
+:homoSapiensToBirth :multiplicity :1-1 .
+
+:dateOfBirthDatumToDataset :multiplicity :many-1 .
+
+:datasetToDateOfBirthDatum :multiplicity :1-many .
+
+:dateOfBirthDatumToStringLiteral :multiplicity :1-1 .
+
+:dateOfBirthDatumToDateLiteral :multiplicity :1-1 .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :multiplicity :1-1 .
+
+:identifierToHealthcareEncounter :multiplicity :many-1 .
+
+:bmiToBmiDoubleLiteralValue :multiplicity :1-1 .
+
+:bmiToDataset :multiplicity :many-1 .
+
+:datasetToBmi :multiplicity :1-many .
+
+:datasetToDatasetTitle :multiplicity :1-1 .
+
+:datasetToDiagnosis :multiplicity :1-many .
+
+:datasetToHealthcareEncounterDate :multiplicity :1-many .
+
+:datasetToHealthcareEncounterRegistryDenoter :multiplicity :1-many .
+
+:datasetToHealthcareEncounterSymbol :multiplicity :1-many .
+
+:datasetToPrescription :multiplicity :1-many .
+
+:diagnosisToDataset :multiplicity :many-1 .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :multiplicity :1-1 .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :multiplicity :1-1 .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :multiplicity :1-1 .
+
+:diagnosisToIcdRegistry :multiplicity :1-1 .
+
+:diagnosisToIcdTerm :multiplicity :1-1 .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :multiplicity :1-1 .
+
+:healthcareEncounterDateToDataset :multiplicity :many-1 .
+
+:healthcareEncounterDateToDateLiteralValue :multiplicity :1-1 .
+
+:healthcareEncounterDateToHealthcareEncounterStart :multiplicity :1-1 .
+
+:healthcareEncounterDateToStringLiteralValue :multiplicity :1-1 .
+
+:healthcareEncounterIdToRegistryDenoter :multiplicity :1-1 .
+
+:healthcareEncounterIdToSymbol :multiplicity :1-1 .
+
+:healthcareEncounterRegistryDenoterToDataset :multiplicity :many-1 .
+
+:healthcareEncounterRegistryDenoterToId :multiplicity :1-1 .
+
+:healthcareEncounterRegistryDenoterToRegistry :multiplicity :1-1 .
+
+:healthcareEncounterStartToHealthcareEncounter :multiplicity :1-1 .
+
+:healthcareEncounterSymbolToDataset :multiplicity :many-1 .
+
+:healthcareEncounterSymbolToId :multiplicity :1-1 .
+
+:healthcareEncounterSymbolToSymbolValue :multiplicity :1-1 .
+
+:healthcareEncounterToBMI :multiplicity :1-1 .
+
+:healthcareEncounterToDiagnosis :multiplicity :1-many .
+
+:healthcareEncounterToPrescription :multiplicity :1-many .
+
+:homoSapiensIdentifierToHomoSapiens :multiplicity :1-1 .
+
+:identifierToMedicationSymbol :multiplicity :1-1 .
+
+:identifierToPrescription :multiplicity :1-1 .
+
+:instantiationToDataset :multiplicity :1-many .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :multiplicity :1-1 .
+
+:medicationSymbolToidentifier :multiplicity :1-1 .
+
+:prescriptionToDataset :multiplicity :many-1 .
+
+:prescriptionToDrug :multiplicity :1-1 .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :multiplicity :1-1 .
+
+:symbolToHomoSapiensId :multiplicity :1-1 .
+
+:medicationSymbolToDataset :multiplicity :many-1 .
+
+:datasetToMedicationSybol :multiplicity :1-many .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter :multiplicity :1-1 .
+
+:bmiToHealthcareEncounterDate :multiplicity :1-1 .
+
+:homoSapiensToHealthcareEncounter :multiplicity :1-many .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI :multiplicity :many-1 .
+
+:homoSapiensToHeight :multiplicity :1-1 .
+
+:homoSapiensToInvestigationRole :multiplicity :1-many .
+
+:homoSapiensToWeight :multiplicity :1-1 .
+
+:biobankEncounterIdToBiobankEncounter :multiplicity :1-1 .
+
+:biobankEncounterToBMI :multiplicity :1-1 .
+
+:datasetToBiobankEncounterRegistryDenoter :multiplicity :1-many .
+
+:datasetToBiobankEncounterSymbol :multiplicity :1-many .
+
+:biobankEncounterIdToRegistryDenoter :multiplicity :1-1 .
+
+:biobankEncounterIdToSymbol :multiplicity :1-1 .
+
+:biobankEncounterRegistryDenoterToDataset :multiplicity :many-1 .
+
+:biobankEncounterRegistryDenoterToId :multiplicity :1-1 .
+
+:biobankEncounterRegistryDenoterToRegistry :multiplicity :1-1 .
+
+:biobankEncounterSymbolToDataset :multiplicity :many-1 .
+
+:biobankEncounterSymbolToId :multiplicity :1-1 .
+
+:biobankEncounterSymbolToSymbolValue :multiplicity :1-1 .
+
+:datasetToBiobankEncounterDate :multiplicity :1-many .
+
+:biobankEncounterDateToDataset :multiplicity :many-1 .
+
+:biobankEncounterDateToDateLiteralValue :multiplicity :1-1 .
+
+:biobankEncounterDateToBiobankEncounterStart :multiplicity :1-1 .
+
+:biobankEncounterDateToStringLiteralValue :multiplicity :1-1 .
+
+:biobankEncounterStartToBiobankEncounter :multiplicity :1-1 .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :multiplicity :1-1 .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :multiplicity :many-1 .
+
+:homoSapiensToBiobankEncounter :multiplicity :1-many .
+
+:investigationRoleToBiobankEncounter :multiplicity :1-many .
+
+:bmiToBiobankEncounterDate :multiplicity :1-1 .
+
+:biobankEncounterToLengthMeasurementValueSpecification :multiplicity :1-1 .
+
+:biobankEncounterToMassMeasurementValueSpecification :multiplicity :1-1 .
+
+:datasetToLengthMeasurementValueSpecification :multiplicity :1-many .
+
+:datasetToMassMeasurementValueSpecification :multiplicity :1-many .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :multiplicity :1-1 .
+
+:healthcareEncounterToMassValueSpecification :multiplicity :1-1 .
+
+:lengthMeasurementValueSpecificationToCentimeter :multiplicity :1-1 .
+
+:lengthMeasurementValueSpecificationToDataset :multiplicity :many-1 .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :multiplicity :many-1 .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :multiplicity :many-1 .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :multiplicity
+    :1-1 .
+
+:massMeasurementValueSpecificationToDataset :multiplicity :many-1 .
+
+:massMeasurementValueSpecificationToHomoSapiens :multiplicity :many-1 .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :multiplicity :many-1 .
+
+:massMeasurementValueSpecificationToKilogram :multiplicity :1-1 .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :multiplicity :1-1 .
+
+:homoSapiensToPatientRole :multiplicity :1-many .
+
+:patientRoleToHealthcareEncounter :multiplicity :1-many .
+
+:bmiToHomoSapiens :multiplicity :many-1 .
+
+:alleleToGeneSymbolUri :multiplicity :1-1 .
+
+:alleleToDataset :multiplicity :many-1 .
+
+:datasetToAllele :multiplicity :many-1 .
+
+:alleleCridRegDenToDataset :multiplicity :many-1 .
+
+:alleleCridSymbolToDataset :multiplicity :many-1 .
+
+:alleleToDNA :multiplicity :many-1 .
+
+:alleleToGeneSymbolFirstPart :multiplicity :1-1 .
+
+:alleleToZygosityIntegerValue :multiplicity :1-1 .
+
+:alleleToZygosityUri :multiplicity :1-1 .
+
+:datasetToAlleleCridRegDen :multiplicity :many-1 .
+
+:datasetToAlleleCridSymbol :multiplicity :many-1 .
+
+:formProcessToAllele :multiplicity :1-1 .
+
+:formProcessToSequenceData :multiplicity :1-1 .
+
+:DNAExtractionProcessToDNAExtract :multiplicity :1-1 .
+
+:DNAExtractionProcessToSpecimen :multiplicity :1-1 .
+
+:DNAToDNAExtract :multiplicity :1-1 .
+
+:DNAToHomoSapiens :multiplicity :1-1 .
+
+:biobankEncounterToCollectionProcess :multiplicity :1-1 .
+
+:collectionProcessToBiobankEncounter :multiplicity :many-1 .
+
+:collectionProcessToHomoSapiens :multiplicity :many-1 .
+
+:collectionProcessToSpecimen :multiplicity :1-1 .
+
+:exomeSequenceProcessToDNAExtract :multiplicity :1-1 .
+
+:exomeSequenceProcessToSequenceData :multiplicity :1-1 .
+
+:genomeCridRegistryDenoterToGenomeCrid :multiplicity :1-1 .
+
+:genomeCridSymbolToGenomeCrid :multiplicity :1-1 .
+
+:genomeCridSymbolToSymbolValue :multiplicity :1-1 .
+
+:genomeCridToGenomeCridRegistryDenoter :multiplicity :1-1 .
+
+:genomeCridToGenomeCridSymbol :multiplicity :1-1 .
+
+:genomeCridToSpecimen :multiplicity :1-1 .
+
+:genomeRegistryDenoterToRegistryUri :multiplicity :1-1 .
+
+:shortcutAlleleToExpandedAllele :multiplicity :1-1 .
+
+:diagnosisToSnomedTerm :multiplicity :1-1 .
+
+:homoSapiensIdToSymbol :outputOf :TURBO_0010176 .
+
+:homoSapiensSymbolToSymbolValue :outputOf :TURBO_0010176 .
+
+:homoSapiensIdToRegistryDenoter :outputOf :TURBO_0010176 .
+
+:homoSapiensRegistryDenoterToId :outputOf :TURBO_0010176 .
+
+:genderIdentityDatumToHomoSapiens :outputOf :TURBO_0010176 .
+
+:homoSapiensToBiosex :outputOf :TURBO_0010176 .
+
+:homoSapiensRegistryDenoterToRegistry :outputOf :TURBO_0010176 .
+
+:homoSapiensRegistryDenoterToDataset :outputOf :TURBO_0010176 .
+
+:datasetToHomoSapiensRegistryDenoter :outputOf :TURBO_0010176 .
+
+:homoSapiensSymbolToDataset :outputOf :TURBO_0010176 .
+
+:datasetToHomoSapiensSymbol :outputOf :TURBO_0010176 .
+
+:genderIdentityDatumToDataset :outputOf :TURBO_0010176 .
+
+:datasetToGenderIdentityDatum :outputOf :TURBO_0010176 .
+
+:genderIdentityDatumToGenderIdentityDatumLiteralValue :outputOf :TURBO_0010176 .
+
+:genderIdentityDatumToGenderIdentityDatumType :outputOf :TURBO_0010176 .
+
+:raceIdentityDatumToHomoSapiens :outputOf :TURBO_0010176 .
+
+:raceIdentityDatumToRaceIdentityDatumType :outputOf :TURBO_0010176 .
+
+:raceIdentificationProcessToRaceIdentityDatum :outputOf :TURBO_0010176 .
+
+:raceIdentityDatumToRaceIdentityDatumLiteralValue :outputOf :TURBO_0010176 .
+
+:raceIdentityDatumToDataset :outputOf :TURBO_0010176 .
+
+:datasetToRaceIdentityDatum :outputOf :TURBO_0010176 .
+
+:dateOfBirthDatumToBirth :outputOf :TURBO_0010176 .
+
+:homoSapiensToBirth :outputOf :TURBO_0010176 .
+
+:dateOfBirthDatumToDataset :outputOf :TURBO_0010176 .
+
+:datasetToDateOfBirthDatum :outputOf :TURBO_0010176 .
+
+:dateOfBirthDatumToStringLiteral :outputOf :TURBO_0010176 .
+
+:dateOfBirthDatumToDateLiteral :outputOf :TURBO_0010176 .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :outputOf :TURBO_0010176 .
+
+:identifierToHealthcareEncounter :outputOf :TURBO_0010179 .
+
+:bmiToBmiDoubleLiteralValue :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:bmiToDataset :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:datasetToBmi :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:datasetToDatasetTitle :outputOf :TURBO_0010176, :TURBO_0010177, :TURBO_0010179, :TURBO_0010180 .
+
+:datasetToDiagnosis :outputOf :TURBO_0010179 .
+
+:datasetToHealthcareEncounterDate :outputOf :TURBO_0010179 .
+
+:datasetToHealthcareEncounterRegistryDenoter :outputOf :TURBO_0010179 .
+
+:datasetToHealthcareEncounterSymbol :outputOf :TURBO_0010179 .
+
+:datasetToPrescription :outputOf :TURBO_0010179 .
+
+:diagnosisToDataset :outputOf :TURBO_0010179 .
+
+:diagnosisToDiagnosisCodeSuffixLiteralValue :outputOf :TURBO_0010179 .
+
+:diagnosisToDiagnosisCodingSequenceLiteralValue :outputOf :TURBO_0010179 .
+
+:diagnosisToDiagnosisRegistryStringLiteralValue :outputOf :TURBO_0010179 .
+
+:diagnosisToIcdRegistry :outputOf :TURBO_0010179 .
+
+:diagnosisToIcdTerm :outputOf :TURBO_0010179 .
+
+:diagnosisToPrimaryDiagnosisBooleanLiteralValue :outputOf :TURBO_0010179 .
+
+:healthcareEncounterDateToDataset :outputOf :TURBO_0010179 .
+
+:healthcareEncounterDateToDateLiteralValue :outputOf :TURBO_0010179 .
+
+:healthcareEncounterDateToHealthcareEncounterStart :outputOf :TURBO_0010179 .
+
+:healthcareEncounterDateToStringLiteralValue :outputOf :TURBO_0010179 .
+
+:healthcareEncounterIdToRegistryDenoter :outputOf :TURBO_0010179 .
+
+:healthcareEncounterIdToSymbol :outputOf :TURBO_0010179 .
+
+:healthcareEncounterRegistryDenoterToDataset :outputOf :TURBO_0010179 .
+
+:healthcareEncounterRegistryDenoterToId :outputOf :TURBO_0010179 .
+
+:healthcareEncounterRegistryDenoterToRegistry :outputOf :TURBO_0010179 .
+
+:healthcareEncounterStartToHealthcareEncounter :outputOf :TURBO_0010179 .
+
+:healthcareEncounterSymbolToDataset :outputOf :TURBO_0010179 .
+
+:healthcareEncounterSymbolToId :outputOf :TURBO_0010179 .
+
+:healthcareEncounterSymbolToSymbolValue :outputOf :TURBO_0010179 .
+
+:healthcareEncounterToBMI :outputOf :TURBO_0010179 .
+
+:healthcareEncounterToDiagnosis :outputOf :TURBO_0010179 .
+
+:healthcareEncounterToPrescription :outputOf :TURBO_0010179 .
+
+:homoSapiensIdentifierToHomoSapiens :outputOf :TURBO_0010176 .
+
+:identifierToMedicationSymbol :outputOf :TURBO_0010179 .
+
+:identifierToPrescription :outputOf :TURBO_0010179 .
+
+:instantiationToDataset :outputOf :TURBO_0010176, :TURBO_0010177, :TURBO_0010179,
+    :TURBO_0010180 .
+
+:medicationSymbolToMedicationSymbolStringLiteralValue :outputOf :TURBO_0010179 .
+
+:medicationSymbolToidentifier :outputOf :TURBO_0010179 .
+
+:prescriptionToDataset :outputOf :TURBO_0010179 .
+
+:prescriptionToDrug :outputOf :TURBO_0010179 .
+
+:prescriptionToMedicationOrderNameStringLiteralValue :outputOf :TURBO_0010179 .
+
+:symbolToHomoSapiensId :outputOf :TURBO_0010176 .
+
+:medicationSymbolToDataset :outputOf :TURBO_0010179 .
+
+:datasetToMedicationSybol :outputOf :TURBO_0010179 .
+
+:shortcutHealthcareEncounterToExpandedHealthcareEncounter :inputTo :TURBO_0010183;
+  :outputOf :TURBO_0010179 .
+
+:bmiToHealthcareEncounterDate :outputOf :TURBO_0010179 .
+
+:homoSapiensToHealthcareEncounter :outputOf :TURBO_0010183 .
+
+:shortcutHealthcareEncounterToShortcutHomoSapiensURI :inputTo :TURBO_0010183;
+  :outputOf :TURBO_0010179 .
+
+:homoSapiensToHeight :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:homoSapiensToInvestigationRole :outputOf :TURBO_0010182 .
+
+:homoSapiensToWeight :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:biobankEncounterIdToBiobankEncounter :outputOf :TURBO_0010177 .
+
+:biobankEncounterToBMI :inputTo :TURBO_0010182;
+  :outputOf :TURBO_0010177 .
+
+:datasetToBiobankEncounterRegistryDenoter :outputOf :TURBO_0010177 .
+
+:datasetToBiobankEncounterSymbol :outputOf :TURBO_0010177 .
+
+:biobankEncounterIdToRegistryDenoter :outputOf :TURBO_0010177 .
+
+:biobankEncounterIdToSymbol :outputOf :TURBO_0010177 .
+
+:biobankEncounterRegistryDenoterToDataset :outputOf :TURBO_0010177 .
+
+:biobankEncounterRegistryDenoterToId :outputOf :TURBO_0010177 .
+
+:biobankEncounterRegistryDenoterToRegistry :outputOf :TURBO_0010177 .
+
+:biobankEncounterSymbolToDataset :outputOf :TURBO_0010177 .
+
+:biobankEncounterSymbolToId :outputOf :TURBO_0010177 .
+
+:biobankEncounterSymbolToSymbolValue :outputOf :TURBO_0010177 .
+
+:datasetToBiobankEncounterDate :outputOf :TURBO_0010177 .
+
+:biobankEncounterDateToDataset :outputOf :TURBO_0010177 .
+
+:biobankEncounterDateToDateLiteralValue :outputOf :TURBO_0010177 .
+
+:biobankEncounterDateToBiobankEncounterStart :outputOf :TURBO_0010177 .
+
+:biobankEncounterDateToStringLiteralValue :outputOf :TURBO_0010177 .
+
+:biobankEncounterStartToBiobankEncounter :outputOf :TURBO_0010177 .
+
+:shortcutBiobankEncounterToExpandedBiobankEncounter :inputTo :TURBO_0010180, :TURBO_0010182;
+  :outputOf :TURBO_0010177 .
+
+:shortcutBiobankEncounterToShortcutHomoSapiensURI :inputTo :TURBO_0010182;
+  :outputOf :TURBO_0010177 .
+
+:homoSapiensToBiobankEncounter :inputTo :TURBO_0010180;
+  :outputOf :TURBO_0010182 .
+
+:investigationRoleToBiobankEncounter :outputOf :TURBO_0010182 .
+
+:bmiToBiobankEncounterDate :outputOf :TURBO_0010177 .
+
+:biobankEncounterToLengthMeasurementValueSpecification :inputTo :TURBO_0010182;
+  :outputOf :TURBO_0010177 .
+
+:biobankEncounterToMassMeasurementValueSpecification :inputTo :TURBO_0010182;
+  :outputOf :TURBO_0010177 .
+
+:datasetToLengthMeasurementValueSpecification :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:datasetToMassMeasurementValueSpecification :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:healthcareEncounterToLengthMeasurementValueSpecification :inputTo :TURBO_0010183;
+  :outputOf :TURBO_0010179 .
+
+:healthcareEncounterToMassValueSpecification :inputTo :TURBO_0010183;
+  :outputOf :TURBO_0010179 .
+
+:lengthMeasurementValueSpecificationToCentimeter :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:lengthMeasurementValueSpecificationToDataset :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:lengthMeasurementValueSpecificationToHomoSapiens :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:lengthMeasurementValueSpecificationToHomoSapiensHeight :outputOf :TURBO_0010182,
+    :TURBO_0010183 .
+
+:lengthMeasurementValueSpecificationToLengthMeasurementLiteralValue :outputOf :TURBO_0010177,
+    :TURBO_0010179 .
+
+:massMeasurementValueSpecificationToDataset :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:massMeasurementValueSpecificationToHomoSapiens :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:massMeasurementValueSpecificationToHomoSapiensWeight :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:massMeasurementValueSpecificationToKilogram :outputOf :TURBO_0010177, :TURBO_0010179 .
+
+:massMeasurementValueSpecificationToMassMeasurementLiteralValue :outputOf :TURBO_0010177,
+    :TURBO_0010179 .
+
+:homoSapiensToPatientRole :outputOf :TURBO_0010183 .
+
+:patientRoleToHealthcareEncounter :outputOf :TURBO_0010183 .
+
+:bmiToHomoSapiens :outputOf :TURBO_0010182, :TURBO_0010183 .
+
+:alleleToGeneSymbolUri :outputOf :TURBO_0010180 .
+
+:alleleToDataset :outputOf :TURBO_0010180 .
+
+:datasetToAllele :outputOf :TURBO_0010180 .
+
+:alleleCridRegDenToDataset :outputOf :TURBO_0010180 .
+
+:alleleCridSymbolToDataset :outputOf :TURBO_0010180 .
+
+:alleleToDNA :outputOf :TURBO_0010180 .
+
+:alleleToGeneSymbolFirstPart :outputOf :TURBO_0010180 .
+
+:alleleToGeneSymbolSecondPart :outputOf :TURBO_0010180 .
+
+:alleleToZygosityIntegerValue :outputOf :TURBO_0010180 .
+
+:alleleToZygosityUri :outputOf :TURBO_0010180 .
+
+:datasetToAlleleCridRegDen :outputOf :TURBO_0010180 .
+
+:datasetToAlleleCridSymbol :outputOf :TURBO_0010180 .
+
+:formProcessToAllele :outputOf :TURBO_0010180 .
+
+:formProcessToSequenceData :outputOf :TURBO_0010180 .
+
+:DNAExtractionProcessToDNAExtract :outputOf :TURBO_0010180 .
+
+:DNAExtractionProcessToSpecimen :outputOf :TURBO_0010180 .
+
+:DNAToDNAExtract :outputOf :TURBO_0010180 .
+
+:DNAToHomoSapiens :outputOf :TURBO_0010180 .
+
+:biobankEncounterToCollectionProcess :outputOf :TURBO_0010180 .
+
+:collectionProcessToBiobankEncounter :outputOf :TURBO_0010180 .
+
+:collectionProcessToHomoSapiens :outputOf :TURBO_0010180 .
+
+:collectionProcessToSpecimen :outputOf :TURBO_0010180 .
+
+:exomeSequenceProcessToDNAExtract :outputOf :TURBO_0010180 .
+
+:exomeSequenceProcessToSequenceData :outputOf :TURBO_0010180 .
+
+:genomeCridRegistryDenoterToGenomeCrid :outputOf :TURBO_0010180 .
+
+:genomeCridSymbolToGenomeCrid :outputOf :TURBO_0010180 .
+
+:genomeCridSymbolToSymbolValue :outputOf :TURBO_0010180 .
+
+:genomeCridToGenomeCridRegistryDenoter :outputOf :TURBO_0010180 .
+
+:genomeCridToGenomeCridSymbol :outputOf :TURBO_0010180 .
+
+:genomeCridToSpecimen :outputOf :TURBO_0010180 .
+
+:genomeRegistryDenoterToRegistryUri :outputOf :TURBO_0010180 .
+
+:shortcutAlleleToExpandedAllele :outputOf :TURBO_0010180 .
+
+:diagnosisToSnomedTerm :outputOf :TURBO_0010179 .
+
+:shortcutHomoSapiensToExpandedHomoSapiens :inputTo :TURBO_0010182, :TURBO_0010183 .
+
+:healthcareEncounterToBMI :inputTo :TURBO_0010183 .
+
+:homoSapiensToBiosex :dependentOn :genderIdentityDatumToHomoSapiens .
