@@ -10,6 +10,9 @@ Additional reading:
 
 - A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018.
 - A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IBI_CIC_TURBO_MAM_20190102.pdf) was presented at the January 2019 Genomics and EHR workshop at Penn.
+- Hayden G.Freedman, Heather Williams, Mark A.Miller, David Birtwell, Danielle L.Mowery, Christian J.Stoeckert Jr. 
+[A novel tool for standardizing clinical data in a semantically rich model. 
+Journal of Biomedical Informatics: X 8, December 2020.](https://www.sciencedirect.com/science/article/pii/S2590177X20300214?via%3Dihub)
 
 ## Ontology
 
