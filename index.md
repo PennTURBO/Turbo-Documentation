@@ -18,13 +18,11 @@ Journal of Biomedical Informatics: X 8, December 2020.](https://www.sciencedirec
 
 PennTURBO has its own [application ontology](turbo-ontology.md), which is based on the Ontology for Biobanking and uses OBO Foundry terms wherever possible.
 
-Additionally, the the PennTURBO graph imports several OBO foundry ontologies are imported in their entirety.  THat enables tasks such as [mapping ICD codes to disease classes](ICD_disease_associations.md).
+Additionally, the the PennTURBO graph imports several OBO foundry ontologies are imported in their entirety.  That enables tasks such as [mapping ICD codes to disease classes](ICD_disease_associations.md).
 
 ____
 
-## Under Construction
-
-### Technology
+## Technology
 
 The PennTURBO group has developed a technology stack/pipeline that transforms tabular data into semantic triples, which are stored in a Resource Description Framework (RDF) triple store.  The subjects of those triples are instances of classes present in the TURBO Ontology.
 
@@ -32,9 +30,4 @@ PennTURBO also uses text analytics and machine learning for tasks like [mapping 
 
 ### Overview of steps in the PennTURBO pipeline
 ![Current TURBO Cohort pipeline](images/TURBO-overview.png)
-#### We are now using the TURBO Cohort pipeline described [here](turbo_axiomization.md) which uses the TURBO Carnival server instead of Karma. The TURBO Semantic repository component of the TURBO Cohort pipeline is what used to be called Drivetrain.
-![TURBO overview image](overview.png)
-
-1. Export the relational data to .csv files.
-1. Map the relational data files to the TURBO ontology using [Karma](karma.md).
-1. Use the [Drivetrain](drivetrain.md) application to import the data into a [GraphDB](http://graphdb.ontotext.com) instance.
+#### We are now using the TURBO Cohort pipeline described [here](turbo_axiomization.md) which uses the TURBO Carnival server. The TURBO Semantic repository component of the TURBO Cohort pipeline is what used to be called Drivetrain.
