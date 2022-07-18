@@ -6,10 +6,13 @@ PennTURBO accelerates the processes of finding and connecting key information fr
 
 PennTURBO uses shortcut reification to simplify the process of instantiating Electronic Heath Records from relational sources. The shortcuts are then expanded into triples following the principles of ontological realism. Documentation is available for the [current shortcut reification process and the resulting types of expanded axioms.](turbo_axiomization.md)
 
+PennTURBO makes use of the [Carnival project](https://carnival-data.github.io/carnival/), a JVM Property graph data unification framework.
+
 Additional reading:
 
 - A [TURBO paper](http://ceur-ws.org/Vol-2285/ICBO_2018_paper_12.pdf) was presented at the ICBO 2018.
 - A [TURBO poster](https://github.com/PennTURBO/Turbo-Documentation/blob/master/IBI_CIC_TURBO_MAM_20190102.pdf) was presented at the January 2019 Genomics and EHR workshop at Penn.
+- David Birtwell, Heather Williams, Reed Pyeritz, Scott Damrauer, Danielle L. Mowery. [Carnival: A Graph-Based Data Integration and Query Tool to Support Patient Cohort Generation for Clinical Research. Stud Health Technol Inform 2019 Aug 21;264:35-39.](https://ebooks.iospress.nl/publication/51943)
 - Hayden G.Freedman, Heather Williams, Mark A.Miller, David Birtwell, Danielle L.Mowery, Christian J.Stoeckert Jr. 
 [A novel tool for standardizing clinical data in a semantically rich model. 
 Journal of Biomedical Informatics: X 8, December 2020.](https://www.sciencedirect.com/science/article/pii/S2590177X20300214?via%3Dihub)
