@@ -35,8 +35,7 @@ A Carnival command line interface is available for users who do not wish to inte
 Future plans for the TURBO Carnival server:
 
 - While Carnival is not bound by a realism-based semantic artifact like the TURBO ontology, the Carnival and TURBO teams are tightly integrated and strive for a reasonable (and potentially growing) alignment between the two models.
-- The Carnival codebase has not yet been released to the pubic, but the intention is to make it open-source in the near future.
-- The Carnival and TURBO teams are both considering opportunities to build web-based user interfaces.
+- The Carnival codebase is now open-source https://github.com/carnival-data/carnival and a public clinical domain extension covering EHRs is planned.
 
 #### A Carnival Vine into a Clinical Data Warehouse
 
