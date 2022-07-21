@@ -37,7 +37,7 @@ Future plans for the TURBO Carnival server:
 - While Carnival is not bound by a realism-based semantic artifact like the TURBO ontology, the Carnival and TURBO teams are tightly integrated and strive for a reasonable (and potentially growing) alignment between the two models.
 - The Carnival codebase is now open-source https://github.com/carnival-data/carnival and a public clinical domain extension covering EHRs is planned.
 
-#### A Carnival Vine into a Clinical Data Warehouse
+#### A [Carnival Vine](https://carnival-data.github.io/carnival/vines.html) into a Clinical Data Warehouse
 
 The TURBO Carnival server uses SQL queries to gather data from a clinical data warehouse and populate the property graph.  Portions of reality already modeled by Carnival and PennTURBO include demographic and  anthropometric data about patients, medication orders, and assigned diagnosis codes.  The table in the introduction of this paper illustrates representative patient demographics.
 
